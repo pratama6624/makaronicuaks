@@ -20,4 +20,4 @@ Proyek Makaroni Cuaks adalah aplikasi web berbasis CodeIgniter 4 yang memungkink
 ## Instalasi
 1. **Clone repository:**
    ```bash
-   git clone [https://www.andarepository.com/](https://www.andarepository.com/)
+   https://github.com/pratama6624/makaronicuaks.git
