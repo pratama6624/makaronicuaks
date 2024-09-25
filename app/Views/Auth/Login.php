@@ -1,4 +1,4 @@
-<?= $this->extend('Layouts/Templateuser') ?>
+<?= $this->extend('Layouts/TemplateUser') ?>
 <?= $this->section('content') ?>
 
 <div id="canvas-overlay"></div>
