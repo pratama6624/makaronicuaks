@@ -16,20 +16,13 @@
                         </li>
                         <div class="d-flex flex-lg-row flex-column">
                             <li class="nav-item active">
-                                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                                <a class="nav-link" href="/"><b>Beranda</b> <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="about.html">About</a>
+                                <a class="nav-link" href="<?= base_url("/products") ?>"><b>Menu</b></a>
                             </li>
-
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Special Dishes
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="special-dishes.html">Beef Steak Sauce</a>
-                                <a class="dropdown-item" href="special-dishes.html">Salmon Zucchini</a>
-                                </div>
+                            <li class="nav-item">
+                                <a class="nav-link" style="margin-right: 15px" href="<?= base_url("/blog") ?>"><b>Blog</b></a>
                             </li>
                         </div>
                     </ul>
@@ -40,14 +33,14 @@
                     <ul class="navbar-nav d-flex justify-content-between">
                         <div class="d-flex flex-lg-row flex-column">
                             <li class="nav-item active">
-                                <a class="nav-link" href="menu.html">Menu</a>
+                                <a class="nav-link" href="<?= base_url("/about") ?>"><b>Tentang</b></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="team.html">Team</a>
+                                <a class="nav-link" href="<?= base_url("/shoppingcart") ?>"><b>Keranjang</b></a>
                             </li>
 
                             <li class="nav-item dropdown">
-                                <a class="nav-link" href="reservation.html">Reservation</a>
+                                <a class="nav-link" href="<?= base_url("/account") ?>"><b>Profil</b></a>
                             </li>
                         </div>
                         <li class="nav-item">
