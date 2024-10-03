@@ -9,6 +9,12 @@
                             </a>
                         </li>
 
+                        <li class="sidebar-item">
+                            <a href="<?= base_url("/admin/customers") ?>" class='sidebar-link'>
+                                <i class="bi bi-basket-fill"></i>
+                                <span>Pelanggan</span>
+                            </a>
+                        </li>
                         <li class="sidebar-item has-sub">
                             <a href="#" class='sidebar-link'>
                                 <i class="bi bi-stack"></i>

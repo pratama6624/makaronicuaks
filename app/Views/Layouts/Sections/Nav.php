@@ -40,7 +40,7 @@
                             </li>
 
                             <li class="nav-item dropdown">
-                                <a class="nav-link" href="<?= base_url("/account") ?>"><b>Profil</b></a>
+                                <a class="nav-link" href="<?= base_url("/login") ?>"><b>Masuk</b></a>
                             </li>
                         </div>
                         <li class="nav-item">

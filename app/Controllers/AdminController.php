@@ -57,4 +57,13 @@ class AdminController extends BaseController
 
         return view('Admin/Reports', $data);
     }
+
+    public function customers(): string
+    {
+        $data = [
+            "title" => "Daftar Pelanggan"
+        ];
+
+        return view('Admin/Customers', $data);
+    }
 }

@@ -6,69 +6,30 @@
 	
     <?= $this->include('Layouts/Sections/Nav') ?>
 	
- <!-- Reservation Section -->
-<section id="gtco-reservation" class="bg-fixed bg-white section-padding overlay" style="background-image: url(img/reservation-bg.jpg);">
+ <!-- Login Section -->
+<section id="gtco-reservation" class="bg-fixed bg-white section-padding overlay mb-5" style="background-image: url(img/reservation-bg.jpg);">
     <div class="container">
         <div class="row">
             <div class="col-lg-5">
                 <div class="section-content bg-white p-5 shadow">
                     <div class="heading-section text-center">
-                        <span class="subheading">
-                            Reservation
-                        </span>
                         <h2>
-                            Book Now
+                            Selamat Datang
                         </h2>
                     </div>
                     <form method="post" name="contact-us" action="">
                         <div class="row">
                             <div class="col-md-12 form-group">
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Email">
                             </div>
                             <div class="col-md-12 form-group">
-                                <input type="text" class="form-control" id="email" name="email" placeholder="Email">
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Kata sandi">
                             </div>
-                            <div class="col-md-12 form-group">
-                                <input type="number" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Phone">
+                            <div class="col-md-12 form-group mt-4">
+                                <a href="<?= base_url("/register") ?>">Belum punya akun, Daftar sekarang!</a>
                             </div>
-                            <div class="col-md-6 form-group">
-                                <div class="input-group date" id="datetimepicker4" data-target-input="nearest">
-                                    <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker4" placeholder="Date" />
-                                    <div class="input-group-append" data-target="#datetimepicker4" data-toggle="datetimepicker">
-                                        <div class="input-group-text">
-                                            <span class="lnr lnr-calendar-full"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6 form-group">
-                                <div class="input-group date" id="datetimepicker3" data-target-input="nearest">
-                                    <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker3" placeholder="Time" />
-                                    <div class="input-group-append" data-target="#datetimepicker3" data-toggle="datetimepicker">
-                                        <div class="input-group-text">
-                                            <span class="lnr lnr-clock"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-12 form-group">
-                                <select class="form-control" id="selectPerson">
-                                    <option></option>
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                            </div>
-                 
-                            <div class="col-md-12 form-group">
-                                <textarea class="form-control" id="message" name="message" rows="6" placeholder="Your Message ..."></textarea>
-                            </div>
-                            <div class="col-md-12 text-center">
-                                <button class="btn btn-primary btn-shadow btn-lg" type="submit" name="submit">Send Message</button>
+                            <div class="col-md-12 text-center mt-4">
+                                <button class="btn btn-primary btn-shadow btn-lg" type="submit" name="submit">Masuk</button>
                             </div>
                         </div>
                     </form>
@@ -78,7 +39,7 @@
         
     </div>
 </section>
-<!-- End of Reservation Section -->		
+<!-- End of Login Section -->		
 
 <?= $this->include('Layouts/Sections/Footer') ?>
 

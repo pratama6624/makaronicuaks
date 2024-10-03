@@ -7,6 +7,7 @@ use CodeIgniter\Router\RouteCollection;
  */
 // Auth Controller
 $routes->get('/login', 'AuthController::login');
+$routes->get('/register', 'AuthController::register');
  // Home Controller
 $routes->get('/', 'HomeController::home');
 $routes->get('/products', 'HomeController::products');
@@ -21,3 +22,4 @@ $routes->get('/admin/orders/complete', 'AdminController::orderComplete');
 $routes->get('/admin/order/cancel', 'AdminController::orderCancel');
 $routes->get('/admin/products', 'AdminController::products');
 $routes->get('/admin/reports', 'AdminController::reports');
+$routes->get('/admin/customers', 'AdminController::customers');
