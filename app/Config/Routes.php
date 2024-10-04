@@ -8,6 +8,12 @@ use CodeIgniter\Router\RouteCollection;
 // Auth Controller
 $routes->get('/login', 'AuthController::login');
 $routes->get('/register', 'AuthController::register');
+$routes->get('/registersuccess', 'AuthController::registerSuccess');
+$routes->get('/verificationsuccess', 'AuthController::verificationSuccess');
+$routes->get('/registerfailed', 'AuthController::registerFailed');
+$routes->post('/register/save', 'AuthController::save');
+$routes->get('/verify-email/(:any)', 'AuthController::verifyEmail/$1');
+
  // Home Controller
 $routes->get('/', 'HomeController::home');
 $routes->get('/products', 'HomeController::products');
