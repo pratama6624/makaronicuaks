@@ -49,6 +49,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
 
         <!-- Main JS -->
-        <script src="js/app.min.js "></script>
+        <script src="js/app.min.js"></script>
+        <script src="js/flash_message.js"></script>
     </body>
 </html>

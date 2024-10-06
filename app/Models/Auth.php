@@ -17,4 +17,9 @@ class Auth extends Model
     {
         return $this->findAll();
     }
+
+    public function getUserByEmail($email)
+    {
+        return $this->where('email', $email)->first();
+    }
 }

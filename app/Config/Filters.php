@@ -13,6 +13,8 @@ use CodeIgniter\Filters\PageCache;
 use CodeIgniter\Filters\PerformanceMetrics;
 use CodeIgniter\Filters\SecureHeaders;
 
+use App\Filters\RoleFilter; 
+
 class Filters extends BaseFilters
 {
     /**
@@ -34,6 +36,7 @@ class Filters extends BaseFilters
         'forcehttps'    => ForceHTTPS::class,
         'pagecache'     => PageCache::class,
         'performance'   => PerformanceMetrics::class,
+        'roleFilter'    => RoleFilter::class
     ];
 
     /**
@@ -103,5 +106,11 @@ class Filters extends BaseFilters
      *
      * @var array<string, array<string, list<string>>>
      */
-    public array $filters = [];
+    public array $filters = [
+        'roleFilter' => [
+            'before' => [
+                'admin/*', '/', 'products', 'about', 'blog', 'shoppingcart', 'account'
+            ]
+        ],
+    ];
 }

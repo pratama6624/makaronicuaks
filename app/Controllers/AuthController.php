@@ -80,14 +80,52 @@ class AuthController extends BaseController
 
         // Validasi aturan data input user
         $this->validation->setRules([
-            "username" => 'required|max_length[50]',
-            "email" => 'required|max_length[50]|is_unique[users.email]',
-            "password" => 'required|min_length[8]',
-            "confirm_password" => 'required|matches[password]'
+            "username" => [
+                "rules" => "required|max_length[50]",
+                "errors" => [
+                    "required" => "Username wajib diisi",
+                    "max_length" => "Username tidak boleh lebih dari 50 karakter"
+                ]
+            ],
+            "email" => [
+                "rules" => "required|max_length[50]|is_unique[users.email]",
+                "errors" => [
+                    "required" => "Email wajib diisi",
+                    "is_unique" => "Email sudah terdaftar"
+                ]
+            ],
+            "no_tlp" => [
+                "rules" => "integer|is_unique[users.no_tlp]",
+                "errors" => [
+                    "integer" => "No telepon tidak valid",
+                    "is_unique" => "No telepon sudah digunakan"
+                ]
+            ],
+            "address" => [
+                "rules" => "required",
+                "errors" => [
+                    "required" => "Alamat wajib diisi"
+                ]
+            ],
+            "password" => [
+                "rules" => "required|min_length[8]",
+                "errors" => [
+                    "required" => "Password wajib diisi",
+                    "min_length" => "Panjang minimal 8 karakter"
+                ]
+            ],
+            "confirm_password" => [
+                "rules" => "required|matches[password]",
+                "errors" => [
+                    "required" => "Konfirmasi kata sandi dibutuhkan",
+                    "matches" => "Kata sandi tidak sama"
+                ]
+            ]
         ]);
 
         if(!$this->validation->withRequest($this->request)->run()) {
-            return redirect()->to('register')->with('validation', $this->validation);
+            // dd($this->validation->getErrors());
+            return redirect()->to('register')->withInput()->with('validation', $this->validation->getErrors());
         }
 
         // Buat random token untuk aktivasi user melalui smtp mail (gmail)
@@ -103,7 +141,7 @@ class AuthController extends BaseController
             "img_profile" => "",
             "verification_token" => $token,
             "status" => 0,
-            "role" => 2
+            "role" => 0
         ]);
 
         // Verifikasi email aktivasi akun untuk menghindari spam
@@ -131,5 +169,76 @@ class AuthController extends BaseController
         } else {
             return 'Invalid token.';
         }
+    }
+
+    public function checkLogin()
+    {
+        helper(['form', 'url']);
+
+        // Tangkap data input user dari sisi front end
+        $user_data = [
+            "email" => $this->request->getPost('email'),
+            "password" => $this->request->getPost('password')
+        ];
+
+        if($this->request->getMethod() == 'POST') {
+            $data_rules = [
+                "email" => [
+                    "rules" => "required",
+                    "errors" => [
+                        "required" => "Email wajib diisi",
+                    ]
+                ],
+                "password" => [
+                    "rules" => "required|min_length[8]",
+                    "errors" => [
+                        "required" => "Password wajib diisi",
+                        "min_length" => "Panjang minimal 8 karakter"
+                    ]
+                ],
+            ];
+
+            if(!$this->validate($data_rules)) {
+                return redirect()->to('login')->withInput()->with('errors', $this->validator->getErrors());
+            }
+
+            $user = $this->authModel->getUserByEmail($user_data["email"]);
+
+            // Cek apakah data user ditemukan di database dan data cocok
+            if($user && password_verify($user_data["password"], $user["password"])) {
+                // Cek apakah user yang ditemukan sudah aktivasi melalui email atau belum
+                if($user["status"] == 1) {
+                    session()->set("user", [
+                        "id" => $user["id"],
+                        "username" => $user["username"],
+                        "email" => $user["email"],
+                        "address" => $user["address"],
+                        "no_tlp" => $user["no_tlp"],
+                        "img_profile" => $user["img_profile"],
+                        "role" => $user["role"]
+                    ]);
+
+                    if($user["role"] == 0) {
+                        // 0 == user biasa
+                        return redirect()->to("");
+                    } else {
+                        // 1 == admin
+                        return redirect()->to("admin/home");
+                    }
+                } else {
+                    return redirect()->to('login')->withInput()->with('error', "Akun anda belum aktif, Silahkan cek email untuk aktivasi");
+                }
+            } else {
+                return redirect()->to('login')->withInput()->with('error', "Email atau password anda salah");
+            }
+        }
+
+        return redirect()->to("login");
+    }
+
+    public function logout()
+    {
+        session()->destroy();
+        return redirect()->to("login");
     }
 }
