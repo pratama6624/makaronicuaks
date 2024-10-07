@@ -23,12 +23,12 @@ class RoleFilter implements FilterInterface
 
         // Filter berdasarkan level user (0 adalah user dan 1 adalah admin)
         if($segment === "admin") {
-            if($user["role"] != 1) {
+            if($user["role"] == 0) {
                 // Jika bukan admin maka akses halaman admin dilarang
                 return redirect()->to("/")->with("error", "Anda tidak memiliki akses ke halaman ini");
             }
         } else {
-            if($user["role"] != 0) {
+            if($user["role"] == 1) {
                 return redirect()->to("admin/home")->with("error", "Anda tidak memiliki akses ke halaman ini");
             }
         }

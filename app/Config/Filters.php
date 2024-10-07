@@ -13,7 +13,8 @@ use CodeIgniter\Filters\PageCache;
 use CodeIgniter\Filters\PerformanceMetrics;
 use CodeIgniter\Filters\SecureHeaders;
 
-use App\Filters\RoleFilter; 
+use App\Filters\RoleFilter;
+use App\Filters\LoggedInFilter;
 
 class Filters extends BaseFilters
 {
@@ -36,7 +37,8 @@ class Filters extends BaseFilters
         'forcehttps'    => ForceHTTPS::class,
         'pagecache'     => PageCache::class,
         'performance'   => PerformanceMetrics::class,
-        'roleFilter'    => RoleFilter::class
+        'roleFilter'    => RoleFilter::class,
+        'loggedInFilter'=> LoggedInFilter::class
     ];
 
     /**
@@ -109,8 +111,13 @@ class Filters extends BaseFilters
     public array $filters = [
         'roleFilter' => [
             'before' => [
-                'admin/*', '/', 'products', 'about', 'blog', 'shoppingcart', 'account'
+                'admin/*', 'shoppingcart', 'account'
             ]
         ],
+        'loggedInFilter' => [
+            'before' => [
+                '/login', '/login/checkLogin', '/register', '/register/save', '/registersuccess', '/verificationsuccess', '/registerfailed', '/verify-email/(:any)'
+            ]
+        ]
     ];
 }

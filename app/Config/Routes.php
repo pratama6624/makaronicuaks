@@ -8,25 +8,25 @@ use CodeIgniter\Router\RouteCollection;
 
 // Auth Controller
 // Login
-$routes->get('/login', 'AuthController::login');
-$routes->post('/login/checkLogin', 'AuthController::checkLogin');
+$routes->get('/login', 'AuthController::login', ['filter' => 'loggedInFilter']);
+$routes->post('/login/checkLogin', 'AuthController::checkLogin', ['filter' => 'loggedInFilter']);
 // Register
-$routes->get('/register', 'AuthController::register');
-$routes->post('/register/save', 'AuthController::save');
-$routes->get('/registersuccess', 'AuthController::registerSuccess');
-$routes->get('/verificationsuccess', 'AuthController::verificationSuccess');
-$routes->get('/registerfailed', 'AuthController::registerFailed');
-$routes->get('/verify-email/(:any)', 'AuthController::verifyEmail/$1');
+$routes->get('/register', 'AuthController::register', ['filter' => 'loggedInFilter']);
+$routes->post('/register/save', 'AuthController::save', ['filter' => 'loggedInFilter']);
+$routes->get('/registersuccess', 'AuthController::registerSuccess', ['filter' => 'loggedInFilter']);
+$routes->get('/verificationsuccess', 'AuthController::verificationSuccess', ['filter' => 'loggedInFilter']);
+$routes->get('/registerfailed', 'AuthController::registerFailed', ['filter' => 'loggedInFilter']);
+$routes->get('/verify-email/(:any)', 'AuthController::verifyEmail/$1', ['filter' => 'loggedInFilter']);
 // Logout
 $routes->get('/logout', 'AuthController::logout');
 
 ########################################################################
 
  // User Controller
-$routes->get('/', 'HomeController::home', ['filter' => 'roleFilter']);
-$routes->get('/products', 'HomeController::products', ['filter' => 'roleFilter']);
-$routes->get('/about', 'HomeController::aboutus', ['filter' => 'roleFilter']);
-$routes->get('/blog', 'HomeController::blog', ['filter' => 'roleFilter']);
+$routes->get('/', 'HomeController::home');
+$routes->get('/products', 'HomeController::products');
+$routes->get('/about', 'HomeController::aboutus');
+$routes->get('/blog', 'HomeController::blog');
 $routes->get('/shoppingcart', 'HomeController::shoppingCart', ['filter' => 'roleFilter']);
 $routes->get('/account', 'HomeController::account', ['filter' => 'roleFilter']);
 
