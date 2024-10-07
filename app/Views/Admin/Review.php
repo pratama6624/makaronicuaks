@@ -37,7 +37,7 @@
                             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                                 <ol class="breadcrumb">
                                 <li class="breadcrumb-item">Beranda</li>
-                                <li class="breadcrumb-item active" aria-current="page">Laporan</li>
+                                <li class="breadcrumb-item active" aria-current="page">Ulasan & Testimoni</li>
                                 </ol>
                             </nav>
                         </div>
