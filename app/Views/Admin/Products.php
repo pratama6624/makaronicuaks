@@ -49,55 +49,25 @@
                             Simple Datatable
                         </div>
                         <div class="card-body">
-                            <table class="table table-striped" id="table1">
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Phone</th>
-                                        <th>City</th>
-                                        <th>Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Graiden</td>
-                                        <td>vehicula.aliquet@semconsequat.co.uk</td>
-                                        <td>076 4820 8838</td>
-                                        <td>Offenburg</td>
-                                        <td>
-                                            <span class="badge bg-success">Active</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Dale</td>
-                                        <td>fringilla.euismod.enim@quam.ca</td>
-                                        <td>0500 527693</td>
-                                        <td>New Quay</td>
-                                        <td>
-                                            <span class="badge bg-success">Active</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Nathaniel</td>
-                                        <td>mi.Duis@diam.edu</td>
-                                        <td>(012165) 76278</td>
-                                        <td>Grumo Appula</td>
-                                        <td>
-                                            <span class="badge bg-danger">Inactive</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Darius</td>
-                                        <td>velit@nec.com</td>
-                                        <td>0309 690 7871</td>
-                                        <td>Ways</td>
-                                        <td>
-                                            <span class="badge bg-success">Active</span>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <div class="col-xl-4 col-md-6 col-sm-12">
+                                <?php for($i = 0; $i <=5; $i++) { ?>
+
+                                    <div class="card" style="border: 1px solid blue">
+                                    <div class="card-content">
+                                        <img src="/assets/images/samples/motorcycle.jpg" class="card-img-top img-fluid" alt="singleminded">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Be Single Minded</h5>
+                                            <p class="card-text">
+                                                Chocolate sesame snaps apple pie danish cupcake sweet roll jujubes
+                                                tiramisu.Gummies
+                                                bonbon apple pie fruitcake icing biscuit apple pie jelly-o sweet roll.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <?php } ?>
+                            </div>
                         </div>
                     </div>
 

@@ -62,7 +62,7 @@
                         </li>
 
                         <li class="sidebar-item">
-                            <a id="top-center" class='sidebar-link'>
+                            <a href="/logout" class='sidebar-link'>
                                 <i class="bi bi-power"></i>
                                 <span>Keluar</span>
                             </a>
