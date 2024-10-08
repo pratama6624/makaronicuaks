@@ -141,7 +141,8 @@ class AuthController extends BaseController
             "img_profile" => "",
             "verification_token" => $token,
             "status" => 0,
-            "role" => 0
+            "role" => 0,
+            "is_deleted" => 0, 
         ]);
 
         // Verifikasi email aktivasi akun untuk menghindari spam

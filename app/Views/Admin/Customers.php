@@ -1,6 +1,12 @@
 <?= $this->extend('Layouts/TemplateAdmin') ?>
 <?= $this->section('content') ?>
 
+<?php
+    $numberOfActiveCustomers = count($activeCustomers);
+    $numberOfInActiveCustomers = count($inActiveCustomers);
+    $numberOfDeletedCustomers = count($deletedCustomers);
+?>
+
     <div id="app">
         <div id="sidebar" class="active">
             <div class="sidebar-wrapper active">
@@ -46,59 +52,140 @@
                 <section class="section">
                     <div class="card">
                         <div class="card-header">
-                            Simple Datatable
+                            Data Pelanggan
                         </div>
                         <div class="card-body">
-                            <table class="table table-striped" id="table1">
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Phone</th>
-                                        <th>City</th>
-                                        <th>Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Graiden</td>
-                                        <td>vehicula.aliquet@semconsequat.co.uk</td>
-                                        <td>076 4820 8838</td>
-                                        <td>Offenburg</td>
-                                        <td>
-                                            <span class="badge bg-success">Active</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Dale</td>
-                                        <td>fringilla.euismod.enim@quam.ca</td>
-                                        <td>0500 527693</td>
-                                        <td>New Quay</td>
-                                        <td>
-                                            <span class="badge bg-success">Active</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Nathaniel</td>
-                                        <td>mi.Duis@diam.edu</td>
-                                        <td>(012165) 76278</td>
-                                        <td>Grumo Appula</td>
-                                        <td>
-                                            <span class="badge bg-danger">Inactive</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Darius</td>
-                                        <td>velit@nec.com</td>
-                                        <td>0309 690 7871</td>
-                                        <td>Ways</td>
-                                        <td>
-                                            <span class="badge bg-success">Active</span>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                        <li class="nav-item" role="presentation">
+                                            <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">
+                                                Pelanggan Aktif &nbsp; <span class="badge bg-<?= $numberOfActiveCustomers == 0 ? 'danger' : 'success' ?>"><?= $numberOfActiveCustomers ?></span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">
+                                                Pelanggan Belum Aktif &nbsp; <span class="badge bg-<?= $numberOfInActiveCustomers == 0 ? 'danger' : 'success' ?>"><?= $numberOfInActiveCustomers ?></span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">
+                                                Pelanggan Dihapus &nbsp; <span class="badge bg-<?= $numberOfDeletedCustomers == 0 ? 'danger' : 'success' ?>"><?= $numberOfDeletedCustomers ?></span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content" id="myTabContent">
+                                        <div class="tab-pane fade active show mt-4" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                            <?php if(empty($activeCustomers)) { ?>
+                                                <div class="alert alert-danger">Belum ada pelanggan terdaftar</div>
+                                            <?php } else { ?>
+                                                <table class="table table-striped" id="table1">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>No</th>
+                                                            <th>Nama</th>
+                                                            <th>Email</th>
+                                                            <th>Telepon</th>
+                                                            <th>Alamat</th>
+                                                            <th>Tanggal Bergabung</th>
+                                                            <th>Status</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <?php 
+                                                            $noTableActiveCustomers = 1;
+                                                            foreach($activeCustomers as $activeCustomer) {
+                                                        ?>
+                                                            <tr>
+                                                                <td><?= $noTableActiveCustomers++ ?></td>
+                                                                <td><?= $activeCustomer["username"] ?></td>
+                                                                <td><?= $activeCustomer["email"] ?></td>
+                                                                <td><?= $activeCustomer["no_tlp"] ?></td>
+                                                                <td><?= $activeCustomer["address"] ?></td>
+                                                                <td><?= $activeCustomer["created_at"] ?></td>
+                                                                <td>
+                                                                    <span class="badge bg-success">Aktif</span>
+                                                                </td>
+                                                            </tr>
+                                                        <?php } ?>
+                                                    </tbody>
+                                                </table>
+                                            <?php } ?>
+                                        </div>
+                                        <div class="tab-pane fade mt-4" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                            <?php if(empty($inActiveCustomers)) { ?>
+                                                <div class="alert alert-danger">Semua pelanggan sudah terverifikasi</div>
+                                            <?php } else { ?>
+                                                <table class="table table-striped" id="table1">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>No</th>
+                                                            <th>Nama</th>
+                                                            <th>Email</th>
+                                                            <th>Telepon</th>
+                                                            <th>Alamat</th>
+                                                            <th>Tanggal Bergabung</th>
+                                                            <th>Status</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <?php
+                                                            $noInActiveCustomers = 1;
+                                                            foreach($inActiveCustomers as $inActiveCustomer) {
+                                                        ?>
+                                                            <tr>
+                                                                <td><?= $noInActiveCustomers++ ?></td>
+                                                                <td><?= $inActiveCustomer["username"] ?></td>
+                                                                <td><?= $inActiveCustomer["email"] ?></td>
+                                                                <td><?= $inActiveCustomer["no_tlp"] ?></td>
+                                                                <td><?= $inActiveCustomer["address"] ?></td>
+                                                                <td><?= $inActiveCustomer["created_at"] ?></td>
+                                                                <td>
+                                                                    <span class="badge bg-danger">Tidak Aktif</span>
+                                                                </td>
+                                                            </tr>
+                                                        <?php } ?>
+                                                    </tbody>
+                                                </table>
+                                            <?php } ?>
+                                        </div>
+                                        <div class="tab-pane fade mt-4" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                                            <?php if(empty($deletedCustomers)) { ?>
+                                                <div class="alert alert-danger">Tidak ada akun pelanggan yang dihapus</div>
+                                            <?php } else { ?>
+                                                <table class="table table-striped" id="table1">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>No</th>
+                                                            <th>Nama</th>
+                                                            <th>Email</th>
+                                                            <th>Telepon</th>
+                                                            <th>Alamat</th>
+                                                            <th>Tanggal Bergabung</th>
+                                                            <th>Status</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <?php
+                                                            $noDeletedCustomers = 1;
+                                                            foreach($deletedCustomers as $deletedCustomer) {
+                                                        ?>
+                                                            <tr>
+                                                                <td><?= $noDeletedCustomers++ ?></td>
+                                                                <td><?= $deletedCustomer["username"] ?></td>
+                                                                <td><?= $deletedCustomer["email"] ?></td>
+                                                                <td><?= $deletedCustomer["no_tlp"] ?></td>
+                                                                <td><?= $deletedCustomer["address"] ?></td>
+                                                                <td><?= $deletedCustomer["created_at"] ?></td>
+                                                                <td>
+                                                                    <span class="badge bg-danger">Mati</span>
+                                                                </td>
+                                                            </tr>
+                                                        <?php } ?>
+                                                    </tbody>
+                                                </table>
+                                            <?php } ?>
+                                        </div>
+                                    </div>
+                                </div>
                     </div>
 
                 </section>

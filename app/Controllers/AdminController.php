@@ -2,6 +2,9 @@
 
 namespace App\Controllers;
 
+use App\Controllers\BaseController;
+use App\Models\Auth as AuthModel;
+
 class AdminController extends BaseController
 {
     protected $request;
@@ -9,6 +12,7 @@ class AdminController extends BaseController
     public function __construct()
     {
         $this->request = \Config\Services::request();
+        $this->authModel = new AuthModel;
     }
 
     public function home(): string
@@ -76,6 +80,9 @@ class AdminController extends BaseController
         $data = [
             "title" => "Daftar Pelanggan",
             "sideMenuTitle" => $this->request->getUri()->getSegment(2),
+            "activeCustomers" => $this->authModel->getAllCustomers(0, 1),
+            "inActiveCustomers" => $this->authModel->getAllCustomers(0, 0),
+            "deletedCustomers" => $this->authModel->getDeletedCustomers(1)
         ];
 
         return view('Admin/Customers', $data);
