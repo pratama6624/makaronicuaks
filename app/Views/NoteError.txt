@@ -1,0 +1,4 @@
+Note Error Belum Fixed:
+1. Setelah menerapkan SOFT DELETE pada database yang menyimpan data pelanggan atau pengguna maka akan timbul masalah baru yaitu:
+    - Harus melakukan pengecekan ketika login karena jika akun dalam status terhapus maka user tidak boleh login
+    - Harus cek ketika ada user baru yang akan bergabung apakah user tersebut pernah terdaftar di sistem (Menghindari duplikasi akun)
