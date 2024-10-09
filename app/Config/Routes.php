@@ -17,6 +17,8 @@ $routes->get('/registersuccess', 'AuthController::registerSuccess', ['filter' =>
 $routes->get('/verificationsuccess', 'AuthController::verificationSuccess', ['filter' => 'loggedInFilter']);
 $routes->get('/registerfailed', 'AuthController::registerFailed', ['filter' => 'loggedInFilter']);
 $routes->get('/verify-email/(:any)', 'AuthController::verifyEmail/$1', ['filter' => 'loggedInFilter']);
+// Account Recovery
+$routes->get('/accountrecovery', 'AuthController::accountRecovery', ['filter' => 'loggedInFilter']);
 // Logout
 $routes->get('/logout', 'AuthController::logout');
 

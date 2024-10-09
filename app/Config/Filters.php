@@ -116,7 +116,7 @@ class Filters extends BaseFilters
         ],
         'loggedInFilter' => [
             'before' => [
-                '/login', '/login/checkLogin', '/register', '/register/save', '/registersuccess', '/verificationsuccess', '/registerfailed', '/verify-email/(:any)'
+                '/login', '/login/checkLogin', '/register', '/register/save', '/registersuccess', '/accountrecovery', '/verificationsuccess', '/registerfailed', '/verify-email/(:any)'
             ]
         ]
     ];

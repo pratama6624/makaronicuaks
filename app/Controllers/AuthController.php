@@ -17,6 +17,7 @@ class AuthController extends BaseController
         $this->request = \Config\Services::request();
         $this->authModel = new AuthModel;
         $this->validation = \Config\Services::validation();
+        $this->email = \Config\Services::email();
     }
 
     public function login(): string
@@ -37,6 +38,15 @@ class AuthController extends BaseController
         ];
 
         return view('Auth/Register', $data);
+    }
+
+    public function accountRecovery(): string
+    {
+        $data = [
+            "title" => "Recoveri Akun"
+        ];
+
+        return view('Auth/AccountRecovery', $data);
     }
 
     public function registerSuccess(): string
@@ -78,85 +88,91 @@ class AuthController extends BaseController
             "confirm_password" => $this->request->getPost('confirm_password')
         ];
 
-        // Validasi aturan data input user
-        $this->validation->setRules([
-            "username" => [
-                "rules" => "required|max_length[50]",
-                "errors" => [
-                    "required" => "Username wajib diisi",
-                    "max_length" => "Username tidak boleh lebih dari 50 karakter"
-                ]
-            ],
-            "email" => [
-                "rules" => "required|max_length[50]|is_unique[users.email]",
-                "errors" => [
-                    "required" => "Email wajib diisi",
-                    "is_unique" => "Email sudah terdaftar"
-                ]
-            ],
-            "no_tlp" => [
-                "rules" => "integer|is_unique[users.no_tlp]",
-                "errors" => [
-                    "integer" => "No telepon tidak valid",
-                    "is_unique" => "No telepon sudah digunakan"
-                ]
-            ],
-            "address" => [
-                "rules" => "required",
-                "errors" => [
-                    "required" => "Alamat wajib diisi"
-                ]
-            ],
-            "password" => [
-                "rules" => "required|min_length[8]",
-                "errors" => [
-                    "required" => "Password wajib diisi",
-                    "min_length" => "Panjang minimal 8 karakter"
-                ]
-            ],
-            "confirm_password" => [
-                "rules" => "required|matches[password]",
-                "errors" => [
-                    "required" => "Konfirmasi kata sandi dibutuhkan",
-                    "matches" => "Kata sandi tidak sama"
-                ]
-            ]
-        ]);
+        // Cek apakah ada data user yang tersangkut di database karena fitur SOFT DELETE
+        $userIn = $this->authModel->getUserByEmail($user_data["email"]);
 
-        if(!$this->validation->withRequest($this->request)->run()) {
-            // dd($this->validation->getErrors());
-            return redirect()->to('register')->withInput()->with('validation', $this->validation->getErrors());
+        if(!empty($user_data)) {
+            return redirect()->to('login')->withInput()->with('error', "Akun Anda telah dihapus. Jika ini kesalahan, Anda dapat memulihkan akun dengan menghubungi kami <a href='/accountrecovery'><u><b>disini</b></u></a>");
+        } else {
+            // Validasi aturan data input user
+            $this->validation->setRules([
+                "username" => [
+                    "rules" => "required|max_length[50]",
+                    "errors" => [
+                        "required" => "Username wajib diisi",
+                        "max_length" => "Username tidak boleh lebih dari 50 karakter"
+                    ]
+                ],
+                "email" => [
+                    "rules" => "required|max_length[50]|is_unique[users.email]",
+                    "errors" => [
+                        "required" => "Email wajib diisi",
+                        "is_unique" => "Email sudah terdaftar"
+                    ]
+                ],
+                "no_tlp" => [
+                    "rules" => "integer|is_unique[users.no_tlp]",
+                    "errors" => [
+                        "integer" => "No telepon tidak valid",
+                        "is_unique" => "No telepon sudah digunakan"
+                    ]
+                ],
+                "address" => [
+                    "rules" => "required",
+                    "errors" => [
+                        "required" => "Alamat wajib diisi"
+                    ]
+                ],
+                "password" => [
+                    "rules" => "required|min_length[8]",
+                    "errors" => [
+                        "required" => "Password wajib diisi",
+                        "min_length" => "Panjang minimal 8 karakter"
+                    ]
+                ],
+                "confirm_password" => [
+                    "rules" => "required|matches[password]",
+                    "errors" => [
+                        "required" => "Konfirmasi kata sandi dibutuhkan",
+                        "matches" => "Kata sandi tidak sama"
+                    ]
+                ]
+            ]);
+
+            if(!$this->validation->withRequest($this->request)->run()) {
+                // dd($this->validation->getErrors());
+                return redirect()->to('register')->withInput()->with('validation', $this->validation->getErrors());
+            }
+
+            // Buat random token untuk aktivasi user melalui smtp mail (gmail)
+            $token = bin2hex(random_bytes(32));
+
+            // Simpan ke database users
+            $this->authModel->save([
+                "username" => $user_data["username"],
+                "email" => $user_data["email"],
+                "password" => password_hash($user_data["confirm_password"], PASSWORD_BCRYPT),
+                "address" => $user_data["address"],
+                "no_tlp" => strval($user_data["no_tlp"]),
+                "img_profile" => "",
+                "verification_token" => $token,
+                "status" => 0,
+                "role" => 0,
+                "is_deleted" => 0, 
+            ]);
+
+            // Verifikasi email aktivasi akun untuk menghindari spam
+            $this->email->setFrom("kukuh.wd123@gmail.com", "Makaroni Cuaks");
+            $this->email->setTo($user_data["email"]);
+            $this->email->setSubject("Verivikasi Email");
+            $this->email->setMessage('Click this link to verify your email: <a href="' . base_url() . '/verify-email/' . $token . '">Verify Email</a>');
+
+            if (!$this->email->send()) {
+                return redirect()->to('registerfailed');
+            }
+
+            return redirect()->to('registersuccess'); // Redirect ke halaman sukses
         }
-
-        // Buat random token untuk aktivasi user melalui smtp mail (gmail)
-        $token = bin2hex(random_bytes(32));
-
-        // Simpan ke database users
-        $this->authModel->save([
-            "username" => $user_data["username"],
-            "email" => $user_data["email"],
-            "password" => password_hash($user_data["confirm_password"], PASSWORD_BCRYPT),
-            "address" => $user_data["address"],
-            "no_tlp" => strval($user_data["no_tlp"]),
-            "img_profile" => "",
-            "verification_token" => $token,
-            "status" => 0,
-            "role" => 0,
-            "is_deleted" => 0, 
-        ]);
-
-        // Verifikasi email aktivasi akun untuk menghindari spam
-        $this->email = \Config\Services::email();
-        $this->email->setFrom("kukuh.wd123@gmail.com", "Makaroni Cuaks");
-        $this->email->setTo($user_data["email"]);
-        $this->email->setSubject("Verivikasi Email");
-        $this->email->setMessage('Click this link to verify your email: <a href="' . base_url() . '/verify-email/' . $token . '">Verify Email</a>');
-
-        if (!$this->email->send()) {
-            return redirect()->to('registerfailed');
-        }
-
-        return redirect()->to('registersuccess'); // Redirect ke halaman sukses
     }
 
     public function verifyEmail($token)
@@ -234,7 +250,7 @@ class AuthController extends BaseController
                     return redirect()->to('login')->withInput()->with('error', "Email atau password anda salah");
                 }
             } else {
-                return redirect()->to('login')->withInput()->with('error', "Akun Anda telah dihapus. Jika ini kesalahan, Anda dapat memulihkan akun dengan menghubungi kami");
+                return redirect()->to('login')->withInput()->with('error', "Akun Anda telah dihapus. Jika ini kesalahan, Anda dapat memulihkan akun dengan menghubungi kami <a href='/accountrecovery'><u><b>disini</b></u></a>");
             }
         }
 

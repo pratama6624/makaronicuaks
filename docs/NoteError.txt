@@ -7,6 +7,7 @@ Note Error Belum Fixed:
         - Buat view akun recovery untuk mengaktifkan kembali user yang terhapus sesuai permintaan user
         - Tambahkan fitur yang bisa memberikan notifikasi ke whatapp admin ketika ada user yang mencoba aktivasi kembali akun untuk mempercepat respon admin dan sistem
         - Gunakan sistem pihak ke 3 untuk whatapp API (Coba trial atau cari yang gratis sebelum web benar benar di hosting ke production)
+        - Gunakan Twilio untuk whatapp API
 
 
 Note Error Fixed:
