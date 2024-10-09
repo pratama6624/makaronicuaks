@@ -1,0 +1,1 @@
+<h1>Halaman untuk recovery akun yang terhapus</h1>

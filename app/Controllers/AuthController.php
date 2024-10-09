@@ -206,31 +206,35 @@ class AuthController extends BaseController
             $user = $this->authModel->getUserByEmail($user_data["email"]);
 
             // Cek apakah data user ditemukan di database dan data cocok
-            if($user && password_verify($user_data["password"], $user["password"])) {
-                // Cek apakah user yang ditemukan sudah aktivasi melalui email atau belum
-                if($user["status"] == 1) {
-                    session()->set("user", [
-                        "id" => $user["id"],
-                        "username" => $user["username"],
-                        "email" => $user["email"],
-                        "address" => $user["address"],
-                        "no_tlp" => $user["no_tlp"],
-                        "img_profile" => $user["img_profile"],
-                        "role" => $user["role"]
-                    ]);
+            if($user["is_deleted"] == 0) {
+                if($user && password_verify($user_data["password"], $user["password"])) {
+                    // Cek apakah user yang ditemukan sudah aktivasi melalui email atau belum
+                    if($user["status"] == 1) {
+                        session()->set("user", [
+                            "id" => $user["id"],
+                            "username" => $user["username"],
+                            "email" => $user["email"],
+                            "address" => $user["address"],
+                            "no_tlp" => $user["no_tlp"],
+                            "img_profile" => $user["img_profile"],
+                            "role" => $user["role"]
+                        ]);
 
-                    if($user["role"] == 0) {
-                        // 0 == user biasa
-                        return redirect()->to("");
+                        if($user["role"] == 0) {
+                            // 0 == user biasa
+                            return redirect()->to("");
+                        } else {
+                            // 1 == admin
+                            return redirect()->to("admin/home");
+                        }
                     } else {
-                        // 1 == admin
-                        return redirect()->to("admin/home");
+                        return redirect()->to('login')->withInput()->with('error', "Akun anda belum aktif, Silahkan cek email untuk aktivasi");
                     }
                 } else {
-                    return redirect()->to('login')->withInput()->with('error', "Akun anda belum aktif, Silahkan cek email untuk aktivasi");
+                    return redirect()->to('login')->withInput()->with('error', "Email atau password anda salah");
                 }
             } else {
-                return redirect()->to('login')->withInput()->with('error', "Email atau password anda salah");
+                return redirect()->to('login')->withInput()->with('error', "Akun Anda telah dihapus. Jika ini kesalahan, Anda dapat memulihkan akun dengan menghubungi kami");
             }
         }
 

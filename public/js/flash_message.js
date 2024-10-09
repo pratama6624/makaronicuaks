@@ -8,7 +8,7 @@ function hideFlashMessages() {
         // Set timer untuk menghilangkan masing-masing pesan
         setTimeout(function() {
             flashMessage.style.display = 'none';
-        }, 3000); // 3000 ms = 3 detik
+        }, 7000); // 3000 ms = 3 detik
     });
 }
 

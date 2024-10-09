@@ -1,4 +1,14 @@
 Note Error Belum Fixed:
-1. Setelah menerapkan SOFT DELETE pada database yang menyimpan data pelanggan atau pengguna maka akan timbul masalah baru yaitu:
-    - Harus melakukan pengecekan ketika login karena jika akun dalam status terhapus maka user tidak boleh login
+1. SOFT DELETE (ERROR):
     - Harus cek ketika ada user baru yang akan bergabung apakah user tersebut pernah terdaftar di sistem (Menghindari duplikasi akun)
+    New Task:
+        - Tambahkan tabel database untuk menampung akun user yang terhapus beserta dengan alasanya
+        - Tambahkan menu tab untuk side menu pelanggan di admin untuk menampung request recovery dari user yang akunya terhapus
+        - Buat view akun recovery untuk mengaktifkan kembali user yang terhapus sesuai permintaan user
+        - Tambahkan fitur yang bisa memberikan notifikasi ke whatapp admin ketika ada user yang mencoba aktivasi kembali akun untuk mempercepat respon admin dan sistem
+        - Gunakan sistem pihak ke 3 untuk whatapp API (Coba trial atau cari yang gratis sebelum web benar benar di hosting ke production)
+
+
+Note Error Fixed:
+1. SOFT DELETE (ERROR FIXED):
+    - Harus melakukan pengecekan ketika login karena jika akun dalam status terhapus maka user tidak boleh login (The error has been fixed)
