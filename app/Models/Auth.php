@@ -30,6 +30,6 @@ class Auth extends Model
 
     public function getDeletedCustomers($isDeleted)
     {
-        return $this->where('is_deleted', $isDeleted)->findAll();
+        return $this->where('is_deleted', $isDeleted)->join("recovery_requests", "recovery_requests.user_id = users.id")->findAll();
     }
 }

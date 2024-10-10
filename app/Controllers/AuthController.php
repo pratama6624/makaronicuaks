@@ -93,7 +93,7 @@ class AuthController extends BaseController
         // Cek apakah ada data user yang tersangkut di database karena fitur SOFT DELETE
         $userIn = $this->authModel->getUserByEmail($user_data["email"]);
 
-        if(!empty($user_data)) {
+        if(!empty($user_data) && $userIn != null && $userIn["is_deleted"] == 1) {
             return redirect()->to('login')->withInput()->with('error', "Akun Anda telah dihapus. Jika ini kesalahan, Anda dapat memulihkan akun dengan menghubungi kami <a href='/accountrecovery'><u><b>disini</b></u></a>");
         } else {
             // Validasi aturan data input user

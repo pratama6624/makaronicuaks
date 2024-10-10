@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\Auth as AuthModel;
+use App\Models\Recovery as RecoveryModel;
 
 class AdminController extends BaseController
 {
@@ -13,6 +14,7 @@ class AdminController extends BaseController
     {
         $this->request = \Config\Services::request();
         $this->authModel = new AuthModel;
+        $this->recoveryModel = new RecoveryModel;
     }
 
     public function home(): string
@@ -82,7 +84,8 @@ class AdminController extends BaseController
             "sideMenuTitle" => $this->request->getUri()->getSegment(2),
             "activeCustomers" => $this->authModel->getAllCustomers(0, 1),
             "inActiveCustomers" => $this->authModel->getAllCustomers(0, 0),
-            "deletedCustomers" => $this->authModel->getDeletedCustomers(1)
+            "deletedCustomers" => $this->authModel->getDeletedCustomers(1),
+            "requestRecoveryCustomers" => $this->recoveryModel->getUsers()
         ];
 
         return view('Admin/Customers', $data);

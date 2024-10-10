@@ -15,7 +15,7 @@ class Recovery extends Model
 
     public function getUsers()
     {
-        return $this->findAll();
+        return $this->join("users", "users.id = recovery_requests.user_id")->findAll();
     }
 
     public function getUserByEmail($userId)
