@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\Auth as AuthModel;
+use App\Models\Recovery as RecoveryModel;
 
 class AuthController extends BaseController
 {
@@ -16,6 +17,7 @@ class AuthController extends BaseController
     {
         $this->request = \Config\Services::request();
         $this->authModel = new AuthModel;
+        $this->recoveryModel = new RecoveryModel;
         $this->validation = \Config\Services::validation();
         $this->email = \Config\Services::email();
     }
@@ -255,6 +257,49 @@ class AuthController extends BaseController
         }
 
         return redirect()->to("login");
+    }
+
+    public function recovery()
+    {
+        // Tangkap input data dari front end
+        $user_data = [
+            "email" => $this->request->getPost("email"),
+            "reason" => $this->request->getPost("reason")
+        ];
+
+        // Validasi input dari front end
+        if($this->request->getMethod() == 'POST') {
+            $data_rules = [
+                "email" => [
+                    "rules" => "required",
+                    "errors" => [
+                        "required" => "Email wajib diisi",
+                    ]
+                ]
+            ];
+
+            // Arahkan ke halaman pemulihan jika validasi gagal
+            if(!$this->validate($data_rules)) {
+                return redirect()->to('accountrecovery')->withInput()->with('validation', $this->validation->getErrors());
+            } else {
+                // Mendapatkan user id dari users untuk kebutuhan recovery
+                $userToRecovery = $this->authModel->getUserByEmail($user_data["email"]);
+
+                if($userToRecovery["is_deleted"] == 1) {
+                    $this->recoveryModel->save([
+                        "user_id" => $userToRecovery["id"],
+                        "reason" => $user_data["reason"] == "" ? "Tidak diketahui" : $user_data["reason"],
+                        "status" => "pending"
+                    ]);
+
+                    // Request pemulihan akun berhasil, Arahkan ke login
+                    return redirect()->to('login')->withInput()->with('success', "Permintaan pemulihan terkirim, cek email secara berkala untuk reset kembali kata sandi");
+                } else {
+                    // Request pemulihan akun gagal karena akun yang dimaksud masih aktif dan tidak bermasalah
+                    return redirect()->to('login')->withInput()->with('error', "Akun aktif, pemulihan gagal");
+                }
+            }
+        }
     }
 
     public function logout()

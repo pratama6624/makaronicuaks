@@ -51,5 +51,6 @@
         <!-- Main JS -->
         <script src="js/app.min.js"></script>
         <script src="js/flash_message.js"></script>
+        <script src="js/mycustomejs.js"></script>
     </body>
 </html>

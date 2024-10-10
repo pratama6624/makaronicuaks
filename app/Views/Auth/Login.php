@@ -4,6 +4,7 @@
 <?php
     $sessionValidator = session()->getFlashdata('errors');
     $sessionError = session()->getFlashdata('error');
+    $sessionSuccess = session()->getFlashdata('success');
 ?>
 
 <div id="canvas-overlay"></div>
@@ -23,6 +24,9 @@
                         </h2>
                         <?php if(isset($sessionError) && $sessionError != null) : ?>
                             <b><span class="flashdata" style="color: red;"><?= $sessionError ?></span></b>
+                        <?php endif ?>
+                        <?php if(isset($sessionSuccess) && $sessionSuccess != null) : ?>
+                            <b><span class="flashdata" style="color: green;"><?= $sessionSuccess ?></span></b>
                         <?php endif ?>
                     </div>
                     <form method="POST" name="contact-us" action="/login/checkLogin">

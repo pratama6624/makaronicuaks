@@ -19,6 +19,7 @@ $routes->get('/registerfailed', 'AuthController::registerFailed', ['filter' => '
 $routes->get('/verify-email/(:any)', 'AuthController::verifyEmail/$1', ['filter' => 'loggedInFilter']);
 // Account Recovery
 $routes->get('/accountrecovery', 'AuthController::accountRecovery', ['filter' => 'loggedInFilter']);
+$routes->post('/recovery', 'AuthController::recovery', ['filter' => 'loggedInFilter']);
 // Logout
 $routes->get('/logout', 'AuthController::logout');
 
