@@ -213,9 +213,9 @@
                                                             <th>No</th>
                                                             <th>Nama</th>
                                                             <th>Email</th>
-                                                            <th>Alasan</th>
-                                                            <th>Bergabung</th>
+                                                            <th>Alasan</th>h>
                                                             <th>Dihapus</th>
+                                                            <th>Pemulihan</th>
                                                             <th>Aksi</th>
                                                         </tr>
                                                     </thead>
@@ -229,10 +229,12 @@
                                                                 <td><?= $requestRecoveryCustomer["username"] ?></td>
                                                                 <td><?= $requestRecoveryCustomer["email"] ?></td>
                                                                 <td><?= $requestRecoveryCustomer["reason"] ?></td>
-                                                                <td><?= $requestRecoveryCustomer["created_at"] ?></td>
                                                                 <td><?= $requestRecoveryCustomer["deleted_at"] ?></td>
+                                                                <td><?= $requestRecoveryCustomer["updated_at"] ?></td>
                                                                 <td>
-                                                                    button konfirmasi
+                                                                    <button class="btn btn-sm btn-danger">
+                                                                        Pulihkan
+                                                                    </button>
                                                                 </td>
                                                             </tr>
                                                         <?php } ?>

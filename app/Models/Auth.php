@@ -9,9 +9,9 @@ class Auth extends Model
     protected $table = 'users';
     protected $primaryKey = 'id';
     protected $createdField  = 'created_at';
-    protected $updatedField  = 'updated_at';
+    protected $updatedField  = 'updated_userat';
 
-    protected $allowedFields = ['username', 'email', 'password', 'address', 'no_tlp', 'img_profile', 'verification_token', 'status', 'created_at', 'updated_at', 'role', 'is_deleted', 'deleted_at', 'is_recovery'];
+    protected $allowedFields = ['username', 'email', 'password', 'address', 'no_tlp', 'img_profile', 'verification_token', 'status', 'created_at', 'updated_userat', 'role', 'is_deleted', 'deleted_at', 'is_recovery'];
 
     public function getUsers()
     {
