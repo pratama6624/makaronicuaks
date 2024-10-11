@@ -28,8 +28,6 @@ class AuthController extends BaseController
             "title" => "Login"
         ];
 
-        // dd($this->authModel->getUsers());
-
         return view('Auth/Login', $data);
     }
 
@@ -160,7 +158,8 @@ class AuthController extends BaseController
                 "verification_token" => $token,
                 "status" => 0,
                 "role" => 0,
-                "is_deleted" => 0, 
+                "is_deleted" => 0,
+                "is_recovery" => 0
             ]);
 
             // Verifikasi email aktivasi akun untuk menghindari spam
@@ -223,10 +222,10 @@ class AuthController extends BaseController
 
             $user = $this->authModel->getUserByEmail($user_data["email"]);
 
-            // Cek apakah data user ditemukan di database dan data cocok
-            if($user["is_deleted"] == 0) {
-                if($user && password_verify($user_data["password"], $user["password"])) {
-                    // Cek apakah user yang ditemukan sudah aktivasi melalui email atau belum
+            if($user && password_verify($user_data["password"], $user["password"])) {
+            // Cek apakah user yang ditemukan sudah aktivasi melalui email atau belum
+                // Cek apakah data user ditemukan di database dan data cocok
+                if($user["is_deleted"] == 0) {
                     if($user["status"] == 1) {
                         session()->set("user", [
                             "id" => $user["id"],
@@ -249,10 +248,10 @@ class AuthController extends BaseController
                         return redirect()->to('login')->withInput()->with('error', "Akun anda belum aktif, Silahkan cek email untuk aktivasi");
                     }
                 } else {
-                    return redirect()->to('login')->withInput()->with('error', "Email atau password anda salah");
+                    return redirect()->to('login')->withInput()->with('error', "Akun Anda telah dihapus. Jika ini kesalahan, Anda dapat memulihkan akun dengan menghubungi kami <a href='/accountrecovery'><u><b>disini</b></u></a>");
                 }
             } else {
-                return redirect()->to('login')->withInput()->with('error', "Akun Anda telah dihapus. Jika ini kesalahan, Anda dapat memulihkan akun dengan menghubungi kami <a href='/accountrecovery'><u><b>disini</b></u></a>");
+                return redirect()->to('login')->withInput()->with('error', "Email atau password anda salah");   
             }
         }
 
@@ -286,14 +285,25 @@ class AuthController extends BaseController
                 $userToRecovery = $this->authModel->getUserByEmail($user_data["email"]);
 
                 if($userToRecovery["is_deleted"] == 1) {
-                    $this->recoveryModel->save([
-                        "user_id" => $userToRecovery["id"],
-                        "reason" => $user_data["reason"] == "" ? "Tidak diketahui" : $user_data["reason"],
-                        "status" => "pending"
-                    ]);
+                    // Update is_recovery
+                    $this->authModel->updateRecovery($userToRecovery["id"]);
+                    // Jika akun sedang dalam proses recovery maka cukup update notif ke admin
+                    if($userToRecovery["is_recovery"] == 0) { 
+                        $this->recoveryModel->save([
+                            "user_id" => $userToRecovery["id"],
+                            "reason" => $user_data["reason"] == "" ? "Tidak diketahui" : $user_data["reason"],
+                            "status" => "pending",
+                            "updated_at" => date('Y-m-d H:i:s')
+                        ]);
 
-                    // Request pemulihan akun berhasil, Arahkan ke login
-                    return redirect()->to('login')->withInput()->with('success', "Permintaan pemulihan terkirim, cek email secara berkala untuk reset kembali kata sandi");
+                        // Request pemulihan akun berhasil, Arahkan ke login
+                        return redirect()->to('login')->withInput()->with('success', "Permintaan pemulihan terkirim, cek email secara berkala untuk reset kembali kata sandi");
+                    } else {
+                        // Jika status akun sedang di recovery maka cukup updated tanggal permintaan recovery-nya saya
+                        $this->recoveryModel->updateRecoveryRequest($userToRecovery["id"]);
+                        // Update request pemulihan akun berhasil, Arahkan ke login
+                        return redirect()->to('login')->withInput()->with('success', "Permintaan pemulihan terkirim, cek email secara berkala untuk reset kembali kata sandi");
+                    }
                 } else {
                     // Request pemulihan akun gagal karena akun yang dimaksud masih aktif dan tidak bermasalah
                     return redirect()->to('login')->withInput()->with('error', "Akun aktif, pemulihan gagal");

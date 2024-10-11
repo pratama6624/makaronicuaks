@@ -8,10 +8,10 @@ class Recovery extends Model
 {
     protected $table = 'recovery_requests';
     protected $primaryKey = 'id_recovery';
-    protected $createdField  = 'created_at';
+    protected $createdField  = false;
     protected $updatedField  = 'updated_at';
 
-    protected $allowedFields = ['user_id', 'reason', 'status', 'created_at', 'updated_at'];
+    protected $allowedFields = ['user_id', 'reason', 'status', 'updated_at'];
 
     public function getUsers()
     {
@@ -21,5 +21,10 @@ class Recovery extends Model
     public function getUserByEmail($userId)
     {
         return $this->where('user_id', $userId)->first();
+    }
+
+    public function updateRecoveryRequest($id)
+    {
+        return $this->where("user_id", $id)->set(["updated_at" => date('Y-m-d H:i:s')])->update();
     }
 }

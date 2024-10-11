@@ -11,7 +11,7 @@ class Auth extends Model
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
 
-    protected $allowedFields = ['username', 'email', 'password', 'address', 'no_tlp', 'img_profile', 'verification_token', 'status', 'created_at', 'updated_at', 'role', 'is_deleted', 'deleted_at'];
+    protected $allowedFields = ['username', 'email', 'password', 'address', 'no_tlp', 'img_profile', 'verification_token', 'status', 'created_at', 'updated_at', 'role', 'is_deleted', 'deleted_at', 'is_recovery'];
 
     public function getUsers()
     {
@@ -30,6 +30,11 @@ class Auth extends Model
 
     public function getDeletedCustomers($isDeleted)
     {
-        return $this->where('is_deleted', $isDeleted)->join("recovery_requests", "recovery_requests.user_id = users.id")->findAll();
+        return $this->where('is_deleted', $isDeleted)->findAll();
+    }
+
+    public function updateRecovery($id)
+    {
+        return $this->where("id", $id)->set(["is_recovery" => 1])->update();
     }
 }

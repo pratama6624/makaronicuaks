@@ -5,6 +5,7 @@
     $numberOfActiveCustomers = count($activeCustomers);
     $numberOfInActiveCustomers = count($inActiveCustomers);
     $numberOfDeletedCustomers = count($deletedCustomers);
+    $numberOfRequestRecoveryCustomers= count($requestRecoveryCustomers);
 ?>
 
     <div id="app">
@@ -73,7 +74,7 @@
                                         </li>
                                         <li class="nav-item" role="presentation">
                                             <a class="nav-link" id="recovery-tab" data-bs-toggle="tab" href="#recovery" role="tab" aria-controls="recovery" aria-selected="false">
-                                                Permintaan Pemulihan &nbsp; <span class="badge bg-<?= $numberOfDeletedCustomers == 0 ? 'danger' : 'success' ?>"><?= $numberOfDeletedCustomers ?></span>
+                                                Permintaan Pemulihan &nbsp; <span class="badge bg-<?= $numberOfRequestRecoveryCustomers == 0 ? 'danger' : 'success' ?>"><?= $numberOfRequestRecoveryCustomers ?></span>
                                             </a>
                                         </li>
                                     </ul>
@@ -90,7 +91,7 @@
                                                             <th>Email</th>
                                                             <th>Telepon</th>
                                                             <th>Alamat</th>
-                                                            <th>Tanggal Bergabung</th>
+                                                            <th>Bergabung</th>
                                                             <th>Status</th>
                                                             <th>Aksi</th>
                                                         </tr>
@@ -111,9 +112,6 @@
                                                                 <td>
                                                                     <button class="btn btn-sm btn-primary">
                                                                         <svg class="svg-inline--fa fa-info fa-w-6 fa-fw select-all" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="info" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 512" data-fa-i2svg=""><path fill="currentColor" d="M20 424.229h20V279.771H20c-11.046 0-20-8.954-20-20V212c0-11.046 8.954-20 20-20h112c11.046 0 20 8.954 20 20v212.229h20c11.046 0 20 8.954 20 20V492c0 11.046-8.954 20-20 20H20c-11.046 0-20-8.954-20-20v-47.771c0-11.046 8.954-20 20-20zM96 0C56.235 0 24 32.235 24 72s32.235 72 72 72 72-32.235 72-72S135.764 0 96 0z"></path></svg>
-                                                                    </button>
-                                                                    <button class="btn btn-sm btn-warning">
-                                                                        <svg class="svg-inline--fa fa-pencil-alt fa-w-16 fa-fw select-all" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="pencil-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"></path></svg>
                                                                     </button>
                                                                     <button class="btn btn-sm btn-danger">
                                                                         <svg class="svg-inline--fa fa-trash-alt fa-w-14 fa-fw select-all" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="trash-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M32 464a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128H32zm272-256a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zM432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z"></path></svg>
@@ -158,12 +156,6 @@
                                                                     <?= $inActiveCustomer["status"] == 1 ? "Aktif" : "Belum Aktif" ?>
                                                                 </td>
                                                                 <td>
-                                                                    <button class="btn btn-sm btn-primary">
-                                                                        <svg class="svg-inline--fa fa-info fa-w-6 fa-fw select-all" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="info" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 512" data-fa-i2svg=""><path fill="currentColor" d="M20 424.229h20V279.771H20c-11.046 0-20-8.954-20-20V212c0-11.046 8.954-20 20-20h112c11.046 0 20 8.954 20 20v212.229h20c11.046 0 20 8.954 20 20V492c0 11.046-8.954 20-20 20H20c-11.046 0-20-8.954-20-20v-47.771c0-11.046 8.954-20 20-20zM96 0C56.235 0 24 32.235 24 72s32.235 72 72 72 72-32.235 72-72S135.764 0 96 0z"></path></svg>
-                                                                    </button>
-                                                                    <button class="btn btn-sm btn-warning">
-                                                                        <svg class="svg-inline--fa fa-pencil-alt fa-w-16 fa-fw select-all" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="pencil-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"></path></svg>
-                                                                    </button>
                                                                     <button class="btn btn-sm btn-danger">
                                                                         <svg class="svg-inline--fa fa-trash-alt fa-w-14 fa-fw select-all" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="trash-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M32 464a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128H32zm272-256a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zM432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z"></path></svg>
                                                                     </button>
@@ -201,9 +193,9 @@
                                                                 <td><?= $deletedCustomer["email"] ?></td>
                                                                 <td><?= $deletedCustomer["no_tlp"] ?></td>
                                                                 <td><?= $deletedCustomer["address"] ?></td>
-                                                                <td></td>
+                                                                <td><?= $deletedCustomer["deleted_at"] ?></td>
                                                                 <td>
-                                                                    <span class="badge bg-danger">Dalam pemulihan / mati</span>
+                                                                    <span class="badge bg-danger"><?= $deletedCustomer["is_recovery"] == 1 ? "Dalam pemulihan" : "Mati" ?></span>
                                                                 </td>
                                                             </tr>
                                                         <?php } ?>
@@ -212,8 +204,8 @@
                                             <?php } ?>
                                         </div>
                                         <div class="tab-pane fade mt-4" id="recovery" role="tabpanel" aria-labelledby="recovery-tab">
-                                            <?php if(empty($deletedCustomers)) { ?>
-                                                <div class="alert alert-danger">Tidak ada akun pelanggan yang dihapus</div>
+                                            <?php if(empty($requestRecoveryCustomers)) { ?>
+                                                <div class="alert alert-danger">Tidak ada permintaan pemulihan akun</div>
                                             <?php } else { ?>
                                                 <table class="table table-striped" id="table1">
                                                     <thead>
@@ -237,8 +229,8 @@
                                                                 <td><?= $requestRecoveryCustomer["username"] ?></td>
                                                                 <td><?= $requestRecoveryCustomer["email"] ?></td>
                                                                 <td><?= $requestRecoveryCustomer["reason"] ?></td>
-                                                                <td></td>
-                                                                <td></td>
+                                                                <td><?= $requestRecoveryCustomer["created_at"] ?></td>
+                                                                <td><?= $requestRecoveryCustomer["deleted_at"] ?></td>
                                                                 <td>
                                                                     button konfirmasi
                                                                 </td>
