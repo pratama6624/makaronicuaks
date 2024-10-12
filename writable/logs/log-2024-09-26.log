@@ -1,0 +1,39 @@
+CRITICAL - 2024-09-26 00:47:22 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "Pages/AboutUs, $data.php"
+[Method: GET, Route: about]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 41.
+ 1 SYSTEMPATH/View/View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('Pages/AboutUs, $data.php')
+ 2 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('Pages/AboutUs, $data', [], true)
+ 3 APPPATH/Controllers/HomeController.php(22): view('Pages/AboutUs, $data')
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\HomeController->aboutUs()
+ 5 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+ 6 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH/rewrite.php(44): require_once('/Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/public/index.php')
+CRITICAL - 2024-09-26 00:48:18 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "Pages/AboutUs, $data.php"
+[Method: GET, Route: about]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 41.
+ 1 SYSTEMPATH/View/View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('Pages/AboutUs, $data.php')
+ 2 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('Pages/AboutUs, $data', [], true)
+ 3 APPPATH/Controllers/HomeController.php(22): view('Pages/AboutUs, $data')
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\HomeController->aboutUs()
+ 5 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+ 6 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH/rewrite.php(44): require_once('/Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/public/index.php')
+CRITICAL - 2024-09-26 00:53:40 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "Pages/Products.php"
+[Method: GET, Route: products]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 41.
+ 1 SYSTEMPATH/View/View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('Pages/Products.php')
+ 2 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('Pages/Products', [], true)
+ 3 APPPATH/Controllers/HomeController.php(22): view('Pages/Products', [...])
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\HomeController->products()
+ 5 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+ 6 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH/rewrite.php(44): require_once('/Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/public/index.php')

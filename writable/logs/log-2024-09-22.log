@@ -1,0 +1,165 @@
+CRITICAL - 2024-09-22 04:18:23 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "welcome_message.php"
+[Method: GET, Route: /]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 41.
+ 1 SYSTEMPATH/View/View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('welcome_message.php')
+ 2 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('welcome_message', [], true)
+ 3 APPPATH/Controllers/Home.php(9): view('welcome_message')
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Home->index()
+ 5 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH/rewrite.php(44): require_once('/Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/public/index.php')
+CRITICAL - 2024-09-22 04:21:17 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "pages/home.php"
+[Method: GET, Route: /]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 41.
+ 1 SYSTEMPATH/View/View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pages/home.php')
+ 2 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('pages/home', [], true)
+ 3 APPPATH/Controllers/Home.php(9): view('pages/home')
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Home->index()
+ 5 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH/rewrite.php(44): require_once('/Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/public/index.php')
+CRITICAL - 2024-09-22 04:21:22 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "pages/home.php"
+[Method: GET, Route: /]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 41.
+ 1 SYSTEMPATH/View/View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pages/home.php')
+ 2 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('pages/home', [], true)
+ 3 APPPATH/Controllers/Home.php(9): view('pages/home')
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Home->index()
+ 5 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH/rewrite.php(44): require_once('/Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/public/index.php')
+CRITICAL - 2024-09-22 04:21:41 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "Pages/Home.php"
+[Method: GET, Route: /]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 41.
+ 1 SYSTEMPATH/View/View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('Pages/Home.php')
+ 2 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('Pages/Home', [], true)
+ 3 APPPATH/Controllers/Home.php(9): view('Pages/Home')
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Home->index()
+ 5 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH/rewrite.php(44): require_once('/Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/public/index.php')
+CRITICAL - 2024-09-22 04:22:09 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "Pages/Home.php"
+[Method: GET, Route: /]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 41.
+ 1 SYSTEMPATH/View/View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('Pages/Home.php')
+ 2 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('Pages/Home', [], true)
+ 3 APPPATH/Controllers/Home.php(9): view('Pages/Home')
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Home->index()
+ 5 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH/rewrite.php(44): require_once('/Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/public/index.php')
+CRITICAL - 2024-09-22 04:22:12 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "Pages/Home.php"
+[Method: GET, Route: /]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 41.
+ 1 SYSTEMPATH/View/View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('Pages/Home.php')
+ 2 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('Pages/Home', [], true)
+ 3 APPPATH/Controllers/Home.php(9): view('Pages/Home')
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Home->index()
+ 5 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH/rewrite.php(44): require_once('/Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/public/index.php')
+CRITICAL - 2024-09-22 07:24:26 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "layouts/main.php"
+[Method: GET, Route: /]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 41.
+ 1 SYSTEMPATH/View/View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('layouts/main.php')
+ 2 SYSTEMPATH/View/View.php(250): CodeIgniter\View\View->render('layouts/main', [], true)
+ 3 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('Pages/Home', [], true)
+ 4 APPPATH/Controllers/Home.php(9): view('Pages/Home')
+ 5 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Home->index()
+ 6 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 7 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH/rewrite.php(44): require_once('/Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/public/index.php')
+CRITICAL - 2024-09-22 07:25:22 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "../Layouts/Templateuser.php"
+[Method: GET, Route: /]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 41.
+ 1 SYSTEMPATH/View/View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('../Layouts/Templateuser.php')
+ 2 SYSTEMPATH/View/View.php(250): CodeIgniter\View\View->render('../Layouts/Templateuser', [], true)
+ 3 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('Pages/Home', [], true)
+ 4 APPPATH/Controllers/Home.php(9): view('Pages/Home')
+ 5 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Home->index()
+ 6 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 7 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH/rewrite.php(44): require_once('/Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/public/index.php')
+CRITICAL - 2024-09-22 07:28:02 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "../Layouts/Templateuser.php"
+[Method: GET, Route: /]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 41.
+ 1 SYSTEMPATH/View/View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('../Layouts/Templateuser.php')
+ 2 SYSTEMPATH/View/View.php(250): CodeIgniter\View\View->render('../Layouts/Templateuser', [], true)
+ 3 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('Pages/Home', [], true)
+ 4 APPPATH/Controllers/Home.php(9): view('Pages/Home')
+ 5 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Home->index()
+ 6 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 7 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH/rewrite.php(44): require_once('/Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/public/index.php')
+CRITICAL - 2024-09-22 07:28:03 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "../Layouts/Templateuser.php"
+[Method: GET, Route: /]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 41.
+ 1 SYSTEMPATH/View/View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('../Layouts/Templateuser.php')
+ 2 SYSTEMPATH/View/View.php(250): CodeIgniter\View\View->render('../Layouts/Templateuser', [], true)
+ 3 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('Pages/Home', [], true)
+ 4 APPPATH/Controllers/Home.php(9): view('Pages/Home')
+ 5 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Home->index()
+ 6 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 7 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH/rewrite.php(44): require_once('/Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/public/index.php')
+CRITICAL - 2024-09-22 07:29:28 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "../Layouts/Templateuser.php"
+[Method: GET, Route: /]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 41.
+ 1 SYSTEMPATH/View/View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('../Layouts/Templateuser.php')
+ 2 SYSTEMPATH/View/View.php(250): CodeIgniter\View\View->render('../Layouts/Templateuser', [], true)
+ 3 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('Pages/Home', [], true)
+ 4 APPPATH/Controllers/Home.php(9): view('Pages/Home')
+ 5 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Home->index()
+ 6 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 7 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH/rewrite.php(44): require_once('/Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/public/index.php')
+CRITICAL - 2024-09-22 14:58:47 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "Layouts/Nav.php"
+[Method: GET, Route: /]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 41.
+ 1 SYSTEMPATH/View/View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('Layouts/Nav.php')
+ 2 SYSTEMPATH/View/View.php(487): CodeIgniter\View\View->render('Layouts/Nav', null, true)
+ 3 APPPATH/Views/Pages/Home.php(37): CodeIgniter\View\View->include('Layouts/Nav')
+ 4 SYSTEMPATH/View/View.php(234): include('/Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/app/Views/Pages/Home.php')
+ 5 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 6 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('Pages/Home', [], true)
+ 7 APPPATH/Controllers/HomeController.php(13): view('Pages/Home', [...])
+ 8 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\HomeController->home()
+ 9 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+10 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH/rewrite.php(44): require_once('/Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/public/index.php')

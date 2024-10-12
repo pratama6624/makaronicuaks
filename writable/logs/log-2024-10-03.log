@@ -1,0 +1,379 @@
+CRITICAL - 2024-10-03 00:50:38 --> ErrorException: Undefined variable $authModel
+[Method: GET, Route: login]
+in APPPATH/Controllers/AuthController.php on line 25.
+ 1 APPPATH/Controllers/AuthController.php(25): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $authModel', '/Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/app/Controllers/AuthController.php', 25)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\AuthController->login()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH/rewrite.php(44): require_once('/Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/public/index.php')
+ERROR - 2024-10-03 00:51:01 --> Error connecting to the database: mysqli_sql_exception: No such file or directory in /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:186
+Stack trace:
+#0 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(186): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'ci4', 3306, '', 0)
+#1 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Database/BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Database/BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#3 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#6 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/app/Controllers/AuthController.php(25): CodeIgniter\BaseModel->findAll()
+#7 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/CodeIgniter.php(933): App\Controllers\AuthController->login()
+#8 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+#9 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/public/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/rewrite.php(44): require_once('/Users/pratamao...')
+#14 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No such file or directory in /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:231
+Stack trace:
+#0 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Database/BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Database/BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#2 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#4 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#5 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/app/Controllers/AuthController.php(25): CodeIgniter\BaseModel->findAll()
+#6 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/CodeIgniter.php(933): App\Controllers\AuthController->login()
+#7 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+#8 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/public/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/rewrite.php(44): require_once('/Users/pratamao...')
+#13 {main}
+CRITICAL - 2024-10-03 00:51:01 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: No such file or directory
+[Method: GET, Route: login]
+in SYSTEMPATH/Database/BaseConnection.php on line 467.
+ 1 SYSTEMPATH/Database/BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`', [], false)
+ 3 SYSTEMPATH/Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH/BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH/Controllers/AuthController.php(25): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\AuthController->login()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH/rewrite.php(44): require_once('/Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/public/index.php')
+ERROR - 2024-10-03 00:53:14 --> Error connecting to the database: mysqli_sql_exception: No such file or directory in /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:186
+Stack trace:
+#0 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(186): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'users', 3306, '', 0)
+#1 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Database/BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Database/BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#3 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#6 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/app/Controllers/AuthController.php(25): CodeIgniter\BaseModel->findAll()
+#7 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/CodeIgniter.php(933): App\Controllers\AuthController->login()
+#8 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+#9 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/public/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/rewrite.php(44): require_once('/Users/pratamao...')
+#14 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No such file or directory in /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:231
+Stack trace:
+#0 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Database/BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Database/BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#2 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#4 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#5 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/app/Controllers/AuthController.php(25): CodeIgniter\BaseModel->findAll()
+#6 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/CodeIgniter.php(933): App\Controllers\AuthController->login()
+#7 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+#8 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/public/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/rewrite.php(44): require_once('/Users/pratamao...')
+#13 {main}
+CRITICAL - 2024-10-03 00:53:14 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: No such file or directory
+[Method: GET, Route: login]
+in SYSTEMPATH/Database/BaseConnection.php on line 467.
+ 1 SYSTEMPATH/Database/BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`', [], false)
+ 3 SYSTEMPATH/Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH/BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH/Controllers/AuthController.php(25): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\AuthController->login()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH/rewrite.php(44): require_once('/Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/public/index.php')
+ERROR - 2024-10-03 00:53:30 --> Error connecting to the database: mysqli_sql_exception: No such file or directory in /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:186
+Stack trace:
+#0 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(186): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'makaroni_cuaks', 3306, '', 0)
+#1 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Database/BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Database/BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#3 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#6 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/app/Controllers/AuthController.php(25): CodeIgniter\BaseModel->findAll()
+#7 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/CodeIgniter.php(933): App\Controllers\AuthController->login()
+#8 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+#9 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/public/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/rewrite.php(44): require_once('/Users/pratamao...')
+#14 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No such file or directory in /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:231
+Stack trace:
+#0 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Database/BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Database/BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#2 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#4 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#5 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/app/Controllers/AuthController.php(25): CodeIgniter\BaseModel->findAll()
+#6 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/CodeIgniter.php(933): App\Controllers\AuthController->login()
+#7 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+#8 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/public/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/rewrite.php(44): require_once('/Users/pratamao...')
+#13 {main}
+CRITICAL - 2024-10-03 00:53:30 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: No such file or directory
+[Method: GET, Route: login]
+in SYSTEMPATH/Database/BaseConnection.php on line 467.
+ 1 SYSTEMPATH/Database/BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`', [], false)
+ 3 SYSTEMPATH/Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH/BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH/Controllers/AuthController.php(25): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\AuthController->login()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH/rewrite.php(44): require_once('/Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/public/index.php')
+ERROR - 2024-10-03 00:53:48 --> Error connecting to the database: mysqli_sql_exception: No such file or directory in /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:186
+Stack trace:
+#0 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(186): mysqli->real_connect('localhost', '', Object(SensitiveParameterValue), 'makaroni_cuaks', 3306, '', 0)
+#1 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Database/BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Database/BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#3 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#6 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/app/Controllers/AuthController.php(25): CodeIgniter\BaseModel->findAll()
+#7 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/CodeIgniter.php(933): App\Controllers\AuthController->login()
+#8 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+#9 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/public/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/rewrite.php(44): require_once('/Users/pratamao...')
+#14 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No such file or directory in /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:231
+Stack trace:
+#0 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Database/BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Database/BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#2 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#4 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#5 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/app/Controllers/AuthController.php(25): CodeIgniter\BaseModel->findAll()
+#6 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/CodeIgniter.php(933): App\Controllers\AuthController->login()
+#7 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+#8 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/public/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/rewrite.php(44): require_once('/Users/pratamao...')
+#13 {main}
+CRITICAL - 2024-10-03 00:53:48 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: No such file or directory
+[Method: GET, Route: login]
+in SYSTEMPATH/Database/BaseConnection.php on line 467.
+ 1 SYSTEMPATH/Database/BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`', [], false)
+ 3 SYSTEMPATH/Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH/BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH/Controllers/AuthController.php(25): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\AuthController->login()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH/rewrite.php(44): require_once('/Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/public/index.php')
+ERROR - 2024-10-03 00:58:00 --> Error connecting to the database: mysqli_sql_exception: No such file or directory in /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:186
+Stack trace:
+#0 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(186): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'makaroni_cuaks', 3306, '', 0)
+#1 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Database/BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Database/BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#3 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#6 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/app/Controllers/AuthController.php(25): CodeIgniter\BaseModel->findAll()
+#7 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/CodeIgniter.php(933): App\Controllers\AuthController->login()
+#8 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+#9 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/public/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/rewrite.php(44): require_once('/Users/pratamao...')
+#14 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No such file or directory in /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:231
+Stack trace:
+#0 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Database/BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Database/BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#2 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#4 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#5 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/app/Controllers/AuthController.php(25): CodeIgniter\BaseModel->findAll()
+#6 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/CodeIgniter.php(933): App\Controllers\AuthController->login()
+#7 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+#8 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/public/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/rewrite.php(44): require_once('/Users/pratamao...')
+#13 {main}
+CRITICAL - 2024-10-03 00:58:00 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: No such file or directory
+[Method: GET, Route: login]
+in SYSTEMPATH/Database/BaseConnection.php on line 467.
+ 1 SYSTEMPATH/Database/BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`', [], false)
+ 3 SYSTEMPATH/Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH/BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH/Controllers/AuthController.php(25): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\AuthController->login()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH/rewrite.php(44): require_once('/Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/public/index.php')
+CRITICAL - 2024-10-03 16:43:54 --> ErrorException: Undefined variable $username
+[Method: POST, Route: register/save]
+in APPPATH/Controllers/AuthController.php on line 44.
+ 1 APPPATH/Controllers/AuthController.php(44): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $username', '/Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/app/Controllers/AuthController.php', 44)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\AuthController->save()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH/rewrite.php(44): require_once('/Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/public/index.php')
+CRITICAL - 2024-10-03 16:44:41 --> ErrorException: Undefined property: App\Controllers\AuthController::$requestt
+[Method: POST, Route: register/save]
+in APPPATH/Controllers/AuthController.php on line 45.
+ 1 APPPATH/Controllers/AuthController.php(45): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\AuthController::$requestt', '/Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/app/Controllers/AuthController.php', 45)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\AuthController->save()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH/rewrite.php(44): require_once('/Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/public/index.php')
+CRITICAL - 2024-10-03 17:17:35 --> CodeIgniter\Validation\Exceptions\ValidationException: "max_lenght" is not a valid rule.
+[Method: POST, Route: register/save]
+in SYSTEMPATH/Validation/Validation.php on line 348.
+ 1 SYSTEMPATH/Validation/Validation.php(348): CodeIgniter\Validation\Exceptions\ValidationException::forRuleNotFound('max_lenght')
+ 2 SYSTEMPATH/Validation/Validation.php(204): CodeIgniter\Validation\Validation->processRules('username', 'username', 'Pratama', [...], [...], 'username')
+ 3 APPPATH/Controllers/AuthController.php(60): CodeIgniter\Validation\Validation->run()
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\AuthController->save()
+ 5 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 6 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH/rewrite.php(44): require_once('/Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/public/index.php')
+CRITICAL - 2024-10-03 17:27:20 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "register.php"
+[Method: POST, Route: register/save]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 41.
+ 1 SYSTEMPATH/View/View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('register.php')
+ 2 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('register', [], true)
+ 3 APPPATH/Controllers/AuthController.php(61): view('register', [...])
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\AuthController->save()
+ 5 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 6 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH/rewrite.php(44): require_once('/Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/public/index.php')
+CRITICAL - 2024-10-03 17:30:37 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "register.php"
+[Method: POST, Route: register/save]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 41.
+ 1 SYSTEMPATH/View/View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('register.php')
+ 2 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('register', [], true)
+ 3 APPPATH/Controllers/AuthController.php(61): view('register', [...])
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\AuthController->save()
+ 5 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 6 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH/rewrite.php(44): require_once('/Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/public/index.php')
+CRITICAL - 2024-10-03 17:30:54 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "register.php"
+[Method: POST, Route: register/save]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 41.
+ 1 SYSTEMPATH/View/View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('register.php')
+ 2 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('register', [], true)
+ 3 APPPATH/Controllers/AuthController.php(61): view('register', [...])
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\AuthController->save()
+ 5 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 6 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH/rewrite.php(44): require_once('/Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/public/index.php')
+CRITICAL - 2024-10-03 17:31:17 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "register.php"
+[Method: POST, Route: register/save]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 41.
+ 1 SYSTEMPATH/View/View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('register.php')
+ 2 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('register', [], true)
+ 3 APPPATH/Controllers/AuthController.php(61): view('register', [...])
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\AuthController->save()
+ 5 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 6 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH/rewrite.php(44): require_once('/Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/public/index.php')
+CRITICAL - 2024-10-03 17:31:54 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "register.php"
+[Method: POST, Route: register/save]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 41.
+ 1 SYSTEMPATH/View/View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('register.php')
+ 2 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('register', [], true)
+ 3 APPPATH/Controllers/AuthController.php(61): view('register', [...])
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\AuthController->save()
+ 5 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 6 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH/rewrite.php(44): require_once('/Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/public/index.php')
+CRITICAL - 2024-10-03 17:32:23 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "register.php"
+[Method: POST, Route: register/save]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 41.
+ 1 SYSTEMPATH/View/View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('register.php')
+ 2 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('register', [], true)
+ 3 APPPATH/Controllers/AuthController.php(61): view('register', [...])
+ 4 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\AuthController->save()
+ 5 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 6 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH/rewrite.php(44): require_once('/Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/public/index.php')

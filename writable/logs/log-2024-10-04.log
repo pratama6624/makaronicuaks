@@ -1,0 +1,115 @@
+CRITICAL - 2024-10-04 01:14:31 --> ErrorException: Undefined variable $title
+[Method: POST, Route: register/save]
+in APPPATH/Views/Layouts/TemplateUser.php on line 12.
+ 1 APPPATH/Views/Layouts/TemplateUser.php(12): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $title', '/Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/app/Views/Layouts/TemplateUser.php', 12)
+ 2 SYSTEMPATH/View/View.php(234): include('/Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/app/Views/Layouts/TemplateUser.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/View/View.php(250): CodeIgniter\View\View->render('Layouts/TemplateUser', [], true)
+ 5 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('Auth/Register', [], true)
+ 6 APPPATH/Controllers/AuthController.php(88): view('Auth/Register')
+ 7 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\AuthController->save()
+ 8 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 9 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH/rewrite.php(44): require_once('/Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/public/index.php')
+CRITICAL - 2024-10-04 01:17:41 --> ErrorException: Undefined variable $title
+[Method: POST, Route: register/save]
+in APPPATH/Views/Layouts/TemplateUser.php on line 12.
+ 1 APPPATH/Views/Layouts/TemplateUser.php(12): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $title', '/Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/app/Views/Layouts/TemplateUser.php', 12)
+ 2 SYSTEMPATH/View/View.php(234): include('/Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/app/Views/Layouts/TemplateUser.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/View/View.php(250): CodeIgniter\View\View->render('Layouts/TemplateUser', [], true)
+ 5 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('Auth/Register', [], true)
+ 6 APPPATH/Controllers/AuthController.php(88): view('Auth/Register')
+ 7 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\AuthController->save()
+ 8 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 9 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH/rewrite.php(44): require_once('/Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/public/index.php')
+ERROR - 2024-10-04 01:21:58 --> Email: sendWithSmtp throwed ErrorException: stream_socket_enable_crypto(): SSL/TLS already set-up for this stream in /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Email/Email.php:1916
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'stream_socket_e...', '/Users/pratamao...', 1916)
+#1 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Email/Email.php(1916): stream_socket_enable_crypto(Resource id #10, true, 121)
+#2 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Email/Email.php(1809): CodeIgniter\Email\Email->SMTPConnect()
+#3 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Email/Email.php(1694): CodeIgniter\Email\Email->sendWithSmtp()
+#4 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Email/Email.php(1589): CodeIgniter\Email\Email->spoolEmail()
+#5 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/app/Controllers/AuthController.php(87): CodeIgniter\Email\Email->send()
+#6 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/CodeIgniter.php(933): App\Controllers\AuthController->save()
+#7 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+#8 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/public/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 /Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/vendor/codeigniter4/framework/system/rewrite.php(44): require_once('/Users/pratamao...')
+#13 {main}
+ERROR - 2024-10-04 01:21:58 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2024-10-04 01:21:58 --> 220 smtp.gmail.com ESMTP 98e67ed59e1d1-2e1e85c90e4sm206259a91.19 - gsmtp
+
+hello: 250-smtp.gmail.com at your service, [140.213.142.177]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+starttls: 530-5.7.0 Authentication Required. For more information, go to
+530 5.7.0  https://support.google.com/mail/?p=WantAuthError 98e67ed59e1d1-2e1e85c90e4sm206259a91.19 - gsmtp
+
+The following SMTP error was encountered: 530-5.7.0 Authentication Required. For more information, go to
+530 5.7.0  https://support.google.com/mail/?p=WantAuthError 98e67ed59e1d1-2e1e85c90e4sm206259a91.19 - gsmtp
+
+CRITICAL - 2024-10-04 01:24:15 --> ErrorException: Undefined variable $title
+[Method: POST, Route: register/save]
+in APPPATH/Views/Layouts/TemplateUser.php on line 12.
+ 1 APPPATH/Views/Layouts/TemplateUser.php(12): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $title', '/Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/app/Views/Layouts/TemplateUser.php', 12)
+ 2 SYSTEMPATH/View/View.php(234): include('/Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/app/Views/Layouts/TemplateUser.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/View/View.php(250): CodeIgniter\View\View->render('Layouts/TemplateUser', [], true)
+ 5 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('Auth/Register', [], true)
+ 6 APPPATH/Controllers/AuthController.php(88): view('Auth/Register')
+ 7 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\AuthController->save()
+ 8 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 9 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH/rewrite.php(44): require_once('/Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/public/index.php')
+CRITICAL - 2024-10-04 12:45:31 --> ErrorException: Undefined variable $title
+[Method: POST, Route: register/save]
+in APPPATH/Views/Layouts/TemplateUser.php on line 12.
+ 1 APPPATH/Views/Layouts/TemplateUser.php(12): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $title', '/Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/app/Views/Layouts/TemplateUser.php', 12)
+ 2 SYSTEMPATH/View/View.php(234): include('/Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/app/Views/Layouts/TemplateUser.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/View/View.php(250): CodeIgniter\View\View->render('Layouts/TemplateUser', [], true)
+ 5 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('Auth/Register', [], true)
+ 6 APPPATH/Controllers/AuthController.php(88): view('Auth/Register')
+ 7 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\AuthController->save()
+ 8 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 9 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH/rewrite.php(44): require_once('/Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/public/index.php')
+CRITICAL - 2024-10-04 12:45:52 --> ErrorException: Undefined variable $title
+[Method: GET, Route: verify-email/f7bce0064fbbc72b81f74bb048353b0223e779bf6103ba4aea10987036cb0e0e]
+in APPPATH/Views/Layouts/TemplateUser.php on line 12.
+ 1 APPPATH/Views/Layouts/TemplateUser.php(12): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $title', '/Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/app/Views/Layouts/TemplateUser.php', 12)
+ 2 SYSTEMPATH/View/View.php(234): include('/Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/app/Views/Layouts/TemplateUser.php')
+ 3 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/View/View.php(250): CodeIgniter\View\View->render('Layouts/TemplateUser', [], true)
+ 5 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('Auth/Register', [], true)
+ 6 APPPATH/Controllers/AuthController.php(103): view('Auth/Register')
+ 7 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\AuthController->verifyEmail('f7bce0064fbbc72b81f74bb048353b0223e779bf6103ba4aea10987036cb0e0e')
+ 8 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 9 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH/rewrite.php(44): require_once('/Users/pratamaone/Teknik Informatika/Project PHP/Codeigniter4/makaronicuaks/public/index.php')
+INFO - 2024-10-04 15:46:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

@@ -146,6 +146,7 @@ class AuthController extends BaseController
 
             // Buat random token untuk aktivasi user melalui smtp mail (gmail)
             $token = bin2hex(random_bytes(32));
+            dd($token);
 
             // Simpan ke database users
             $this->authModel->save([
