@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\Unit;
+namespace App\Tests\Unit\AuthUnitTest;
 
 use CodeIgniter\Test\CIUnitTestCase;
 use App\Models\Auth;
@@ -60,7 +60,7 @@ class RegistrationUnitTest extends CIUnitTestCase
         // Cek apakah user baru sudah ada di database
         $newUser = $this->authModel->getUserByEmail($user_data['email']);
         $this->assertNotNull($newUser);
-        $this->assrtEquals($user_data['email'], $newUser['email']);
+        $this->assertEquals($user_data['email'], $newUser['email']);
     }
 
     // Skenario ketika user mendaftar ke sistem dan dalam keadaan SOFT DELETE aktif
