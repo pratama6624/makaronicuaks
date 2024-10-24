@@ -46,31 +46,29 @@
                 <section class="section">
                     <div class="card">
                         <div class="card-header">
-                            Simple Datatable
+                            <a href="/admin/products/add" class="btn btn-primary">Tambah Produk</a>
                         </div>
                         <div class="card-body">
-                            <div class="col-xl-4 col-md-6 col-sm-12">
-                                <?php for($i = 0; $i <=5; $i++) { ?>
-
-                                    <div class="card" style="border: 1px solid blue">
-                                    <div class="card-content">
-                                        <img src="/assets/images/samples/motorcycle.jpg" class="card-img-top img-fluid" alt="singleminded">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Be Single Minded</h5>
-                                            <p class="card-text">
-                                                Chocolate sesame snaps apple pie danish cupcake sweet roll jujubes
-                                                tiramisu.Gummies
-                                                bonbon apple pie fruitcake icing biscuit apple pie jelly-o sweet roll.
-                                            </p>
-                                        </div>
+                            <div class="row">
+                                <?php for($i = 0; $i <=8; $i++) { ?>
+                                    <div class="col-xl-2 col-md-6 col-sm-12">
+                                        <a href="">
+                                            <div class="card" style="border: 1px solid grey">
+                                                <div class="card-content">
+                                                <img src="/assets/images/samples/cuaks.png" class="card-img-top img-fluid" alt="singleminded" style="width: 100%;">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">Makaroni Pedas</h5>
+                                                        <br>
+                                                        <h6 class="font-extrabold mb-0">Rp 183.000</h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
                                     </div>
-                                </div>
-
                                 <?php } ?>
                             </div>
                         </div>
                     </div>
-
                 </section>
             </div>
         </div>

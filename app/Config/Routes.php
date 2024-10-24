@@ -41,6 +41,7 @@ $routes->get('/admin/orders/list', 'AdminController::orders', ['filter' => 'role
 $routes->get('/admin/orders/complete', 'AdminController::orderComplete', ['filter' => 'roleFilter']);
 $routes->get('/admin/orders/cancel', 'AdminController::orderCancel', ['filter' => 'roleFilter']);
 $routes->get('/admin/products', 'AdminController::products', ['filter' => 'roleFilter']);
+$routes->get('/admin/products/add', 'AdminController::addProduct', ['filter' => 'roleFilter']);
 $routes->get('/admin/reports', 'AdminController::reports', ['filter' => 'roleFilter']);
 $routes->get('/admin/customers', 'AdminController::customers', ['filter' => 'roleFilter']);
 $routes->get('/admin/discount', 'AdminController::discount', ['filter' => 'roleFilter']);

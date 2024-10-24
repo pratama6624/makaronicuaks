@@ -67,6 +67,16 @@ class AdminController extends BaseController
         return view('Admin/Products', $data);
     }
 
+    public function addProduct(): string
+    {
+        $data = [
+            "title" => "Tambah Produk",
+            "sideMenuTitle" => $this->request->getUri()->getSegment(2),
+        ];
+
+        return view('Admin/AddProduct', $data);
+    }
+
     public function reports(): string
     {
         $data = [
