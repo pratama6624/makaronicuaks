@@ -58,7 +58,6 @@
                                                 <img src="/assets/images/samples/cuaks.png" class="card-img-top img-fluid" alt="singleminded" style="width: 100%;">
                                                     <div class="card-body">
                                                         <h5 class="card-title">Makaroni Pedas</h5>
-                                                        <br>
                                                         <h6 class="font-extrabold mb-0">Rp 183.000</h6>
                                                     </div>
                                                 </div>

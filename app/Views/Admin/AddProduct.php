@@ -54,7 +54,7 @@
                                         </div>
                                         <div class="card-content">
                                             <div class="card-body">
-                                                <form class="form form-horizontal">
+                                                <form method="POST" class="form form-horizontal" action="/admin/products/save">
                                                     <div class="form-body">
                                                         <div class="row">
                                                             <div class="col-md-4">
@@ -73,7 +73,7 @@
                                                                 <label>Varian Rasa</label>
                                                             </div>
                                                             <div class="col-md-8 form-group">
-                                                                <input type="text" id="falvor" class="form-control" name="falvor" placeholder="">
+                                                                <input type="text" id="flavor" class="form-control" name="flavor" placeholder="">
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <label>Stok Barang</label>
@@ -85,13 +85,19 @@
                                                                 <label>Kategori</label>
                                                             </div>
                                                             <div class="col-md-8 form-group">
-                                                                <input type="text" id="category" class="form-control" name="category" placeholder="">
+                                                                <fieldset class="form-group">
+                                                                    <select class="form-select" id="category">
+                                                                        <option value="Camilan" selected> Camilan </option>
+                                                                        <option value="Minuman"> Minuman </option>
+                                                                        <option value="Makanan Berat"> Makanan Berat </option>
+                                                                    </select>
+                                                                </fieldset>
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <label>Berat</label>
                                                             </div>
                                                             <div class="col-md-8 form-group">
-                                                                <input type="text" id="weight" class="form-control" name="weight" placeholder="">
+                                                                <input type="number" id="weight" class="form-control" name="weight" placeholder="">
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <label>Status Diskon</label>
@@ -99,8 +105,8 @@
                                                             <div class="col-md-8 form-group">
                                                                 <fieldset class="form-group">
                                                                     <select class="form-select" id="discount_status">
-                                                                        <option>Tidak Sedang Diskon</option>
-                                                                        <option>Sedang Diskon</option>
+                                                                        <option value="Tidak sedang diskon" selected>Tidak Sedang Diskon</option>
+                                                                        <option value="Sedang diskon">Sedang Diskon</option>
                                                                     </select>
                                                                 </fieldset>
                                                             </div>

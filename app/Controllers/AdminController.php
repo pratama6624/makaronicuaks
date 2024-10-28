@@ -3,18 +3,20 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Models\Auth as AuthModel;
+use App\Models\Product as ProductModel;
 use App\Models\Recovery as RecoveryModel;
 
 class AdminController extends BaseController
 {
     protected $request;
+    protected $validation;
 
     public function __construct()
     {
         $this->request = \Config\Services::request();
-        $this->authModel = new AuthModel;
+        $this->productModel = new ProductModel;
         $this->recoveryModel = new RecoveryModel;
+        $this->validation = \Config\Services::validation();
     }
 
     public function home(): string
@@ -75,6 +77,58 @@ class AdminController extends BaseController
         ];
 
         return view('Admin/AddProduct', $data);
+    }
+
+    public function saveProduct()
+    {
+        $product_data = [
+            "product_name" => $this->request->getPost("product_name"),
+            "price" => $this->request->getPost("price"),
+            "flavor" => $this->request->getPost("flavor"),
+            "stock" => $this->request->getPost("stock"),
+            "category" => $this->request->getPost("category") == NULL ? "Camilan" : $this->request->getPost("category"),
+            "weight" => $this->request->getPost("weight"),
+            "discount_status" => $this->request->getPost("discount_status") == "Tidak sedang diskon" ? 0 : 1,
+            "discount_amount" => $this->request->getPost("discount_amount") == "" ? 0.0 : (float)$this->request->getPost("discount_amount"),
+            "description" => $this->request->getPost("description") == NULL ? "" : $this->request->getPost("description"),
+        ];
+
+        $this->validation->setRules([
+            "product_name" => [
+                "rules" => "required|max_length[50]|is_unique[products.product_name]",
+                "errors" => [
+                    "required" => "Nama produk wajib diisi",
+                    "is_unique" => "Nama produk sudah ada",
+                    "max_length" => "Nama produk tidak boleh lebih dari 50 karakter"
+                ]
+            ],
+            "flavor" => [
+                "rules" => "required|max_length[50]",
+                "errors" => [
+                    "required" => "Rasa produk wajib diisi",
+                    "max_length" => "Rasa produk tidak boleh lebih dari 50 karakter"
+                ]
+            ],
+        ]);
+
+        if(!$this->validation->withRequest($this->request)->run()) {
+            return redirect()->to('admin/products/add')->withInput()->with('validation', $this->validation->getErrors());
+        }
+
+        $this->productModel->save([
+            "product_name" => $product_data["product_name"],
+            "description" => $product_data["description"],
+            "price" => $product_data["price"],
+            "flavor" => $product_data["flavor"],
+            "stock" => $product_data["stock"],
+            "image" => "",
+            "category" => $product_data["category"],
+            "weight" => $product_data["weight"],
+            "discount_status" => $product_data["discount_status"],
+            "discount_amount" => $product_data["discount_amount"],
+        ]);
+
+        return redirect()->to('admin/products')->withInput()->with('success', "Data berhasil ditambahkan");
     }
 
     public function reports(): string
