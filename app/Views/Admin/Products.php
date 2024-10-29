@@ -50,14 +50,14 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <?php for($i = 0; $i <=8; $i++) { ?>
+                                <?php foreach($productData as $product) { ?>
                                     <div class="col-xl-2 col-md-6 col-sm-12">
                                         <a href="">
                                             <div class="card" style="border: 1px solid grey">
                                                 <div class="card-content">
-                                                <img src="/assets/images/samples/cuaks.png" class="card-img-top img-fluid" alt="singleminded" style="width: 100%;">
-                                                    <div class="card-body">
-                                                        <h5 class="card-title">Makaroni Pedas</h5>
+                                                    <img src="/assets/images/samples/cuaks.png" class="card-img-top img-fluid" alt="singleminded" style="width: 100%;">
+                                                    <div class="card-text-overlay">
+                                                        <h6 class="card-title"><?= $product["product_name"]?></h6>
                                                         <h6 class="font-extrabold mb-0">Rp 183.000</h6>
                                                     </div>
                                                 </div>

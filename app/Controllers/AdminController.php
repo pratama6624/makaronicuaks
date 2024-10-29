@@ -66,6 +66,7 @@ class AdminController extends BaseController
         $data = [
             "title" => "Produk",
             "sideMenuTitle" => $this->request->getUri()->getSegment(2),
+            "productData" => $this->productModel->getAllProduct()
         ];
 
         return view('Admin/Products', $data);

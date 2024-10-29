@@ -1,0 +1,9 @@
+.card-text-overlay {
+    position: absolute;
+    bottom: 10px; /* Posisi teks dari bawah */
+    left: 10px; /* Posisi teks dari kiri */
+    background-color: rgba(255, 255, 255, 0.8); /* Latar belakang putih transparan */
+    padding: 10px;
+    z-index: 1;
+    border-radius: 10px;
+}
