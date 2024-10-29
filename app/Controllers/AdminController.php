@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\Auth as AuthModel;
 use App\Models\Product as ProductModel;
 use App\Models\Recovery as RecoveryModel;
 
@@ -14,6 +15,7 @@ class AdminController extends BaseController
     public function __construct()
     {
         $this->request = \Config\Services::request();
+        $this->authModel = new AuthModel;
         $this->productModel = new ProductModel;
         $this->recoveryModel = new RecoveryModel;
         $this->validation = \Config\Services::validation();

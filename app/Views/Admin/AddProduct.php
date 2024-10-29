@@ -1,6 +1,8 @@
 <?= $this->extend('Layouts/TemplateAdmin') ?>
 <?= $this->section('content') ?>
 
+<?php $session = session()->getFlashdata('validation') ?>
+
     <div id="app">
         <div id="sidebar" class="active">
             <div class="sidebar-wrapper active">
@@ -61,7 +63,10 @@
                                                                 <label>Nama Produk</label>
                                                             </div>
                                                             <div class="col-md-8 form-group">
-                                                                <input type="text" id="product_name" class="form-control" name="product_name" placeholder="">
+                                                                <?php if(isset($session["product_name"]) && $session["product_name"] != null) : ?>
+                                                                    <b><span class="flashdata" style="color: red;"><?= $session["product_name"] ?></span></b>
+                                                                <?php endif ?>
+                                                                <input type="text" id="product_name" class="form-control" name="product_name" value="<?= old('product_name') ?>" placeholder="">
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <label>Harga</label>
@@ -73,7 +78,10 @@
                                                                 <label>Varian Rasa</label>
                                                             </div>
                                                             <div class="col-md-8 form-group">
-                                                                <input type="text" id="flavor" class="form-control" name="flavor" placeholder="">
+                                                                <?php if(isset($session["flavor"]) && $session["flavor"] != null) : ?>
+                                                                    <b><span class="flashdata" style="color: red;"><?= $session["flavor"] ?></span></b>
+                                                                <?php endif ?>
+                                                                <input type="text" id="flavor" class="form-control" name="flavor" value="<?= old('flavor') ?>" placeholder="">
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <label>Stok Barang</label>
