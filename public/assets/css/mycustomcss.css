@@ -7,3 +7,34 @@
     z-index: 1;
     border-radius: 10px;
 }
+
+/* Style untuk overlay hitam semi-transparan */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2); /* Warna hitam dengan transparansi 40% */
+    z-index: 1; /* Overlay di depan gambar tapi di belakang label diskon */
+}
+
+/* Style untuk label diskon bulat */
+.discount-label {
+    border: 2px solid #fff;
+    position: absolute;
+    top: 10px; /* Jarak dari atas gambar */
+    left: 10px; /* Mengubah posisi ke kiri */
+    background-color: red; /* Warna latar belakang label */
+    color: white; /* Warna teks */
+    width: 150px; /* Lebar label */
+    height: 75px; /* Tinggi label */
+    border-radius: 10px; /* Membuat label menjadi bulat */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 2em;
+    z-index: 2; /* Label diskon di depan overlay */
+}
+
