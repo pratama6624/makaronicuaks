@@ -74,7 +74,7 @@
                                                         </div>
                                                         <a href="/admin/products" class="btn btn-danger">Kembali</a>
                                                         &nbsp; &nbsp;
-                                                        <a href="/admin/products/add" class="btn btn-primary">Edit Produk</a>
+                                                        <a href="/admin/products/edit" class="btn btn-primary">Edit Produk</a>
                                                     </div>
                                                     <div class="col-xl-8 col-md-6 col col-sm-12 xs-12">
                                                         <div class="table-responsive">

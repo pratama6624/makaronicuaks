@@ -72,11 +72,16 @@ class AdminController extends BaseController
         return view('Admin/Products', $data);
     }
 
-    public function detailProduct(): String
+    public function detailProduct($encryptId): String
     {
+        $decryptId = decrypt($encryptId);
+
+        dd($decryptId);
+
         $data = [
             "title" => "Detail Produk",
             "sideMenuTitle" => $this->request->getUri()->getSegment(2),
+            "productDetailData" => ""
         ];
 
         return view('Admin/DetailProduct', $data);
@@ -90,6 +95,16 @@ class AdminController extends BaseController
         ];
 
         return view('Admin/AddProduct', $data);
+    }
+
+    public function editProduct(): string
+    {
+        $data = [
+            "title" => "Edit Produk",
+            "sideMenuTitle" => $this->request->getUri()->getSegment(2),
+        ];
+
+        return view('Admin/EditProduct', $data);
     }
 
     public function saveProduct()

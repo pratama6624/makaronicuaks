@@ -52,7 +52,7 @@
                             <div class="row">
                                 <?php foreach($productData as $product) { ?>
                                     <div class="col-xl-2 col-md-6 col-sm-12">
-                                        <a href="/admin/product/detail">
+                                        <a href="/admin/product/detail/<?= encrypt($product["id_product"]); ?>">
                                             <div class="card" style="border: 1px solid grey">
                                                 <div class="card-content">
                                                     <img src="/assets/images/samples/cuaks.png" class="card-img-top img-fluid" alt="singleminded" style="width: 100%;">
