@@ -27,14 +27,14 @@
     left: 10px; /* Mengubah posisi ke kiri */
     background-color: red; /* Warna latar belakang label */
     color: white; /* Warna teks */
-    width: 150px; /* Lebar label */
-    height: 75px; /* Tinggi label */
+    width: 50%; /* Lebar label */
+    height: 50px; /* Tinggi label */
     border-radius: 10px; /* Membuat label menjadi bulat */
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    font-size: 2em;
+    font-size: 100%;
     z-index: 2; /* Label diskon di depan overlay */
 }
 

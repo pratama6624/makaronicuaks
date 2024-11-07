@@ -55,10 +55,14 @@
                                         <a href="/admin/product/detail/<?= encrypt($product["id_product"]); ?>">
                                             <div class="card" style="border: 1px solid grey">
                                                 <div class="card-content">
+                                                    <!-- Overlay warna hitam semi-transparan di atas gambar -->
+                                                    <div class="overlay"></div>                
+                                                        <!-- Label Diskon Bulat -->
+                                                        <div class="discount-label">50% OFF</div>
                                                     <img src="/assets/images/samples/cuaks.png" class="card-img-top img-fluid" alt="singleminded" style="width: 100%;">
                                                     <div class="card-text-overlay">
                                                         <h6 class="card-title"><?= $product["product_name"]?></h6>
-                                                        <h6 class="font-extrabold mb-0">Rp 183.000</h6>
+                                                        <h6 class="font-extrabold mb-0">Rp <?= number_format($product["price"], 0, ',', '.'); ?></h6>
                                                     </div>
                                                 </div>
                                             </div>

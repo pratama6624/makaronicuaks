@@ -61,11 +61,13 @@
                                                         <div class="form-group">
                                                             <div class="card" style="border: 1px solid grey; position: relative;">
                                                                 <div class="card-content">
-                                                                    <!-- Overlay warna hitam semi-transparan di atas gambar -->
-                                                                    <div class="overlay"></div>
-                                                                    
-                                                                    <!-- Label Diskon Bulat -->
-                                                                    <div class="discount-label">50%</div>
+                                                                    <?php if($productDetailData["discount_status"] == 1) { ?>
+                                                                        <!-- Overlay warna hitam semi-transparan di atas gambar -->
+                                                                        <div class="overlay"></div>
+                                                                        
+                                                                        <!-- Label Diskon Bulat -->
+                                                                        <div class="discount-label"><?= $productDetailData["discount_amount"] ?>% OFF</div>
+                                                                    <?php } ?>
                                                                     
                                                                     <!-- Gambar -->
                                                                     <img src="/assets/images/samples/cuaks.png" class="card-img-top img-fluid" alt="singleminded" style="width: 100%;">
@@ -88,31 +90,48 @@
                                                                 <tbody>
                                                                     <tr>
                                                                         <td class="text-bold-500">Nama Produk</td>
-                                                                        <td>Makaroni Cuaks Pedas</td>
+                                                                        <td><?= $productDetailData["product_name"] ?></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td class="text-bold-500">Harga</td>
-                                                                        <td><b><s style="color: red">Rp 15.000</s></b> &nbsp; Rp 7.500</td>
+                                                                        <td>
+                                                                            <?php
+                                                                                if($productDetailData["discount_status"] == 1) {
+                                                                                    $discountAmount = $productDetailData["price"] * ($productDetailData["discount_amount"] / 100);
+                                                                                    $afterDiscount = $productDetailData["price"] - $discountAmount;
+                                                                            ?>
+                                                                                <b><s style="color: red"><?= $productDetailData["price"] ?></s></b>
+                                                                                &nbsp; 
+                                                                            <?php } ?>
+                                                                            
+                                                                            <?php
+                                                                                if($productDetailData["discount_status"] == 1) {
+                                                                                    echo number_format($afterDiscount, 0, ',', '.');
+                                                                                } else {
+                                                                                    echo number_format($productDetailData["price"], 0, ',', '.');
+                                                                                }
+                                                                            ?>
+                                                                        </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td class="text-bold-500">Varian Rasa</td>
-                                                                        <td>Pedas</td>
+                                                                        <td><?= $productDetailData["flavor"] ?></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td class="text-bold-500">Stok Barang</td>
-                                                                        <td>15</td>
+                                                                        <td><?= $productDetailData["stock"] ?></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td class="text-bold-500">Kategori Makanan/Minuman</td>
-                                                                        <td>Makanan Ringan</td>
+                                                                        <td><?= $productDetailData["category"] ?></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td class="text-bold-500">Berat</td>
-                                                                        <td>1000 Gram</td>
+                                                                        <td><?= $productDetailData["weight"] ?> Gram</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td class="text-bold-500">Deskripsi</td>
-                                                                        <td><textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea></td>
+                                                                        <td><textarea disabled class="form-control" id="exampleFormControlTextarea1" rows="3"><?= $productDetailData["description"] ?></textarea></td>
                                                                     </tr>
                                                                 </tbody>
                                                             </table>

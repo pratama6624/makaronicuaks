@@ -15,6 +15,11 @@ class Product extends Model
         'product_name', 'description', 'price', 'flavor', 'stock', 'image', 'category', 'weight', 'discount_status', 'discount_amount', 'created_at', 'updated_at'
     ];
 
+    public function getProductByID($idProduct)
+    {
+        return $this->where('id_product', $idProduct)->first();
+    }
+
     public function getAllProduct()
     {
         return $this->findAll();
