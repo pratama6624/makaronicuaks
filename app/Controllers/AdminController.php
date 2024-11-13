@@ -95,11 +95,14 @@ class AdminController extends BaseController
         return view('Admin/AddProduct', $data);
     }
 
-    public function editProduct(): string
+    public function editProduct($encryptId): string
     {
+        $decryptId = decrypt($encryptId);
+
         $data = [
             "title" => "Edit Produk",
             "sideMenuTitle" => $this->request->getUri()->getSegment(2),
+            "productDetailData" => $this->productModel->getProductByID($decryptId)
         ];
 
         return view('Admin/EditProduct', $data);

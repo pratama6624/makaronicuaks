@@ -52,7 +52,7 @@
                                 <div class="col-xl-6 col-md-6 col-sm-12">
                                     <div class="card">
                                         <div class="card-header">
-                                            <h4 class="card-title">Tambahkan Produk Baru</h4>
+                                            <h4 class="card-title">Edit Produk</h4>
                                         </div>
                                         <div class="card-content">
                                             <div class="card-body">
@@ -66,13 +66,13 @@
                                                                 <?php if(isset($session["product_name"]) && $session["product_name"] != null) : ?>
                                                                     <b><span class="flashdata" style="color: red;"><?= $session["product_name"] ?></span></b>
                                                                 <?php endif ?>
-                                                                <input type="text" id="product_name" class="form-control" name="product_name" value="<?= old('product_name') ?>" placeholder="">
+                                                                <input type="text" id="product_name" class="form-control" name="product_name" value="<?= $productDetailData["product_name"] ?>" placeholder="">
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <label>Harga</label>
                                                             </div>
                                                             <div class="col-md-8 form-group">
-                                                                <input type="number" id="price" class="form-control" name="price" placeholder="">
+                                                                <input type="number" id="price" class="form-control" name="price" value="<?= $productDetailData["price"] ?>" placeholder="">
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <label>Varian Rasa</label>
@@ -81,13 +81,13 @@
                                                                 <?php if(isset($session["flavor"]) && $session["flavor"] != null) : ?>
                                                                     <b><span class="flashdata" style="color: red;"><?= $session["flavor"] ?></span></b>
                                                                 <?php endif ?>
-                                                                <input type="text" id="flavor" class="form-control" name="flavor" value="<?= old('flavor') ?>" placeholder="">
+                                                                <input type="text" id="flavor" class="form-control" name="flavor" value="<?= $productDetailData["flavor"] ?>" placeholder="">
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <label>Stok Barang</label>
                                                             </div>
                                                             <div class="col-md-8 form-group">
-                                                                <input type="number" id="stock" class="form-control" name="stock" placeholder="">
+                                                                <input type="number" id="stock" class="form-control" name="stock" value="<?= $productDetailData["stock"] ?>" placeholder="">
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <label>Kategori</label>
@@ -95,9 +95,9 @@
                                                             <div class="col-md-8 form-group">
                                                                 <fieldset class="form-group">
                                                                     <select class="form-select" id="category">
-                                                                        <option value="Camilan" selected> Camilan </option>
-                                                                        <option value="Minuman"> Minuman </option>
-                                                                        <option value="Makanan Berat"> Makanan Berat </option>
+                                                                        <option value="Camilan" <?= $productDetailData["category"] == "Camilan" ? "selected" : ""?>> Camilan </option>
+                                                                        <option value="Minuman" <?= $productDetailData["category"] == "Minuman" ? "selected" : ""?>> Minuman </option>
+                                                                        <option value="Makanan Berat" <?= $productDetailData["category"] == "Makanan Berat" ? "selected" : ""?>> Makanan Berat </option>
                                                                     </select>
                                                                 </fieldset>
                                                             </div>
@@ -105,11 +105,12 @@
                                                                 <label>Berat</label>
                                                             </div>
                                                             <div class="col-md-8 form-group">
-                                                                <input type="number" id="weight" class="form-control" name="weight" placeholder="">
+                                                                <input type="number" id="weight" class="form-control" name="weight" value="<?= $productDetailData["weight"] ?>" placeholder="">
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <label>Status Diskon</label>
                                                             </div>
+
                                                             <div class="col-md-8 form-group">
                                                                 <fieldset class="form-group">
                                                                     <select class="form-select" id="discount_status">

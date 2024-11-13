@@ -112,17 +112,17 @@
                                                             </div>
                                                             <div class="col-md-8 form-group">
                                                                 <fieldset class="form-group">
-                                                                    <select class="form-select" id="discount_status">
+                                                                    <select class="form-select" id="discount_status" onchange="toggleDiscountAmount()">
                                                                         <option value="Tidak sedang diskon" selected>Tidak Sedang Diskon</option>
                                                                         <option value="Sedang diskon">Sedang Diskon</option>
                                                                     </select>
                                                                 </fieldset>
                                                             </div>
-                                                            <div class="col-md-4">
+                                                            <div class="col-md-4" id="discount_label" style="display: none;">
                                                                 <label>Diskon (Satuan %)</label>
                                                             </div>
-                                                            <div class="col-md-8 form-group">
-                                                                <input type="text" id="discount_amount" class="form-control" name="discount_amount" placeholder="">
+                                                            <div class="col-md-8 form-group" id="discount_input" style="display: none;">
+                                                                <input type="number" id="discount_amount" class="form-control" name="discount_amount" placeholder="0.00" step="0.01" min="0">
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <label>Deskripsi Produk</label>
@@ -131,18 +131,25 @@
                                                                 <textarea class="form-control" id="description" rows="3"></textarea>
                                                             </div>
                                                             <div class="col-md-4">
+                                                                <!-- Space -->
+                                                            </div>
+                                                            <div style="margin-top: 40px" class="col-md-8 form-group">
+                                                                <input type="file" id="imageUpload" class="form-control" accept="image/*" onchange="previewAndUploadImage(event)">
+                                                            </div>
+                                                            <div class="col-md-4">
                                                                 <label>Gambar</label>
                                                             </div>
                                                             <div class="col-md-8 form-group">
                                                                 <div class="card" style="border: 1px solid grey">
                                                                     <div class="card-content">
-                                                                        <img src="/assets/images/samples/cuaks.png" class="card-img-top img-fluid" alt="singleminded" style="width: 100%;">
+                                                                        <!-- Pratinjau gambar yang diupload akan muncul di sini -->
+                                                                        <img src="/img/default.jpg" id="previewImage" class="card-img-top img-fluid" alt="singleminded" style="width: 100%;">
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="col-sm-12 d-flex justify-content-end">
                                                                 <button type="submit" class="btn btn-primary me-1 mb-1">Simpan</button>
-                                                                <button type="reset" class="btn btn-light-secondary me-1 mb-1">Batal</button>
+                                                                <button onclick="window.location.href='/admin/products'" type="reset" class="btn btn-light-secondary me-1 mb-1">Batal</button>
                                                             </div>
                                                         </div>
                                                     </div>

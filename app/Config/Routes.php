@@ -44,8 +44,10 @@ $routes->get('/admin/products', 'AdminController::products', ['filter' => 'roleF
 $routes->get('/admin/product/detail/(:any)', 'AdminController::detailProduct/$1', ['filter' => 'roleFilter']);
 $routes->get('/admin/products/add', 'AdminController::addProduct', ['filter' => 'roleFilter']);
 $routes->post('/admin/products/save', 'AdminController::saveProduct', ['filter' => 'roleFilter']);
-$routes->get('/admin/products/edit', 'AdminController::editProduct', ['filter' => 'roleFilter']);
+$routes->get('/admin/products/edit/(:any)', 'AdminController::editProduct/$1', ['filter' => 'roleFilter']);
 $routes->get('/admin/reports', 'AdminController::reports', ['filter' => 'roleFilter']);
 $routes->get('/admin/customers', 'AdminController::customers', ['filter' => 'roleFilter']);
 $routes->get('/admin/discount', 'AdminController::discount', ['filter' => 'roleFilter']);
 $routes->get('/admin/review', 'AdminController::review', ['filter' => 'roleFilter']);
+$routes->post('/upload-image', 'ImageController::upload', ['filter' => 'roleFilter']);
+
