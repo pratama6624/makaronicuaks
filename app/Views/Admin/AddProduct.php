@@ -56,7 +56,7 @@
                                         </div>
                                         <div class="card-content">
                                             <div class="card-body">
-                                                <form method="POST" class="form form-horizontal" action="/admin/products/save">
+                                                <form method="POST" class="form form-horizontal" action="/admin/products/save" enctype="multipart/form-data">
                                                     <div class="form-body">
                                                         <div class="row">
                                                             <div class="col-md-4">
@@ -112,7 +112,7 @@
                                                             </div>
                                                             <div class="col-md-8 form-group">
                                                                 <fieldset class="form-group">
-                                                                    <select class="form-select" id="discount_status" onchange="toggleDiscountAmount()">
+                                                                    <select class="form-select" id="discount_status" name="discount_status" onchange="toggleDiscountAmount()">
                                                                         <option value="Tidak sedang diskon" selected>Tidak Sedang Diskon</option>
                                                                         <option value="Sedang diskon">Sedang Diskon</option>
                                                                     </select>
@@ -128,13 +128,13 @@
                                                                 <label>Deskripsi Produk</label>
                                                             </div>
                                                             <div class="col-md-8 form-group">
-                                                                <textarea class="form-control" id="description" rows="3"></textarea>
+                                                                <textarea class="form-control" name="description" id="description" rows="3"></textarea>
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <!-- Space -->
                                                             </div>
                                                             <div style="margin-top: 40px" class="col-md-8 form-group">
-                                                                <input type="file" id="imageUpload" class="form-control" accept="image/*" onchange="previewAndUploadImage(event)">
+                                                                <input type="file" id="imageUpload" name="product_image" class="form-control" accept="image/*" onchange="previewAndUploadImage(event)">
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <label>Gambar</label>

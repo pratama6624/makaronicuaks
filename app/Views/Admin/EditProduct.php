@@ -113,23 +113,23 @@
 
                                                             <div class="col-md-8 form-group">
                                                                 <fieldset class="form-group">
-                                                                    <select class="form-select" id="discount_status">
-                                                                        <option value="Tidak sedang diskon" selected>Tidak Sedang Diskon</option>
-                                                                        <option value="Sedang diskon">Sedang Diskon</option>
+                                                                    <select class="form-select" id="discount_status" onchange="toggleDiscountAmount()">
+                                                                        <option value="Tidak sedang diskon" <?= $productDetailData["discount_status"] == 0 ? "selected" : "" ?>>Tidak Sedang Diskon</option>
+                                                                        <option value="Sedang diskon" <?= $productDetailData["discount_status"] == 1 ? "selected" : "" ?>>Sedang Diskon</option>
                                                                     </select>
                                                                 </fieldset>
                                                             </div>
-                                                            <div class="col-md-4">
+                                                            <div class="col-md-4" id="discount_label" <?= $productDetailData["discount_status"] == 0 ? "style='display: none;'" : "" ?>>
                                                                 <label>Diskon (Satuan %)</label>
                                                             </div>
-                                                            <div class="col-md-8 form-group">
-                                                                <input type="text" id="discount_amount" class="form-control" name="discount_amount" placeholder="">
+                                                            <div class="col-md-8 form-group" id="discount_input" <?= $productDetailData["discount_status"] == 0 ? "style='display: none;'" : "" ?>>
+                                                                <input type="number" id="discount_amount" class="form-control" value="<?= $productDetailData["discount_status"] == 1 ? $productDetailData["discount_amount"] : "" ?>" name="discount_amount" placeholder="0.00" step="0.01" min="0">
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <label>Deskripsi Produk</label>
                                                             </div>
                                                             <div class="col-md-8 form-group">
-                                                                <textarea class="form-control" id="description" rows="3"></textarea>
+                                                                <textarea class="form-control" id="description" rows="3"><?= $productDetailData["description"] ?></textarea>
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <label>Gambar</label>

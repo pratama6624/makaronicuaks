@@ -50,6 +50,11 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
+                                <?php if(empty($productData)) { ?>
+                                    <div class="col-xl-4 col-md-6 col-sm-12">
+                                        <div class="alert alert-danger">TIdak ada produk tersedia</div>
+                                    </div>
+                                <?php } ?>
                                 <?php foreach($productData as $product) { ?>
                                     <div class="col-xl-2 col-md-6 col-sm-12">
                                         <a href="/admin/product/detail/<?= encrypt($product["id_product"]); ?>">
@@ -61,7 +66,7 @@
                                                         <!-- Label Diskon Bulat -->
                                                         <div class="discount-label"><?= $product["discount_amount"] ?>% OFF</div>
                                                     <?php } ?>
-                                                    <img src="/assets/images/samples/cuaks.png" class="card-img-top img-fluid" alt="singleminded" style="width: 100%;">
+                                                    <img src="/assets/images/products/<?= $product["image"] ?>" class="card-img-top img-fluid" alt="singleminded" style="width: 100%;">
                                                     <div class="card-text-overlay">
                                                         <h6 class="card-title"><?= $product["product_name"]?></h6>
                                                         <h6 class="font-extrabold mb-0">Rp <?= number_format($product["price"], 0, ',', '.'); ?></h6>

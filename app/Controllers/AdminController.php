@@ -120,7 +120,43 @@ class AdminController extends BaseController
             "discount_status" => $this->request->getPost("discount_status") == "Tidak sedang diskon" ? 0 : 1,
             "discount_amount" => $this->request->getPost("discount_amount") == "" ? 0.0 : (float)$this->request->getPost("discount_amount"),
             "description" => $this->request->getPost("description") == NULL ? "" : $this->request->getPost("description"),
+            "product_image" => $this->request->getFile("product_image")
         ];
+
+        if (!$product_data["product_image"] || !$product_data["product_image"]->isValid()) {
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => 'File tidak valid atau tidak ditemukan.'
+            ]);
+        }
+
+        $validationRules = [
+            'uploaded[product_image]',
+            'mime_in[product_image,image/jpg,image/jpeg,image/png]',
+            'max_size[product_image,2048]', // Ukuran maksimum 2MB
+        ];
+    
+        if (!$this->validate(['image' => $validationRules])) {
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => 'File harus berupa gambar JPG, JPEG, atau PNG dengan ukuran maksimal 2MB.'
+            ]);
+        }
+
+        $imageName = $product_data["product_image"]->getRandomName();
+
+        $destinationPath = 'assets/images/products/';
+
+        if(!is_dir($destinationPath)) {
+            mkdir($destinationPath, 0777, true);
+        }
+
+        if (!$product_data["product_image"]->move($destinationPath, $imageName)) {
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => 'Gagal memindahkan file ke folder tujuan.'
+            ]);
+        }
 
         $this->validation->setRules([
             "product_name" => [
@@ -150,7 +186,7 @@ class AdminController extends BaseController
             "price" => $product_data["price"],
             "flavor" => $product_data["flavor"],
             "stock" => $product_data["stock"],
-            "image" => "",
+            "image" => $imageName,
             "category" => $product_data["category"],
             "weight" => $product_data["weight"],
             "discount_status" => $product_data["discount_status"],
