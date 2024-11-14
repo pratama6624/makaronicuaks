@@ -17,13 +17,3 @@ Proyek Makaroni Cuaks adalah aplikasi web berbasis CodeIgniter 4 yang memungkink
 * **Frontend:** HTML 5, CSS 3, Bootstrap 4 & 5 [Mixed], JavaScript
 * **Deployment:** Docker
 * **Third Party:** Payment Gateway [Mitrands], Expedisi / Tracking [Raja Ongkir]
-
-## Instalasi
-1. **Clone repository:**
-   ```bash
-   https://github.com/pratama6624/makaronicuaks.git
-2. **Install Docker Desktop / CLI**
-   ```bash
-   https://www.docker.com
-3. **Install docker image**
-* **PHP 8.1 / Terbaru:** docker pull php (default / versi terakhir)
