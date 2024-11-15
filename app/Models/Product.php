@@ -12,7 +12,7 @@ class Product extends Model
     protected $updatedField  = 'updated_at';
 
     protected $allowedFields = [
-        'product_name', 'description', 'price', 'flavor', 'stock', 'image', 'category', 'weight', 'discount_status', 'discount_amount', 'created_at', 'updated_at'
+        'product_name', 'description', 'price', 'flavor', 'stock', 'image', 'category', 'weight', 'discount_status', 'discount_amount', 'created_at', 'updated_at', 'is_deleted'
     ];
 
     public function getProductByID($idProduct)

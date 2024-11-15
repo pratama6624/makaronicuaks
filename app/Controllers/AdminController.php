@@ -191,9 +191,18 @@ class AdminController extends BaseController
             "weight" => $product_data["weight"],
             "discount_status" => $product_data["discount_status"],
             "discount_amount" => $product_data["discount_amount"],
+            'is_deleted' => 0
         ]);
 
         return redirect()->to('admin/products')->withInput()->with('success', "Data berhasil ditambahkan");
+    }
+
+    public function deleteProduct($encryptId)
+    {
+        $decryptId = decrypt($encryptId);
+
+        
+        print($decryptId);
     }
 
     public function reports(): string

@@ -44,6 +44,7 @@ $routes->get('/admin/products', 'AdminController::products', ['filter' => 'roleF
 $routes->get('/admin/product/detail/(:any)', 'AdminController::detailProduct/$1', ['filter' => 'roleFilter']);
 $routes->get('/admin/products/add', 'AdminController::addProduct', ['filter' => 'roleFilter']);
 $routes->post('/admin/products/save', 'AdminController::saveProduct', ['filter' => 'roleFilter']);
+$routes->get('/admin/products/delete/(:any)', 'AdminController::deleteProduct/$1', ['filter' => 'roleFilter']);
 $routes->get('/admin/products/edit/(:any)', 'AdminController::editProduct/$1', ['filter' => 'roleFilter']);
 $routes->get('/admin/reports', 'AdminController::reports', ['filter' => 'roleFilter']);
 $routes->get('/admin/customers', 'AdminController::customers', ['filter' => 'roleFilter']);
