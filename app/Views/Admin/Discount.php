@@ -37,70 +37,119 @@
                             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                                 <ol class="breadcrumb">
                                 <li class="breadcrumb-item">Beranda</li>
-                                <li class="breadcrumb-item active" aria-current="page">Promosi & Diskon</li>
+                                <li class="breadcrumb-item active" aria-current="page">Diskon</li>
                                 </ol>
                             </nav>
                         </div>
                     </div>
                 </div>
                 <section class="section">
-                    <div class="card">
-                        <div class="card-header">
-                            Simple Datatable
+                    <div style="background-color: #f2f7ff;" class="card">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <!-- Tombol di sisi kiri -->
+                            <a href="/admin/products/add" class="btn btn-primary">Buat Event Diskon</a>
+                                        
+                            <!-- Tombol di sisi kanan -->
+                            <div>
+                                <a href="/admin/products/add" class="btn btn-primary">???</a>
+                                &nbsp;
+                                <a href="/admin/products/add" class="btn btn-secondary">???</a>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <table class="table table-striped" id="table1">
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Phone</th>
-                                        <th>City</th>
-                                        <th>Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Graiden</td>
-                                        <td>vehicula.aliquet@semconsequat.co.uk</td>
-                                        <td>076 4820 8838</td>
-                                        <td>Offenburg</td>
-                                        <td>
-                                            <span class="badge bg-success">Active</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Dale</td>
-                                        <td>fringilla.euismod.enim@quam.ca</td>
-                                        <td>0500 527693</td>
-                                        <td>New Quay</td>
-                                        <td>
-                                            <span class="badge bg-success">Active</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Nathaniel</td>
-                                        <td>mi.Duis@diam.edu</td>
-                                        <td>(012165) 76278</td>
-                                        <td>Grumo Appula</td>
-                                        <td>
-                                            <span class="badge bg-danger">Inactive</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Darius</td>
-                                        <td>velit@nec.com</td>
-                                        <td>0309 690 7871</td>
-                                        <td>Ways</td>
-                                        <td>
-                                            <span class="badge bg-success">Active</span>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                        <section class="section">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
+                                        <div class="dataTable-top">
+                                            <div class="dataTable-search">
+                                                <input class="dataTable-input" placeholder="Search..." type="text">
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="dataTable-container">
+                                            <table class="table table-striped dataTable-table" id="table1">
+                                        <thead>
+                                            <tr>
+                                                <th data-sortable="" style="width: 5%;">
+                                                    <a href="#" class="dataTable-sorter">No</a>
+                                                </th>
+                                                <th data-sortable="" style="width: 20%;">
+                                                    <a href="#" class="dataTable-sorter">Nama Event</a>
+                                                </th>
+                                                <th data-sortable="" style="width: 35%;">
+                                                    <a href="#" class="dataTable-sorter">Deskripsi</a>
+                                                </th>
+                                                <th data-sortable="" style="width: 15%;">
+                                                    <a href="#" class="dataTable-sorter">Tanggal Mulai</a>
+                                                </th>
+                                                <th data-sortable="" style="width: 15%;">
+                                                    <a href="#" class="dataTable-sorter">Tanggal Selesai</a>
+                                                </th>
+                                                <th data-sortable="" style="width: 10%;">
+                                                    <a href="#" class="dataTable-sorter">Total Produk</a>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Graiden</td>
+                                                <td>vehicula.aliquet@semconsequat.co.uk</td>
+                                                <td>076 4820 8838</td>
+                                                <td>Offenburg</td>
+                                                <td>
+                                                    <span class="badge bg-success">Active</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>Graiden</td>
+                                                <td>vehicula.aliquet@semconsequat.co.uk</td>
+                                                <td>076 4820 8838</td>
+                                                <td>Offenburg</td>
+                                                <td>
+                                                    <span class="badge bg-success">Active</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>Graiden</td>
+                                                <td>vehicula.aliquet@semconsequat.co.uk</td>
+                                                <td>076 4820 8838</td>
+                                                <td>Offenburg</td>
+                                                <td>
+                                                    <span class="badge bg-success">Active</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>4</td>
+                                                <td>Graiden</td>
+                                                <td>vehicula.aliquet@semconsequat.co.uk</td>
+                                                <td>076 4820 8838</td>
+                                                <td>Offenburg</td>
+                                                <td>
+                                                    <span class="badge bg-success">Active</span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="dataTable-bottom">
+                                    <div class="dataTable-info">Showing 1 to 10 of 26 entries</div>
+                                    <ul class="pagination pagination-primary float-end dataTable-pagination">
+                                        <li class="page-item pager"><a href="#" class="page-link" data-page="1">‹</a></li>
+                                        <li class="page-item active"><a href="#" class="page-link" data-page="1">1</a></li>
+                                        <li class="page-item"><a href="#" class="page-link" data-page="2">2</a></li>
+                                        <li class="page-item"><a href="#" class="page-link" data-page="3">3</a></li>
+                                        <li class="page-item pager"><a href="#" class="page-link" data-page="2">›</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                                </div>
+                            </div>
 
+                        </section>
+                    </div>
                 </section>
             </div>
         </div>

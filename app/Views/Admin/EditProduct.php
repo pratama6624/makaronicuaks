@@ -51,7 +51,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="card">
-                                        <div class="card-header d-flex justify-content-between align-items-center">
+                                        <div class="d-flex justify-content-between align-items-center">
                                             <!-- Tombol di sisi kiri -->
                                             <a href="/admin/product/detail/<?= $idProduct ?>" class="btn btn-secondary d-flex align-items-center" style="width: 140px;">
                                                 <i class="bi bi-chevron-left"></i>&nbsp; Edit Produk
@@ -68,9 +68,8 @@
                                             <div class="card-content">
                                                 <div class="row">
                                                     <!-- Kolom Kiri -->
-                                                    <div class="col-md-7">
+                                                    <div class="col-md-7" style="margin-top: 50px">
                                                         <div class="card">
-                                                            <div class="card-body">
                                                                     <div class="form-body">
                                                                         <div class="row">
                                                                             <div class="col-md-4">
@@ -142,14 +141,13 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                            </div>
                                                         </div>
                                                     </div>
 
-                                                    <div class="col-md-1"></div>
+                                                    <div class="col-md-1" style="margin-top: 50px"></div>
 
                                                     <!-- Kolom Kanan -->
-                                                    <div class="col-md-4" style="margin-top: 25px">
+                                                    <div class="col-md-4" style="margin-top: 50px">
                                                         <div class="form-body">
                                                             <div class="form-group">
                                                                 <input type="file" id="imageUpload" name="product_image" class="form-control" accept="image/*" onchange="previewAndUploadImage(event)">
