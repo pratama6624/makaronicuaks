@@ -1,8 +1,8 @@
 .card-text-overlay {
     position: absolute;
-    bottom: 10px; /* Posisi teks dari bawah */
-    left: 10px; /* Posisi teks dari kiri */
-    background-color: rgba(255, 255, 255, 0.8); /* Latar belakang putih transparan */
+    bottom: 10px;
+    left: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
     padding: 10px;
     z-index: 1;
     border-radius: 10px;
@@ -15,26 +15,50 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.2); /* Warna hitam dengan transparansi 40% */
-    z-index: 1; /* Overlay di depan gambar tapi di belakang label diskon */
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 1;
 }
 
 /* Style untuk label diskon bulat */
 .discount-label {
-    border: 2px solid #fff;
+    border: 1px solid #fff;
     position: absolute;
-    top: 10px; /* Jarak dari atas gambar */
-    left: 10px; /* Mengubah posisi ke kiri */
-    background-color: red; /* Warna latar belakang label */
-    color: white; /* Warna teks */
-    width: 50%; /* Lebar label */
-    height: 50px; /* Tinggi label */
-    border-radius: 10px; /* Membuat label menjadi bulat */
+    top: 10px;
+    left: 10px;
+    background-color: red;
+    color: white;
+    width: 50%;
+    height: 50px;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
     font-size: 100%;
-    z-index: 2; /* Label diskon di depan overlay */
+    z-index: 2;
 }
 
+/* Container gambar dengan ukuran tetap */
+.image-container {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+}
+
+/* Gambar responsif di dalam container */
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Mengatur ukuran gambar preview */
+#previewImage {
+    object-fit: cover;
+    max-height: 500px;
+    border-radius: 10px;
+}

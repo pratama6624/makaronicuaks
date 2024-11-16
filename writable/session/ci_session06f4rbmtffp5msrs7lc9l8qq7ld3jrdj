@@ -1,1 +1,0 @@
-__ci_last_regenerate|i:1728607298;_ci_previous_url|s:27:"http://localhost:8080/login";_ci_old_input|a:2:{s:3:"get";a:0:{}s:4:"post";a:3:{s:5:"email";s:12:"sc@gmail.com";s:8:"password";s:14:"24801824129841";s:6:"submit";s:0:"";}}__ci_vars|a:2:{s:13:"_ci_old_input";s:3:"old";s:5:"error";s:3:"old";}error|s:30:"Email atau password anda salah";

@@ -102,7 +102,8 @@ class AdminController extends BaseController
         $data = [
             "title" => "Edit Produk",
             "sideMenuTitle" => $this->request->getUri()->getSegment(2),
-            "productDetailData" => $this->productModel->getProductByID($decryptId)
+            "productDetailData" => $this->productModel->getProductByID($decryptId),
+            "idProduct" => $encryptId
         ];
 
         return view('Admin/EditProduct', $data);
@@ -201,7 +202,7 @@ class AdminController extends BaseController
     {
         $decryptId = decrypt($encryptId);
 
-        
+
         print($decryptId);
     }
 

@@ -51,9 +51,20 @@
                             <div class="row">
                                 <div class="col-xl-12 col-md-12 col-sm-12 col-xs-12">
                                     <div class="card">
-                                        <div class="card-header">
-                                            <h4 class="card-title">Detail Produk</h4>
+                                        <div class="card-header d-flex justify-content-between align-items-center">
+                                            <!-- Tombol di sisi kiri -->
+                                            <a href="/admin/products" class="btn btn-secondary d-flex align-items-center" style="width: 155px;">
+                                                <i class="bi bi-chevron-left"></i>&nbsp; Detail Produk
+                                            </a>
+                                            
+                                            <!-- Tombol di sisi kanan -->
+                                            <div>
+                                                <a href="/admin/products/edit/<?= encrypt($productDetailData["id_product"]); ?>" class="btn btn-primary">Edit</a>
+                                                &nbsp;
+                                                <a href="/admin/products/delete/<?= encrypt($productDetailData["id_product"]); ?>" class="btn btn-danger">Hapus</a>
+                                            </div>
                                         </div>
+
                                         <div class="card-content">
                                             <div class="card-body">
                                                 <div class="row">
@@ -74,11 +85,6 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <a href="/admin/products" class="btn btn-secondary">Kembali</a>
-                                                        &nbsp; &nbsp;
-                                                        <a href="/admin/products/delete/<?= encrypt($productDetailData["id_product"]); ?>" class="btn btn-danger">Hapus</a>
-                                                        &nbsp; &nbsp;
-                                                        <a href="/admin/products/edit/<?= encrypt($productDetailData["id_product"]); ?>" class="btn btn-primary">Edit</a>
                                                     </div>
                                                     <div class="col-xl-8 col-md-6 col col-sm-12 xs-12">
                                                         <div class="table-responsive">

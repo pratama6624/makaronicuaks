@@ -44,11 +44,19 @@
                     </div>
                 </div>
                 <section class="section">
-                    <div class="card">
-                        <div class="card-header">
+                    <div style="background-color: #f2f7ff;" class="card">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <!-- Tombol di sisi kiri -->
                             <a href="/admin/products/add" class="btn btn-primary">Tambah Produk</a>
+                                        
+                            <!-- Tombol di sisi kanan -->
+                            <div>
+                                <a href="/admin/products/add" class="btn btn-primary">List Gambar</a>
+                                &nbsp;
+                                <a href="/admin/products/add" class="btn btn-secondary">List Detail</a>
+                            </div>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body" style="margin-top:30px">
                             <div class="row">
                                 <?php if(empty($productData)) { ?>
                                     <div class="col-xl-4 col-md-6 col-sm-12">
@@ -58,21 +66,36 @@
                                 <?php foreach($productData as $product) { ?>
                                     <div class="col-xl-2 col-md-6 col-sm-12">
                                         <a href="/admin/product/detail/<?= encrypt($product["id_product"]); ?>">
-                                            <div class="card" style="border: 1px solid grey">
+                                            
+                                            <div class="card">
                                                 <div class="card-content">
-                                                    <?php if($product["discount_status"] == 1) { ?>
-                                                        <!-- Overlay warna hitam semi-transparan di atas gambar -->
-                                                        <div class="overlay"></div>                
-                                                        <!-- Label Diskon Bulat -->
-                                                        <div class="discount-label"><?= $product["discount_amount"] ?>% OFF</div>
-                                                    <?php } ?>
-                                                    <img src="/assets/images/products/<?= $product["image"] ?>" class="card-img-top img-fluid" alt="singleminded" style="width: 100%;">
-                                                    <div class="card-text-overlay">
-                                                        <h6 class="card-title"><?= $product["product_name"]?></h6>
-                                                        <h6 class="font-extrabold mb-0">Rp <?= number_format($product["price"], 0, ',', '.'); ?></h6>
+                                                    <h6 style="padding: 10px; margin-bottom: 0px" class=""><?= $product["product_name"]?></h6>
+                                                    <div class="image-container position-relative">
+                                                        <?php if ($product["discount_status"] == 1) { ?>
+                                                            <!-- Overlay warna hitam semi-transparan di atas gambar -->
+                                                            <div class="overlay"></div>
+                                                            <!-- Label Diskon -->
+                                                            <div class="discount-label"><?= $product["discount_amount"] ?>% OFF</div>
+                                                        <?php } ?>
+                                                        <img class="img-fluid w-100" src="/assets/images/products/<?= $product["image"] ?>" alt="Card image cap">
                                                     </div>
                                                 </div>
+                                                <div style="padding: 10px; height: 40px;" class="d-flex justify-content-between align-items-center">
+                                                    <?php if($product["discount_status"] == 0) { ?>
+                                                        <span>Rp <?= number_format($product["price"], 0, ',', '.'); ?></span>
+                                                    <?php } else { ?>
+                                                        <b><s style="color: red"><span>Rp <?= number_format($product["price"], 0, ',', '.'); ?></span></s></b>
+                                                    <?php } ?>
+                                                    <?php
+                                                        if($product["discount_status"] == 1) {
+                                                            $discountAmount = $product["price"] * ($product["discount_amount"] / 100);
+                                                            $afterDiscount = $product["price"] - $discountAmount;
+                                                        }
+                                                    ?>
+                                                    <span><?= $product["discount_status"] == 1 ? "Rp " . number_format($afterDiscount, 0, ',', '.') : ""; ?></span>
+                                                </div>
                                             </div>
+
                                         </a>
                                     </div>
                                 <?php } ?>

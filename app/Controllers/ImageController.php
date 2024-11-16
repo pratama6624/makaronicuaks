@@ -19,7 +19,6 @@ class ImageController extends Controller
                     'path' => base_url('writable/temp/' . $newName)
                 ]);
             } catch (\Exception $e) {
-                // Log atau cetak pesan error untuk debugging
                 return $this->response->setJSON(['status' => 'error', 'message' => $e->getMessage()]);
             }
         }
