@@ -24,4 +24,9 @@ class Product extends Model
     {
         return $this->findAll();
     }
+
+    public function getProductDiscount()
+    {
+        return $this->where('discount_status', 1)->findAll();
+    }
 }

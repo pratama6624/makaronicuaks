@@ -31,124 +31,63 @@
                 <div class="page-title mb-3">
                     <div class="row">
                         <div class="col-12 col-md-6 order-md-1 order-last">
-                            <h3>Makaroni Cuaks</h3>
+                            <h3>Makaroni Cuaks - Diskon</h3>
                         </div>
                         <div class="col-12 col-md-6 order-md-2 order-first">
                             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                                 <ol class="breadcrumb">
                                 <li class="breadcrumb-item">Beranda</li>
-                                <li class="breadcrumb-item active" aria-current="page">Diskon</li>
+                                <li class="breadcrumb-item active" aria-current="page">Produk</li>
                                 </ol>
                             </nav>
                         </div>
                     </div>
                 </div>
                 <section class="section">
-                    <div style="background-color: #f2f7ff;" class="card">
-                        <div class="card-header d-flex justify-content-between align-items-center">
-                            <!-- Tombol di sisi kiri -->
-                            <a href="/admin/products/add" class="btn btn-primary">Buat Event Diskon</a>
-                                        
-                            <!-- Tombol di sisi kanan -->
-                            <div>
-                                <a href="/admin/products/add" class="btn btn-primary">???</a>
-                                &nbsp;
-                                <a href="/admin/products/add" class="btn btn-secondary">???</a>
-                            </div>
-                        </div>
-                        <section class="section">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
-                                        <div class="dataTable-top">
-                                            <div class="dataTable-search">
-                                                <input class="dataTable-input" placeholder="Search..." type="text">
+                    <div style="background-color: #f2f7ff; margin-top: 50px;" class="card">
+                            <div class="row">
+                                <?php if(empty($productData)) { ?>
+                                    <div class="col-xl-4 col-md-6 col-sm-12">
+                                        <div class="alert alert-danger">TIdak ada produk tersedia</div>
+                                    </div>
+                                <?php } ?>
+                                <?php foreach($productData as $product) { ?>
+                                    <div class="col-xl-2 col-md-6 col-sm-12">
+                                        <a href="/admin/product/detail/<?= encrypt($product["id_product"]); ?>">
+                                            
+                                            <div class="card">
+                                                <div class="card-content">
+                                                    <h6 style="padding: 10px; margin-bottom: 0px" class=""><?= $product["product_name"]?></h6>
+                                                    <div class="image-container position-relative">
+                                                        <?php if ($product["discount_status"] == 1) { ?>
+                                                            <!-- Overlay warna hitam semi-transparan di atas gambar -->
+                                                            <div class="overlay"></div>
+                                                            <!-- Label Diskon -->
+                                                            <div class="discount-label"><?= $product["discount_amount"] ?>% OFF</div>
+                                                        <?php } ?>
+                                                        <img class="img-fluid w-100" src="/assets/images/products/<?= $product["image"] ?>" alt="Card image cap">
+                                                    </div>
+                                                </div>
+                                                <div style="padding: 10px; height: 40px;" class="d-flex justify-content-between align-items-center">
+                                                    <?php if($product["discount_status"] == 0) { ?>
+                                                        <span>Rp <?= number_format($product["price"], 0, ',', '.'); ?></span>
+                                                    <?php } else { ?>
+                                                        <b><s style="color: red"><span>Rp <?= number_format($product["price"], 0, ',', '.'); ?></span></s></b>
+                                                    <?php } ?>
+                                                    <?php
+                                                        if($product["discount_status"] == 1) {
+                                                            $discountAmount = $product["price"] * ($product["discount_amount"] / 100);
+                                                            $afterDiscount = $product["price"] - $discountAmount;
+                                                        }
+                                                    ?>
+                                                    <span><?= $product["discount_status"] == 1 ? "Rp " . number_format($afterDiscount, 0, ',', '.') : ""; ?></span>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <br>
-                                        <div class="dataTable-container">
-                                            <table class="table table-striped dataTable-table" id="table1">
-                                        <thead>
-                                            <tr>
-                                                <th data-sortable="" style="width: 5%;">
-                                                    <a href="#" class="dataTable-sorter">No</a>
-                                                </th>
-                                                <th data-sortable="" style="width: 20%;">
-                                                    <a href="#" class="dataTable-sorter">Nama Event</a>
-                                                </th>
-                                                <th data-sortable="" style="width: 35%;">
-                                                    <a href="#" class="dataTable-sorter">Deskripsi</a>
-                                                </th>
-                                                <th data-sortable="" style="width: 15%;">
-                                                    <a href="#" class="dataTable-sorter">Tanggal Mulai</a>
-                                                </th>
-                                                <th data-sortable="" style="width: 15%;">
-                                                    <a href="#" class="dataTable-sorter">Tanggal Selesai</a>
-                                                </th>
-                                                <th data-sortable="" style="width: 10%;">
-                                                    <a href="#" class="dataTable-sorter">Total Produk</a>
-                                                </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Graiden</td>
-                                                <td>vehicula.aliquet@semconsequat.co.uk</td>
-                                                <td>076 4820 8838</td>
-                                                <td>Offenburg</td>
-                                                <td>
-                                                    <span class="badge bg-success">Active</span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>Graiden</td>
-                                                <td>vehicula.aliquet@semconsequat.co.uk</td>
-                                                <td>076 4820 8838</td>
-                                                <td>Offenburg</td>
-                                                <td>
-                                                    <span class="badge bg-success">Active</span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>Graiden</td>
-                                                <td>vehicula.aliquet@semconsequat.co.uk</td>
-                                                <td>076 4820 8838</td>
-                                                <td>Offenburg</td>
-                                                <td>
-                                                    <span class="badge bg-success">Active</span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>4</td>
-                                                <td>Graiden</td>
-                                                <td>vehicula.aliquet@semconsequat.co.uk</td>
-                                                <td>076 4820 8838</td>
-                                                <td>Offenburg</td>
-                                                <td>
-                                                    <span class="badge bg-success">Active</span>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="dataTable-bottom">
-                                    <div class="dataTable-info">Showing 1 to 10 of 26 entries</div>
-                                    <ul class="pagination pagination-primary float-end dataTable-pagination">
-                                        <li class="page-item pager"><a href="#" class="page-link" data-page="1">‹</a></li>
-                                        <li class="page-item active"><a href="#" class="page-link" data-page="1">1</a></li>
-                                        <li class="page-item"><a href="#" class="page-link" data-page="2">2</a></li>
-                                        <li class="page-item"><a href="#" class="page-link" data-page="3">3</a></li>
-                                        <li class="page-item pager"><a href="#" class="page-link" data-page="2">›</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                                </div>
-                            </div>
 
-                        </section>
+                                        </a>
+                                    </div>
+                                <?php } ?>
+                            </div>
                     </div>
                 </section>
             </div>

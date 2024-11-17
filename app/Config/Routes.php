@@ -48,6 +48,8 @@ $routes->get('/admin/products/delete/(:any)', 'AdminController::deleteProduct/$1
 $routes->get('/admin/products/edit/(:any)', 'AdminController::editProduct/$1', ['filter' => 'roleFilter']);
 $routes->get('/admin/reports', 'AdminController::reports', ['filter' => 'roleFilter']);
 $routes->get('/admin/customers', 'AdminController::customers', ['filter' => 'roleFilter']);
+$routes->get('/admin/discount_event', 'AdminController::discountEvent', ['filter' => 'roleFilter']);
+$routes->get('/admin/add_discount_event', 'AdminController::addDiscountEvent', ['filter' => 'roleFilter']);
 $routes->get('/admin/discount', 'AdminController::discount', ['filter' => 'roleFilter']);
 $routes->get('/admin/review', 'AdminController::review', ['filter' => 'roleFilter']);
 $routes->post('/upload-image', 'ImageController::upload', ['filter' => 'roleFilter']);

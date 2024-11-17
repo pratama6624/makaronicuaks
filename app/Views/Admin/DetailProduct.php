@@ -33,7 +33,7 @@
                 <div class="page-title mb-3">
                     <div class="row">
                         <div class="col-xl-6 col-md-6 order-md-2 order-last">
-                            <h3>Makaroni Cuaks</h3>
+                            <h3>Makaroni Cuaks - Produk</h3>
                         </div>
                         <div class="col-xl-6 col-md-6 order-md-2 order-first">
                             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">

@@ -40,11 +40,19 @@
                             </a>
                         </li>
 
-                        <li class="sidebar-item <?= $sideMenuTitle == "discount" ? 'active' : '' ?>">
-                            <a href="<?= base_url("/admin/discount") ?>" class='sidebar-link'>
-                                <i class="bi bi-basket-fill"></i>
+                        <li class="sidebar-item <?= $sideMenuTitle == "discount_event" || $sideMenuTitle == "add_discount_event" || $sideMenuTitle == "discount" ? 'active' : '' ?> has-sub">
+                            <a href="#" class='sidebar-link'>
+                                <i class="bi bi-stack"></i>
                                 <span>Promosi & Diskon</span>
                             </a>
+                            <ul class="submenu" style="display:  <?= $sideMenuTitle == "discount_event" || $sideMenuTitle == "add_discount_event" || $sideMenuTitle == "discount" ? 'block' : 'none' ?>">
+                                <li class="submenu-item <?= $sideMenuTitle == "list" ? 'active' : '' ?>">
+                                    <a href="<?= base_url("/admin/discount_event") ?>">Diskon Event</a>
+                                </li>
+                                <li class="submenu-item <?= $sideMenuTitle == "complete" ? 'active' : '' ?>">
+                                    <a href="<?= base_url("/admin/discount") ?>">Diskon Mandiri</a>
+                                </li>
+                            </ul>
                         </li>
 
                         <li class="sidebar-item <?= $sideMenuTitle == "review" ? 'active' : '' ?>">

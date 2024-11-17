@@ -230,11 +230,32 @@ class AdminController extends BaseController
         return view('Admin/Customers', $data);
     }
 
+    public function discountEvent(): string
+    {
+        $data = [
+            "title" => "Diskon",
+            "sideMenuTitle" => $this->request->getUri()->getSegment(2),
+        ];
+
+        return view('Admin/DiscountEvent', $data);
+    }
+
+    public function addDiscountEvent(): string
+    {
+        $data = [
+            "title" => "Tambah Diskon Event",
+            "sideMenuTitle" => $this->request->getUri()->getSegment(2),
+        ];
+
+        return view('Admin/AddDiscountEvent', $data);
+    }
+
     public function discount(): string
     {
         $data = [
             "title" => "Diskon",
             "sideMenuTitle" => $this->request->getUri()->getSegment(2),
+            "productData" => $this->productModel->getProductDiscount()
         ];
 
         return view('Admin/Discount', $data);
