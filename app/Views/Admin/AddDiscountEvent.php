@@ -1,7 +1,10 @@
 <?= $this->extend('Layouts/TemplateAdmin') ?>
 <?= $this->section('content') ?>
 
-<?php $session = session()->getFlashdata('validation') ?>
+<?php
+    $session = session()->getFlashdata('validation'); 
+    $sessionSuccess = session()->getFlashdata('success');
+?>
 
     <div id="app">
         <div id="sidebar" class="active">
@@ -50,7 +53,7 @@
                             <div class="row">
                                 <div class="col-7">
                                     <div class="card">
-                                    <form method="POST" class="form form-horizontal" action="" enctype="multipart/form-data">
+                                    <form method="POST" class="form form-horizontal" action="/admin/add_discount_event/save" enctype="multipart/form-data">
                                         <div class="card-header d-flex justify-content-between align-items-center">
                                             <!-- Tombol di sisi kiri -->
                                             <a href="/admin/discount_event" class="btn btn-secondary d-flex align-items-center" style="width: 160px;">
@@ -69,25 +72,47 @@
                                                     <div class="row">
                                                         <!-- Kolom Kiri -->
                                                         <div class="col-md-12">
+                                                        <?php if(isset($sessionSuccess) && $sessionSuccess != null) : ?>
+                                                            <div class="alert alert-success flashdata"><?= $sessionSuccess ?></div>
+                                                            <br>
+                                                        <?php endif ?>
                                                             <div class="form-body">
                                                                 <div class="row">
                                                                     <div class="col-md-4">
                                                                         <label>Nama Event</label>
                                                                     </div>
                                                                     <div class="col-md-8 form-group">
+                                                                        <?php if(isset($session["event_name"]) && $session["event_name"] != null) : ?>
+                                                                            <b><span class="flashdata" style="color: red;"><?= $session["event_name"] ?></span></b>
+                                                                        <?php endif ?>
                                                                         <input type="text" id="event_name" class="form-control" name="event_name" value="<?= old('event_name') ?>" placeholder="">
                                                                     </div>
                                                                     <div class="col-md-4">
                                                                         <label>Tanggal Mulai Event</label>
                                                                     </div>
                                                                     <div class="col-md-8 form-group">
+                                                                        <?php if(isset($session["event_start_date"]) && $session["event_start_date"] != null) : ?>
+                                                                            <b><span class="flashdata" style="color: red;"><?= $session["event_start_date"] ?></span></b>
+                                                                        <?php endif ?>
                                                                         <input type="date" style="height: 40px" id="event_start_date" class="form-control" name="event_start_date" value="<?= old('event_start_date') ?>" placeholder="">
                                                                     </div>
                                                                     <div class="col-md-4">
                                                                         <label>Tanggal Selesai Event</label>
                                                                     </div>
                                                                     <div class="col-md-8 form-group">
+                                                                        <?php if(isset($session["event_end_date"]) && $session["event_end_date"] != null) : ?>
+                                                                            <b><span class="flashdata" style="color: red;"><?= $session["event_end_date"] ?></span></b>
+                                                                        <?php endif ?>
                                                                         <input type="date" style="height: 40px" id="event_end_date" class="form-control" name="event_end_date" value="<?= old('event_end_date') ?>" placeholder="">
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <label>Diskon (Satuan %)</label>
+                                                                    </div>
+                                                                    <div class="col-md-8 form-group">
+                                                                        <?php if(isset($session["precentage"]) && $session["precentage"] != null) : ?>
+                                                                            <b><span class="flashdata" style="color: red;"><?= $session["precentage"] ?></span></b>
+                                                                        <?php endif ?>
+                                                                        <input type="number" id="precentage" class="form-control" value="<?= old('precentage') ?>" name="precentage" placeholder="0.00" step="0.01" min="0">
                                                                     </div>
                                                                     <div class="col-md-4">
                                                                         <label>Deskripsi Event</label>

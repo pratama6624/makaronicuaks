@@ -76,7 +76,7 @@
                                                 <th data-sortable="" style="width: 20%;">
                                                     <a href="#" class="dataTable-sorter">Nama Event</a>
                                                 </th>
-                                                <th data-sortable="" style="width: 35%;">
+                                                <th data-sortable="" style="width: 25%;">
                                                     <a href="#" class="dataTable-sorter">Deskripsi</a>
                                                 </th>
                                                 <th data-sortable="" style="width: 15%;">
@@ -86,31 +86,30 @@
                                                     <a href="#" class="dataTable-sorter">Tanggal Selesai</a>
                                                 </th>
                                                 <th data-sortable="" style="width: 10%;">
+                                                    <a href="#" class="dataTable-sorter">Potongan</a>
+                                                </th>
+                                                <th data-sortable="" style="width: 10%;">
                                                     <a href="#" class="dataTable-sorter">Total Produk</a>
                                                 </th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>11.11 Sale</td>
-                                                <td>Event Sale 11 November</td>
-                                                <td>10 November 2024</td>
-                                                <td>12 November 2024</td>
-                                                <td>
-                                                    11 Produk
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>Ramadhan Sale</td>
-                                                <td>Event Sale Bulan Ramadhan</td>
-                                                <td>20 Maret 2024</td>
-                                                <td>2 April 2024</td>
-                                                <td>
-                                                    <span class="badge bg-success">Tambah Produk</span>
-                                                </td>
-                                            </tr>
+                                            <?php
+                                                $no = 1;
+                                                foreach($discountEventData as $discountEvent) : 
+                                            ?>
+                                                <tr>
+                                                    <td><?= $no++ ?></td>
+                                                    <td><?= $discountEvent["name"] ?></td>
+                                                    <td><?= $discountEvent["description"] ?></td>
+                                                    <td><?= $discountEvent["start_date"] ?></td>
+                                                    <td><?= $discountEvent["end_date"] ?></td>
+                                                    <td><?= $discountEvent["precentage"] ?>%</td>
+                                                    <td>
+                                                        11 Produk
+                                                    </td>
+                                                </tr>
+                                            <?php endforeach ?>
                                         </tbody>
                                     </table>
                                 </div>

@@ -75,24 +75,36 @@
                                                                         <label>Nama Produk</label>
                                                                     </div>
                                                                     <div class="col-md-8 form-group">
+                                                                        <?php if(isset($session["product_name"]) && $session["product_name"] != null) : ?>
+                                                                            <b><span class="flashdata" style="color: red;"><?= $session["product_name"] ?></span></b>
+                                                                        <?php endif ?>
                                                                         <input type="text" id="product_name" class="form-control" name="product_name" value="<?= old('product_name') ?>" placeholder="">
                                                                     </div>
                                                                     <div class="col-md-4">
                                                                         <label>Harga</label>
                                                                     </div>
                                                                     <div class="col-md-8 form-group">
+                                                                        <?php if(isset($session["price"]) && $session["price"] != null) : ?>
+                                                                            <b><span class="flashdata" style="color: red;"><?= $session["price"] ?></span></b>
+                                                                        <?php endif ?>
                                                                         <input type="number" id="price" class="form-control" name="price" placeholder="">
                                                                     </div>
                                                                     <div class="col-md-4">
                                                                         <label>Varian Rasa</label>
                                                                     </div>
                                                                     <div class="col-md-8 form-group">
+                                                                        <?php if(isset($session["flavor"]) && $session["flavor"] != null) : ?>
+                                                                            <b><span class="flashdata" style="color: red;"><?= $session["flavor"] ?></span></b>
+                                                                        <?php endif ?>
                                                                         <input type="text" id="flavor" class="form-control" name="flavor" value="<?= old('flavor') ?>" placeholder="">
                                                                     </div>
                                                                     <div class="col-md-4">
                                                                         <label>Stok Barang</label>
                                                                     </div>
                                                                     <div class="col-md-8 form-group">
+                                                                        <?php if(isset($session["stock"]) && $session["stock"] != null) : ?>
+                                                                            <b><span class="flashdata" style="color: red;"><?= $session["stock"] ?></span></b>
+                                                                        <?php endif ?>
                                                                         <input type="number" id="stock" class="form-control" name="stock" placeholder="">
                                                                     </div>
                                                                     <div class="col-md-4">
@@ -142,6 +154,9 @@
                                                         <div class="col-md-4">
                                                             <div class="form-body">
                                                                 <div class="form-group">
+                                                                        <?php if(isset($session["product_image"]) && $session["product_image"] != null) : ?>
+                                                                            <b><span class="flashdata" style="color: red;"><?= $session["product_image"] ?></span></b>
+                                                                        <?php endif ?>
                                                                     <input type="file" id="imageUpload" name="product_image" class="form-control" accept="image/*" onchange="previewAndUploadImage(event)">
                                                                 </div>
                                                                 <div class="form-group mt-3">

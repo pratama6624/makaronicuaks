@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use App\Models\Auth as AuthModel;
 use App\Models\Product as ProductModel;
 use App\Models\Recovery as RecoveryModel;
+use App\Models\DiscountEvent as DiscountEventModel;
 
 class AdminController extends BaseController
 {
@@ -18,6 +19,7 @@ class AdminController extends BaseController
         $this->authModel = new AuthModel;
         $this->productModel = new ProductModel;
         $this->recoveryModel = new RecoveryModel;
+        $this->discountEvent = new DiscountEventModel;
         $this->validation = \Config\Services::validation();
     }
 
@@ -124,24 +126,44 @@ class AdminController extends BaseController
             "product_image" => $this->request->getFile("product_image")
         ];
 
-        if (!$product_data["product_image"] || !$product_data["product_image"]->isValid()) {
-            return $this->response->setJSON([
-                'status' => 'error',
-                'message' => 'File tidak valid atau tidak ditemukan.'
-            ]);
-        }
+        $this->validation->setRules([
+            "product_name" => [
+                "rules" => "required|max_length[50]|is_unique[products.product_name]",
+                "errors" => [
+                    "required" => "Nama produk wajib diisi",
+                    "is_unique" => "Nama produk sudah ada",
+                    "max_length" => "Nama produk tidak boleh lebih dari 50 karakter"
+                ]
+            ],
+            "price" => [
+                "rules" => "required",
+                "errors" => [
+                    "required" => "Harga produk wajib diisi",
+                ]
+            ],
+            "flavor" => [
+                "rules" => "required",
+                "errors" => [
+                    "required" => "Rasa produk wajib diisi",
+                ]
+            ],
+            "stock" => [
+                "rules" => "required",
+                "errors" => [
+                    "required" => "Stok minimal 1",
+                ]
+            ],
+            "product_image" => [
+                "rules" => "mime_in[product_image,image/jpg,image/jpeg,image/png]|max_size[product_image,2048]",
+                "errors" => [
+                    "mime_in" => "Format gambar harus JPG, JPEG, atau PNG",
+                    "max_size" => "Ukuran gambar tidak boleh lebih dari 2MB"
+                ]
+            ]
+        ]);
 
-        $validationRules = [
-            'uploaded[product_image]',
-            'mime_in[product_image,image/jpg,image/jpeg,image/png]',
-            'max_size[product_image,2048]', // Ukuran maksimum 2MB
-        ];
-    
-        if (!$this->validate(['image' => $validationRules])) {
-            return $this->response->setJSON([
-                'status' => 'error',
-                'message' => 'File harus berupa gambar JPG, JPEG, atau PNG dengan ukuran maksimal 2MB.'
-            ]);
+        if(!$this->validation->withRequest($this->request)->run()) {
+            return redirect()->to('admin/products/add')->withInput()->with('validation', $this->validation->getErrors());
         }
 
         $imageName = $product_data["product_image"]->getRandomName();
@@ -157,28 +179,6 @@ class AdminController extends BaseController
                 'status' => 'error',
                 'message' => 'Gagal memindahkan file ke folder tujuan.'
             ]);
-        }
-
-        $this->validation->setRules([
-            "product_name" => [
-                "rules" => "required|max_length[50]|is_unique[products.product_name]",
-                "errors" => [
-                    "required" => "Nama produk wajib diisi",
-                    "is_unique" => "Nama produk sudah ada",
-                    "max_length" => "Nama produk tidak boleh lebih dari 50 karakter"
-                ]
-            ],
-            "flavor" => [
-                "rules" => "required|max_length[50]",
-                "errors" => [
-                    "required" => "Rasa produk wajib diisi",
-                    "max_length" => "Rasa produk tidak boleh lebih dari 50 karakter"
-                ]
-            ],
-        ]);
-
-        if(!$this->validation->withRequest($this->request)->run()) {
-            return redirect()->to('admin/products/add')->withInput()->with('validation', $this->validation->getErrors());
         }
 
         $this->productModel->save([
@@ -235,6 +235,7 @@ class AdminController extends BaseController
         $data = [
             "title" => "Diskon",
             "sideMenuTitle" => $this->request->getUri()->getSegment(2),
+            "discountEventData" => $this->discountEvent->getAllDiscountEvent()
         ];
 
         return view('Admin/DiscountEvent', $data);
@@ -248,6 +249,76 @@ class AdminController extends BaseController
         ];
 
         return view('Admin/AddDiscountEvent', $data);
+    }
+
+    public function saveDiscountEvent()
+    {
+        $discount_event_data = [
+            "event_name" => $this->request->getPost("event_name"),
+            "event_start_date" => $this->request->getPost("event_start_date"),
+            "event_end_date" => $this->request->getPost("event_end_date"),
+            "precentage" => $this->request->getPost("precentage"),
+            "event_description" => $this->request->getPost("event_description"),
+        ];
+
+        $this->validation->setRules([
+            "event_name" => [
+                "rules" => "required|max_length[30]|is_unique[discount_events.name]",
+                "errors" => [
+                    "required" => "Nama event wajib diisi",
+                    "is_unique" => "Nama event sudah ada",
+                    "max_length" => "Nama event tidak boleh lebih dari 30 karakter"
+                ]
+            ],
+            "event_start_date" => [
+                "rules" => "required|valid_date[Y-m-d]",
+                "errors" => [
+                    "required" => "Event mulai wajib diisi",
+                    "valid_date" => "Format tanggal mulai tidak valid"
+                ]
+            ],
+            "event_end_date" => [
+                "rules" => "required|valid_date[Y-m-d]",
+                "errors" => [
+                    "required" => "Event berakhir wajib diisi",
+                    "valid_date" => "Format tanggal berakhir tidak valid"
+                ]
+            ],
+            "precentage" => [
+                "rules" => "required|greater_than_equal_to[0.1]",
+                "errors" => [
+                    "required" => "Diskon wajib diisi",
+                    "greater_than_equal_to" => "Diskon minimal adalah 0.1%"
+                ]
+            ],
+        ]);
+        
+        $is_valid = $this->validation->withRequest($this->request)->run();
+
+        $errors = $this->validation->getErrors();
+
+        $start_date = strtotime($discount_event_data['event_start_date']);
+        $end_date = strtotime($discount_event_data['event_end_date']);
+
+        if ($end_date < $start_date) {
+            $errors['event_end_date'] = "Harus lebih besar atau sama dengan tanggal mulai";
+        }
+
+        if (!empty($errors)) {
+            return redirect()->to('/admin/add_discount_event')->withInput()->with('validation', $errors);
+        }
+        
+        // Lolos validasi
+        
+        $this->discountEvent->save([
+            "name" => $discount_event_data["event_name"],
+            "start_date" => $discount_event_data["event_start_date"],
+            "end_date" => $discount_event_data["event_end_date"],
+            "description" => $discount_event_data["event_description"],
+            "precentage" => $discount_event_data["precentage"],
+        ]);
+
+        return redirect()->to('/admin/add_discount_event')->with('success', "Data berhasil ditambahkan");
     }
 
     public function discount(): string
