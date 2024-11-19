@@ -241,6 +241,19 @@ class AdminController extends BaseController
         return view('Admin/DiscountEvent', $data);
     }
 
+    public function detailDiscountEvent($encryptId): String
+    {
+        $decryptId = decrypt($encryptId);
+
+        $data = [
+            "title" => "Detail Diskon Event",
+            "sideMenuTitle" => $this->request->getUri()->getSegment(2),
+            "discountEventData" => $this->productModel->getProductByID($decryptId)
+        ];
+
+        return view('Admin/DetailDiscountEvent', $data);
+    }
+
     public function addDiscountEvent(): string
     {
         $data = [

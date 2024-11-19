@@ -67,7 +67,7 @@
                                         </div>
                                         <br>
                                         <div class="dataTable-container">
-                                            <table class="table table-striped dataTable-table" id="table1">
+                                            <table class="table dataTable-table" id="table1">
                                         <thead>
                                             <tr>
                                                 <th data-sortable="" style="width: 5%;">
@@ -98,7 +98,7 @@
                                                 $no = 1;
                                                 foreach($discountEventData as $discountEvent) : 
                                             ?>
-                                                <tr>
+                                                <tr class="clickable-row" onclick="window.location.href='/admin/discount_event/detail/<?= encrypt($discountEvent['id_discount']) ?>'">
                                                     <td><?= $no++ ?></td>
                                                     <td><?= $discountEvent["name"] ?></td>
                                                     <td><?= $discountEvent["description"] ?></td>

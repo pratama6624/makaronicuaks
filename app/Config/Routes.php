@@ -51,6 +51,7 @@ $routes->get('/admin/customers', 'AdminController::customers', ['filter' => 'rol
 $routes->get('/admin/discount_event', 'AdminController::discountEvent', ['filter' => 'roleFilter']);
 $routes->get('/admin/add_discount_event', 'AdminController::addDiscountEvent', ['filter' => 'roleFilter']);
 $routes->post('/admin/add_discount_event/save', 'AdminController::saveDiscountEvent', ['filter' => 'roleFilter']);
+$routes->get('/admin/discount_event/detail/(:any)', 'AdminController::detailDiscountEvent/$1', ['filter' => 'roleFilter']);
 $routes->get('/admin/discount', 'AdminController::discount', ['filter' => 'roleFilter']);
 $routes->get('/admin/review', 'AdminController::review', ['filter' => 'roleFilter']);
 $routes->post('/upload-image', 'ImageController::upload', ['filter' => 'roleFilter']);
