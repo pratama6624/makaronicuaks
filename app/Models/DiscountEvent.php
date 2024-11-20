@@ -19,4 +19,9 @@ class DiscountEvent extends Model
     {
         return $this->findAll();
     }
+
+    public function getDiscountEventByID($id_discount_event)
+    {
+        return $this->where("id_discount", $id_discount_event)->first();
+    }
 }

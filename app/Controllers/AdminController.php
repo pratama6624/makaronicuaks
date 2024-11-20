@@ -248,7 +248,7 @@ class AdminController extends BaseController
         $data = [
             "title" => "Detail Diskon Event",
             "sideMenuTitle" => $this->request->getUri()->getSegment(2),
-            "discountEventData" => $this->productModel->getProductByID($decryptId)
+            "discountEventData" => $this->discountEvent->getDiscountEventByID($decryptId)
         ];
 
         return view('Admin/DetailDiscountEvent', $data);

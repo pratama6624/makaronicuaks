@@ -48,13 +48,6 @@
                         <div class="card-header d-flex justify-content-between align-items-center">
                             <!-- Tombol di sisi kiri -->
                             <a href="/admin/add_discount_event" class="btn btn-primary">Buat Event Diskon</a>
-                                        
-                            <!-- Tombol di sisi kanan -->
-                            <div>
-                                <a href="/admin/products/add" class="btn btn-primary">???</a>
-                                &nbsp;
-                                <a href="/admin/products/add" class="btn btn-secondary">???</a>
-                            </div>
                         </div>
                         <section class="section">
                             <div class="card">
