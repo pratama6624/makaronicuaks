@@ -67,7 +67,10 @@
                             <div class="card-content">
                                 <div class="card-body">
                                     <div class="alert alert-secondary" style="padding-top: 25px">
-                                        <h4 class="alert-heading"><?= strftime("%d %B %Y", strtotime($discountEventData['start_date'])) ?> - <?= strftime("%d %B %Y", strtotime($discountEventData['end_date'])) ?> &nbsp;
+                                        <h4 class="alert-heading">
+                                            <?= strftime("%d %B %Y", strtotime($discountEventData['start_date'])) ?> -
+                                            <?= strftime("%d %B %Y", strtotime($discountEventData['end_date'])) ?>
+                                            &nbsp;
                                             <button type="button" class="btn btn-danger">
                                                 <?= $discountEventData["precentage"] ?>% OFF
                                             </button>
@@ -82,21 +85,27 @@
                 <div style="background-color: #f2f7ff;" class="card">
                     <div class="card-body">
                         <div class="row">
+                            <?php if(empty($discountEventProductData)) : ?>
                             <div class="col-xl-4 col-md-6 col-sm-12">
                                 <div class="alert alert-danger">TIdak ada produk tersedia</div>
                             </div>
+                            <?php endif ?>
+                            <?php foreach($discountEventProductData as $productData) : ?>
                             <div class="col-xl-2 col-md-6 col-sm-12">
-                                <a href="/admin/product/detail/">
+                                <a href="/admin/product/detail/<?= encrypt($productData["id_product"]) . "?return_url=" . urlencode(current_url()); ?>">
                                     <div class="card">
                                         <div class="card-content">
                                             <h6 style="padding: 10px; margin-bottom: 0px" class="">
-                                                Makaroni Pedas</h6>
+                                                <?= $productData["product_name"] ?></h6>
                                             <div class="image-container position-relative">
                                                 <div class="overlay"></div>
                                                 <!-- Label Diskon -->
-                                                <div class="discount-label">40% OFF</div>
+                                                <div class="discount-label">
+                                                    <?= $productData["name"] ?> <br>
+                                                    40% OFF
+                                                </div>
                                                 <img class="img-fluid w-100"
-                                                    src="/assets/images/products/1731603562_cf63ed5d2745244362a2.jpg"
+                                                    src="/assets/images/products/<?= $productData["image"] ?>"
                                                     alt="Card image cap">
                                             </div>
                                         </div>
@@ -106,9 +115,9 @@
                                             <span>Rp 6.000</span>
                                         </div>
                                     </div>
-
                                 </a>
                             </div>
+                            <?php endforeach ?>
                         </div>
                     </div>
                 </div>

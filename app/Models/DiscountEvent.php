@@ -24,4 +24,27 @@ class DiscountEvent extends Model
     {
         return $this->where("id_discount", $id_discount_event)->first();
     }
+
+    public function getProductDiscountEvent($id_discount_event)
+    {
+        return $this->select([
+                'discount_events.id_discount',
+                'discount_events.name',
+                'discount_events.start_date',
+                'discount_events.end_date',
+                'discount_events.precentage',
+                'products.id_product',
+                'products.product_name',
+                'products.price',
+                'products.flavor',
+                'products.stock',
+                'products.image',
+                'products.category',
+                'products.weight'
+            ])
+            ->join("discount_event_products", "discount_event_products.discount_id = discount_events.id_discount")
+            ->where("id_discount", $id_discount_event)
+            ->join("products", "products.id_product = discount_event_products.product_id")
+            ->findAll();
+    }
 }

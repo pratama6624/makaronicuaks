@@ -52,7 +52,7 @@
                                     <div class="card">
                                         <div class="card-header d-flex justify-content-between align-items-center">
                                             <!-- Tombol di sisi kiri -->
-                                            <a href="/admin/products" class="btn btn-secondary d-flex align-items-center" style="width: 155px;">
+                                            <a href="<?= $backUrl ?>" class="btn btn-secondary d-flex align-items-center" style="width: 155px;">
                                                 <i class="bi bi-chevron-left"></i>&nbsp; Detail Produk
                                             </a>
                                             
@@ -80,7 +80,7 @@
                                                                     <?php } ?>
                                                                     
                                                                     <!-- Gambar -->
-                                                                    <img src="/assets/images/samples/cuaks.png" class="card-img-top img-fluid" alt="singleminded" style="width: 100%;">
+                                                                    <img src="/assets/images/products/<?= $productDetailData["image"] ?>" class="card-img-top img-fluid" alt="singleminded" style="width: 100%;">
                                                                 </div>
                                                             </div>
                                                         </div>

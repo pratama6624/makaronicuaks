@@ -65,7 +65,7 @@
                                 <?php } ?>
                                 <?php foreach($productData as $product) { ?>
                                     <div class="col-xl-2 col-md-6 col-sm-12">
-                                        <a href="/admin/product/detail/<?= encrypt($product["id_product"]); ?>">
+                                        <a href="/admin/product/detail/<?= encrypt($product["id_product"]) . "?return_url=" . urlencode(current_url()); ?>">
                                             
                                             <div class="card">
                                                 <div class="card-content">

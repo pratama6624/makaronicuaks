@@ -65,6 +65,8 @@ class AdminController extends BaseController
 
     public function products(): string
     {
+        session()->set('referer', current_url());
+
         $data = [
             "title" => "Produk",
             "sideMenuTitle" => $this->request->getUri()->getSegment(2),
@@ -78,10 +80,13 @@ class AdminController extends BaseController
     {
         $decryptId = decrypt($encryptId);
 
+        $referer = session()->get('referer') ?? site_url('admin/products');
+
         $data = [
             "title" => "Detail Produk",
             "sideMenuTitle" => $this->request->getUri()->getSegment(2),
-            "productDetailData" => $this->productModel->getProductByID($decryptId)
+            "productDetailData" => $this->productModel->getProductByID($decryptId),
+            "backUrl" => $referer
         ];
 
         return view('Admin/DetailProduct', $data);
@@ -243,12 +248,15 @@ class AdminController extends BaseController
 
     public function detailDiscountEvent($encryptId): String
     {
+        session()->set('referer', current_url());
+
         $decryptId = decrypt($encryptId);
 
         $data = [
             "title" => "Detail Diskon Event",
             "sideMenuTitle" => $this->request->getUri()->getSegment(2),
-            "discountEventData" => $this->discountEvent->getDiscountEventByID($decryptId)
+            "discountEventData" => $this->discountEvent->getDiscountEventByID($decryptId),
+            "discountEventProductData" => $this->discountEvent->getProductDiscountEvent($decryptId)
         ];
 
         return view('Admin/DetailDiscountEvent', $data);
@@ -336,6 +344,8 @@ class AdminController extends BaseController
 
     public function discount(): string
     {
+        session()->set('referer', current_url());
+        
         $data = [
             "title" => "Diskon",
             "sideMenuTitle" => $this->request->getUri()->getSegment(2),
