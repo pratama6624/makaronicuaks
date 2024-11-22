@@ -70,8 +70,10 @@ class AdminController extends BaseController
         $data = [
             "title" => "Produk",
             "sideMenuTitle" => $this->request->getUri()->getSegment(2),
-            "productData" => $this->productModel->getAllProduct()
+            "productData" => $this->productModel->getAllProductsIncludingDiscounts()
         ];
+
+        // dd($data['productData']);
 
         return view('Admin/Products', $data);
     }
@@ -345,7 +347,7 @@ class AdminController extends BaseController
     public function discount(): string
     {
         session()->set('referer', current_url());
-        
+
         $data = [
             "title" => "Diskon",
             "sideMenuTitle" => $this->request->getUri()->getSegment(2),
