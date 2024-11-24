@@ -87,7 +87,7 @@ class AdminController extends BaseController
         $data = [
             "title" => "Detail Produk",
             "sideMenuTitle" => $this->request->getUri()->getSegment(2),
-            "productDetailData" => $this->productModel->getProductByID($decryptId),
+            "productDetailData" => $this->productModel->getProductIncludingDiscountByID($decryptId),
             "backUrl" => $referer
         ];
 
@@ -129,6 +129,7 @@ class AdminController extends BaseController
             "weight" => $this->request->getPost("weight"),
             "discount_status" => $this->request->getPost("discount_status") == "Tidak sedang diskon" ? 0 : 1,
             "discount_amount" => $this->request->getPost("discount_amount") == "" ? 0.0 : (float)$this->request->getPost("discount_amount"),
+            "discount_note" => $this->request->getPost("discount_note"),
             "description" => $this->request->getPost("description") == NULL ? "" : $this->request->getPost("description"),
             "product_image" => $this->request->getFile("product_image")
         ];
@@ -199,6 +200,7 @@ class AdminController extends BaseController
             "weight" => $product_data["weight"],
             "discount_status" => $product_data["discount_status"],
             "discount_amount" => $product_data["discount_amount"],
+            "discount_note" => $product_data["discount_note"],
             'is_deleted' => 0
         ]);
 

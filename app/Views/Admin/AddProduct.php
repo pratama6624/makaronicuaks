@@ -138,6 +138,12 @@
                                                                     <div class="col-md-8 form-group" id="discount_input" style="display: none;">
                                                                         <input type="number" id="discount_amount" class="form-control" name="discount_amount" placeholder="0.00" step="0.01" min="0">
                                                                     </div>
+                                                                    <div class="col-md-4" id="discount_label_description" style="display: none;">
+                                                                        <label>Deskripsi Diskon</label>
+                                                                    </div>
+                                                                    <div class="col-md-8 form-group" id="discount_input_description" style="display: none;">
+                                                                        <input type="text" id="discount_note" class="form-control" name="discount_note" placeholder="Contoh : Menghabiskan Stok">
+                                                                    </div>
                                                                     <div class="col-md-4">
                                                                         <label>Deskripsi Produk</label>
                                                                     </div>

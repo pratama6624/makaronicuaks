@@ -12,17 +12,10 @@ class Product extends Model
     protected $updatedField  = 'updated_at';
 
     protected $allowedFields = [
-        'product_name', 'description', 'price', 'flavor', 'stock', 'image', 'category', 'weight', 'discount_status', 'discount_amount', 'created_at', 'updated_at', 'is_deleted'
+        'product_name', 'description', 'price', 'flavor', 'stock', 'image', 'category', 'weight', 'discount_status', 'discount_amount', 'discount_note', 'created_at', 'updated_at', 'is_deleted'
     ];
 
-    public function getProductByID($idProduct)
-    {
-        return $this->where('id_product', $idProduct)->first();
-    }
-
-    public function getAllProductsIncludingDiscounts()
-    {
-        return $this->select([
+    protected $selectFields = [
             'discount_events.id_discount',
             'discount_events.name',
             'discount_events.start_date',
@@ -37,8 +30,23 @@ class Product extends Model
             'products.category',
             'products.weight',
             'products.discount_status',
-            'products.discount_amount'
-        ])
+            'products.discount_amount',
+            'products.discount_note',
+            'products.description'
+    ];
+
+    public function getProductIncludingDiscountByID($idProduct)
+    {
+        return $this->select($this->selectFields)
+        ->join("discount_event_products", "discount_event_products.product_id = products.id_product", "left")
+        ->where("id_product", $idProduct)
+        ->join("discount_events", "discount_events.id_discount = discount_event_products.discount_id", "left")
+        ->first();
+    }
+
+    public function getAllProductsIncludingDiscounts()
+    {
+        return $this->select($this->selectFields)
         ->join("discount_event_products", "discount_event_products.product_id = products.id_product", "left")
         ->join("discount_events", "discount_events.id_discount = discount_event_products.discount_id", "left")
         ->get()

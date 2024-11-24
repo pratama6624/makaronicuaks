@@ -17,14 +17,20 @@ function togglePasswordOptions() {
 function toggleDiscountAmount() {
     const discountStatus = document.getElementById("discount_status").value;
     const discountLabel = document.getElementById("discount_label");
+    const discountLabelDescription = document.getElementById("discount_label_description");
     const discountInput = document.getElementById("discount_input");
+    const discountInputDescription = document.getElementById("discount_input_description");
 
     if (discountStatus === "Sedang diskon") {
         discountLabel.style.display = "block";
         discountInput.style.display = "block";
+        discountLabelDescription.style.display = "block";
+        discountInputDescription.style.display = "block";
     } else {
         discountLabel.style.display = "none";
         discountInput.style.display = "none";
+        discountLabelDescription.style.display = "none";
+        discountInputDescription.style.display = "none";
     }
 }
 

@@ -37,15 +37,18 @@ $routes->get('/account', 'HomeController::account', ['filter' => 'roleFilter']);
 
 // Admin Controller
 $routes->get('/admin/home', 'AdminController::home', ['filter' => 'roleFilter']);
+
 $routes->get('/admin/orders/list', 'AdminController::orders', ['filter' => 'roleFilter']);
 $routes->get('/admin/orders/complete', 'AdminController::orderComplete', ['filter' => 'roleFilter']);
 $routes->get('/admin/orders/cancel', 'AdminController::orderCancel', ['filter' => 'roleFilter']);
+
 $routes->get('/admin/products', 'AdminController::products', ['filter' => 'roleFilter']);
 $routes->get('/admin/product/detail/(:any)', 'AdminController::detailProduct/$1', ['filter' => 'roleFilter']);
 $routes->get('/admin/products/add', 'AdminController::addProduct', ['filter' => 'roleFilter']);
 $routes->post('/admin/products/save', 'AdminController::saveProduct', ['filter' => 'roleFilter']);
 $routes->get('/admin/products/delete/(:any)', 'AdminController::deleteProduct/$1', ['filter' => 'roleFilter']);
 $routes->get('/admin/products/edit/(:any)', 'AdminController::editProduct/$1', ['filter' => 'roleFilter']);
+
 $routes->get('/admin/reports', 'AdminController::reports', ['filter' => 'roleFilter']);
 $routes->get('/admin/customers', 'AdminController::customers', ['filter' => 'roleFilter']);
 $routes->get('/admin/discount_event', 'AdminController::discountEvent', ['filter' => 'roleFilter']);

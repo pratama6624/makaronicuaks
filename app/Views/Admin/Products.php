@@ -81,6 +81,9 @@
                                                     <?php if($product["discount_status"] == 0 && $product["id_discount"] != null) : ?>
                                                         <?= $product["name"] ?><br>
                                                     <?php endif ?>
+                                                    <?php if($product["discount_note"] != "") : ?>
+                                                        <?= $product["discount_note"] ?><br>
+                                                    <?php endif ?>
                                                     <?= $product["discount_status"] == 1 && $product["id_discount"] == null ? $product["discount_amount"] : $product["precentage"] ?>%
                                                     OFF
                                                 </div>
@@ -92,7 +95,7 @@
                                         </div>
                                         <div style="padding: 10px; height: 40px;"
                                             class="d-flex justify-content-between align-items-center">
-                                            <?php if($product["discount_status"] == 0) { ?>
+                                            <?php if($product["discount_status"] == 0 && $product["id_discount"] == null) { ?>
                                             <span>Rp <?= number_format($product["price"], 0, ',', '.'); ?></span>
                                             <?php } else { ?>
                                             <b><s style="color: red"><span>Rp
@@ -102,9 +105,12 @@
                                                         if($product["discount_status"] == 1) {
                                                             $discountAmount = $product["price"] * ($product["discount_amount"] / 100);
                                                             $afterDiscount = $product["price"] - $discountAmount;
+                                                        } else if($product["id_discount"] != null) {
+                                                            $discountAmount = $product["price"] * ($product["precentage"] / 100);
+                                                            $afterDiscount = $product["price"] - $discountAmount;
                                                         }
                                                     ?>
-                                            <span><?= $product["discount_status"] == 1 ? "Rp " . number_format($afterDiscount, 0, ',', '.') : ""; ?></span>
+                                            <span><?= $product["discount_status"] == 1 || $product["id_discount"] != null ? "Rp " . number_format($afterDiscount, 0, ',', '.') : ""; ?></span>
                                         </div>
                                     </div>
 

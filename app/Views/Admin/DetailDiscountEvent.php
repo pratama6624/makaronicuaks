@@ -102,7 +102,7 @@
                                                 <!-- Label Diskon -->
                                                 <div class="discount-label">
                                                     <?= $productData["name"] ?> <br>
-                                                    40% OFF
+                                                    <?= $productData["precentage"] ?>% OFF
                                                 </div>
                                                 <img class="img-fluid w-100"
                                                     src="/assets/images/products/<?= $productData["image"] ?>"
@@ -111,8 +111,8 @@
                                         </div>
                                         <div style="padding: 10px; height: 40px;"
                                             class="d-flex justify-content-between align-items-center">
-                                            <b><s style="color: red"><span>Rp 10.000</span></s></b>
-                                            <span>Rp 6.000</span>
+                                            <b><s style="color: red"><span>Rp <?= number_format($productData["price"], 0, ',', '.') ?></span></s></b>
+                                            <span>Rp <?= number_format(($productData["price"] - ($productData["price"] * ($productData["precentage"] / 100))), 0, ',', '.') ?></span>
                                         </div>
                                     </div>
                                 </a>
