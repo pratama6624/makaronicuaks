@@ -73,9 +73,20 @@ class AdminController extends BaseController
             "productData" => $this->productModel->getAllProductsIncludingDiscounts()
         ];
 
-        // dd($data['productData']);
-
         return view('Admin/Products', $data);
+    }
+
+    public function productLists(): string
+    {
+        session()->set('referer', current_url());
+
+        $data = [
+            "title" => "Produk",
+            "sideMenuTitle" => $this->request->getUri()->getSegment(2),
+            "productData" => $this->productModel->getAllProductsIncludingDiscounts()
+        ];
+
+        return view('Admin/ProductLists', $data);
     }
 
     public function detailProduct($encryptId): String

@@ -51,9 +51,9 @@
 
                         <!-- Tombol di sisi kanan -->
                         <div>
-                            <a href="/admin/products/add" class="btn btn-primary">List Gambar</a>
+                            <a href="/admin/products" class="btn btn-<?= $sideMenuTitle == "products" ? "primary" : "secondary" ?>">List Gambar</a>
                             &nbsp;
-                            <a href="/admin/products/add" class="btn btn-secondary">List Detail</a>
+                            <a href="/admin/product_lists" class="btn btn-<?= $sideMenuTitle == "product_lists" ? "primary" : "secondary" ?>">List Detail</a>
                         </div>
                     </div>
                     <div class="card-body" style="margin-top:30px">

@@ -46,7 +46,6 @@
                 <section class="section">
                     <div style="background-color: #f2f7ff;" class="card">
                         <div class="card-header d-flex justify-content-between align-items-center">
-                            <!-- Tombol di sisi kiri -->
                             <a href="/admin/add_discount_event" class="btn btn-primary">Buat Event Diskon</a>
                         </div>
                         <section class="section">
@@ -60,66 +59,51 @@
                                         </div>
                                         <br>
                                         <div class="dataTable-container">
-                                            <table class="table dataTable-table" id="table1">
-                                        <thead>
-                                            <tr>
-                                                <th data-sortable="" style="width: 5%;">
-                                                    <a href="#" class="dataTable-sorter">No</a>
-                                                </th>
-                                                <th data-sortable="" style="width: 20%;">
-                                                    <a href="#" class="dataTable-sorter">Nama Event</a>
-                                                </th>
-                                                <th data-sortable="" style="width: 25%;">
-                                                    <a href="#" class="dataTable-sorter">Deskripsi</a>
-                                                </th>
-                                                <th data-sortable="" style="width: 15%;">
-                                                    <a href="#" class="dataTable-sorter">Tanggal Mulai</a>
-                                                </th>
-                                                <th data-sortable="" style="width: 15%;">
-                                                    <a href="#" class="dataTable-sorter">Tanggal Selesai</a>
-                                                </th>
-                                                <th data-sortable="" style="width: 10%;">
-                                                    <a href="#" class="dataTable-sorter">Potongan</a>
-                                                </th>
-                                                <th data-sortable="" style="width: 10%;">
-                                                    <a href="#" class="dataTable-sorter">Total Produk</a>
-                                                </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                                $no = 1;
-                                                foreach($discountEventData as $discountEvent) : 
-                                            ?>
-                                                <tr class="clickable-row" onclick="window.location.href='/admin/discount_event/detail/<?= encrypt($discountEvent['id_discount']) ?>'">
-                                                    <td><?= $no++ ?></td>
-                                                    <td><?= $discountEvent["name"] ?></td>
-                                                    <td><?= $discountEvent["description"] ?></td>
-                                                    <td><?= $discountEvent["start_date"] ?></td>
-                                                    <td><?= $discountEvent["end_date"] ?></td>
-                                                    <td><?= $discountEvent["precentage"] ?>%</td>
-                                                    <td>
-                                                        11 Produk
-                                                    </td>
-                                                </tr>
-                                            <?php endforeach ?>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="dataTable-bottom">
-                                    <div class="dataTable-info">Showing 1 to 10 of 26 entries</div>
-                                    <ul class="pagination pagination-primary float-end dataTable-pagination">
-                                        <li class="page-item pager"><a href="#" class="page-link" data-page="1">‹</a></li>
-                                        <li class="page-item active"><a href="#" class="page-link" data-page="1">1</a></li>
-                                        <li class="page-item"><a href="#" class="page-link" data-page="2">2</a></li>
-                                        <li class="page-item"><a href="#" class="page-link" data-page="3">3</a></li>
-                                        <li class="page-item pager"><a href="#" class="page-link" data-page="2">›</a></li>
-                                    </ul>
+                                            <!-- Membungkus tabel dalam container dengan scroll -->
+                                            <div style="overflow-x: auto;">
+                                                <table class="table dataTable-table" id="table1">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>No</th>
+                                                            <th>Nama Event</th>
+                                                            <th>Deskripsi</th>
+                                                            <th>Tanggal Mulai</th>
+                                                            <th>Tanggal Selesai</th>
+                                                            <th>Potongan</th>
+                                                            <th>Total Produk</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <?php
+                                                        $no = 1;
+                                                        foreach ($discountEventData as $discountEvent) : ?>
+                                                            <tr class="clickable-row" onclick="window.location.href='/admin/discount_event/detail/<?= encrypt($discountEvent['id_discount']) ?>'">
+                                                                <td><?= $no++ ?></td>
+                                                                <td><?= $discountEvent["name"] ?></td>
+                                                                <td><?= $discountEvent["description"] ?></td>
+                                                                <td><?= $discountEvent["start_date"] ?></td>
+                                                                <td><?= $discountEvent["end_date"] ?></td>
+                                                                <td><?= $discountEvent["precentage"] ?>%</td>
+                                                                <td>11 Produk</td>
+                                                            </tr>
+                                                        <?php endforeach ?>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="dataTable-bottom">
+                                            <div class="dataTable-info">Showing 1 to 10 of 26 entries</div>
+                                            <ul class="pagination pagination-primary float-end dataTable-pagination">
+                                                <li class="page-item pager"><a href="#" class="page-link" data-page="1">‹</a></li>
+                                                <li class="page-item active"><a href="#" class="page-link" data-page="1">1</a></li>
+                                                <li class="page-item"><a href="#" class="page-link" data-page="2">2</a></li>
+                                                <li class="page-item"><a href="#" class="page-link" data-page="3">3</a></li>
+                                                <li class="page-item pager"><a href="#" class="page-link" data-page="2">›</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                                </div>
-                            </div>
-
                         </section>
                     </div>
                 </section>

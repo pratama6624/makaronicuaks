@@ -33,7 +33,7 @@
                             </ul>
                         </li>
 
-                        <li class="sidebar-item <?= $sideMenuTitle == "products" ? 'active' : '' ?>">
+                        <li class="sidebar-item <?= $sideMenuTitle == "products" || $sideMenuTitle == "product_lists" ? 'active' : '' ?>">
                             <a href="<?= base_url("/admin/products") ?>" class='sidebar-link'>
                                 <i class="bi bi-basket-fill"></i>
                                 <span>Produk</span>
