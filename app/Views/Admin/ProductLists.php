@@ -47,7 +47,7 @@ Produk list<?= $this->extend('Layouts/TemplateAdmin') ?>
                 <div style="background-color: #f2f7ff;" class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <!-- Tombol di sisi kiri -->
-                        <a href="/admin/products/add" class="btn btn-primary">Tambah Produk</a>
+                        <a href="/admin/products/add<?= "?return_url=" . urlencode(current_url()); ?>" class="btn btn-primary">Tambah Produk</a>
 
                         <!-- Tombol di sisi kanan -->
                         <div>
@@ -65,7 +65,7 @@ Produk list<?= $this->extend('Layouts/TemplateAdmin') ?>
                                     <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
                                         <div class="dataTable-top">
                                             <div class="dataTable-search">
-                                                <input class="dataTable-input" placeholder="Search..." type="text">
+                                                <input class="dataTable-input" name="query" placeholder="Search..." type="text">
                                             </div>
                                         </div>
                                         <br>
@@ -91,7 +91,7 @@ Produk list<?= $this->extend('Layouts/TemplateAdmin') ?>
                                                         $no = 1;
                                                         foreach($productData as $product) :
                                                     ?>
-                                                        <tr class="clickable-row" onclick="window.location.href='/admin/product/detail/<?= encrypt($product['id_product']) . "?return_url=" . urlencode(current_url()); ?>'">
+                                                        <tr class="clickable-row" data-id="<?= encrypt($product['id_product']) ?>" onclick="window.location.href='/admin/product/detail/<?= encrypt($product['id_product']) . "?return_url=" . urlencode(current_url()); ?>'">
                                                             <td><?= $no++ ?></td>
                                                             <td><?= $product["product_name"] ?></td>
                                                             <td><?= $product["description"] ?></td>

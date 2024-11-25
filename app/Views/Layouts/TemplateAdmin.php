@@ -32,6 +32,7 @@
     <script src="/assets/js/main.js"></script>
     <script src="/js/flash_message.js"></script>
     <script src="/js/mycustomejs.js"></script>
+    <script src="/js/liveSearch.js"></script>
 </body>
 
 </html>

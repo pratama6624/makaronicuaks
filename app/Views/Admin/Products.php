@@ -47,7 +47,7 @@
                 <div style="background-color: #f2f7ff;" class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <!-- Tombol di sisi kiri -->
-                        <a href="/admin/products/add" class="btn btn-primary">Tambah Produk</a>
+                        <a href="/admin/products/add<?= "?return_url=" . urlencode(current_url()); ?>" class="btn btn-primary">Tambah Produk</a>
 
                         <!-- Tombol di sisi kanan -->
                         <div>

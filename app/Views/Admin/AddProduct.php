@@ -53,7 +53,7 @@
                                     <form method="POST" class="form form-horizontal" action="/admin/products/save" enctype="multipart/form-data">
                                         <div class="card-header d-flex justify-content-between align-items-center">
                                             <!-- Tombol di sisi kiri -->
-                                            <a href="/admin/products" class="btn btn-secondary d-flex align-items-center" style="width: 210px;">
+                                            <a href="<?= $backUrl ?>" class="btn btn-secondary d-flex align-items-center" style="width: 210px;">
                                                 <i class="bi bi-chevron-left"></i>&nbsp; Tambah Produk Baru
                                             </a>
                                             

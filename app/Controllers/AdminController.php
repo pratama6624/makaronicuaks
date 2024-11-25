@@ -107,9 +107,12 @@ class AdminController extends BaseController
 
     public function addProduct(): string
     {
+        $referer = session()->get('referer') ?? site_url('admin/products');
+
         $data = [
             "title" => "Tambah Produk",
             "sideMenuTitle" => $this->request->getUri()->getSegment(2),
+            "backUrl" => $referer
         ];
 
         return view('Admin/AddProduct', $data);
@@ -378,5 +381,19 @@ class AdminController extends BaseController
         ];
 
         return view('Admin/Review', $data);
+    }
+
+    public function search()
+    {
+        $searchQuery = $this->request->getVar('query');
+        $productModel = $this->productModel->searchAllProductsIncludingDiscounts($searchQuery);
+
+        foreach ($productModel as &$product) {
+            $encryptedId = encrypt($product['id_product']);
+            $currentUrl = urlencode(current_url());
+            $product['url'] = base_url("/admin/product/detail/$encryptedId?return_url=$currentUrl");
+        }
+
+        return $this->response->setJSON($productModel);
     }
 }

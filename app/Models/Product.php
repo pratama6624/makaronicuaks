@@ -32,7 +32,8 @@ class Product extends Model
             'products.discount_status',
             'products.discount_amount',
             'products.discount_note',
-            'products.description'
+            'products.description',
+            "CONCAT('/admin/product/detail/', products.id_product) as partial_url"
     ];
 
     public function getProductIncludingDiscountByID($idProduct)
@@ -51,6 +52,28 @@ class Product extends Model
         ->join("discount_events", "discount_events.id_discount = discount_event_products.discount_id", "left")
         ->get()
         ->getResultArray();
+    }
+
+    public function searchAllProductsIncludingDiscounts($searchQuery)
+    {
+        $productData;
+
+        if($searchQuery) {
+            $productData = $this->select($this->selectFields)
+            ->join("discount_event_products", "discount_event_products.product_id = products.id_product", "left")
+            ->join("discount_events", "discount_events.id_discount = discount_event_products.discount_id", "left")
+            ->like('products.product_name', $searchQuery)
+            ->orLike('products.description', $searchQuery)
+            ->orLike('products.category', $searchQuery)
+            ->orLike('products.flavor', $searchQuery)
+            ->findAll();
+        } else {
+            $productData = $this->getAllProductsIncludingDiscounts();
+        }
+
+        // BESOK CEK BAGIAN LOGIKA DI JS KARENA TIDAK SESUAI DENGAN YANG DI PHP, KARENA HASILNYA BEDA BAHKAN JIDA SEMUA PRODUK DITAMPILKAN
+        
+        return $productData;
     }
 
     public function getProductDiscount()
