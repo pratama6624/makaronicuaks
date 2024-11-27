@@ -1,5 +1,12 @@
 const searchInput = document.querySelector('.dataTable-input');
-const tableBody = document.querySelector('tbody');
+const tableBody = document.querySelector('#liveSearchProductDetailList');
+
+// Lazy Load
+let offset = 0;
+const limit = 10;
+let isLoading = false;
+let hasMoreData = true;
+let activeQuery = '';
 
 // Fungsi untuk menyimpan query pencarian ke session storage
 function saveSearchQuery(query) {
@@ -14,7 +21,7 @@ function getSavedSearchQuery() {
 function highlightText(text, query) {
     if (!query) return text;
 
-    // Buat RegExp untuk mencocokkan kata kunci (case-insensitive)
+    // RegExp untuk mencocokkan kata kunci (case-insensitive)
     const regex = new RegExp(`(${query})`, 'gi');
 
     // Bungkus kata kunci dengan tag <mark>
@@ -22,12 +29,22 @@ function highlightText(text, query) {
 }
 
 // Fungsi untuk mengirim permintaan AJAX dan menampilkan hasil
-function performSearch(query) {
-    fetch(`/admin/products/search?query=${encodeURIComponent(query)}`)
+function loadProducts(query = '') {
+    if (isLoading || (!hasMoreData && query === activeQuery)) return;
+
+    // Bersihkan isi tabel
+    if (query !== activeQuery) {
+        // Reset tabel dan offset jika query pencarian baru
+        tableBody.innerHTML = '';
+        offset = 0;
+        hasMoreData = true;
+    }
+
+    isLoading = true;
+
+    fetch(`/admin/products/search?query=${encodeURIComponent(query)}&offset=${offset}&limit=${limit}`)
         .then(response => response.json())
         .then(data => {
-            // Bersihkan isi tabel
-            tableBody.innerHTML = '';
 
             if (data.length > 0) {
                 data.forEach((product, index) => {
@@ -56,9 +73,9 @@ function performSearch(query) {
                     const productCategory = highlightText(product.category, query);
                     const productFlavor = highlightText(product.flavor, query);
 
-                    tableBody.innerHTML += `
+                    const productRow = `
                         <tr class="clickable-row" onclick="saveSearchQuery('${query}'); window.location.href='${product.url}'">
-                            <td>${index + 1}</td>
+                            <td>${offset + index + 1}</td>
                             <td>${productName}</td>
                             <td>${productDescription}</td>
                             <td>${productCategory}</td>
@@ -74,28 +91,46 @@ function performSearch(query) {
                             <td>${product.stock}</td>
                         </tr>
                     `;
+                    tableBody.innerHTML += productRow;
                 });
+                offset += limit;
+                hasMoreData = data.length === limit;
             } else {
-                tableBody.innerHTML = `<tr><td colspan="9" class="text-center">No products found</td></tr>`;
+                hasMoreData = false;
+                if (query && offset === 0) {
+                    tableBody.innerHTML = `<tr><td colspan="9" class="text-center">Tidak ada hasil ditemukan</td></tr>`;
+                };
             }
         })
-        .catch(error => console.error('Error fetching data:', error));
+        .catch(error => console.error('Error fetching data:', error))
+        .finally(
+            () => {
+                isLoading = false;
+                activeQuery = query;
+            }
+        );
 }
 
 // Ambil query pencarian yang tersimpan di session storage
 const savedSearchQuery = getSavedSearchQuery();
 if (savedSearchQuery) {
     searchInput.value = savedSearchQuery;
-    performSearch(savedSearchQuery);
+    activeQuery = savedSearchQuery;
+    loadProducts(savedSearchQuery);
+} else {
+    loadProducts();
 }
 
-// Tambahkan event listener pada input pencarian
 searchInput.addEventListener('input', function () {
-    const query = this.value;
-
-    // Simpan query ke session storage
+    const query = this.value.trim();
     saveSearchQuery(query);
+    offset = 0;
+    hasMoreData = true; // Izinkan lazy load untuk pencarian baru
+    loadProducts(query);
+});
 
-    // Lakukan pencarian
-    performSearch(query);
+window.addEventListener('scroll', () => {
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 200) {
+        loadProducts(activeQuery);
+    }
 });

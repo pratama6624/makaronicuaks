@@ -45,16 +45,15 @@ class Product extends Model
         ->first();
     }
 
-    public function getAllProductsIncludingDiscounts()
+    public function getAllProductsIncludingDiscounts($limit, $offset)
     {
         return $this->select($this->selectFields)
         ->join("discount_event_products", "discount_event_products.product_id = products.id_product", "left")
         ->join("discount_events", "discount_events.id_discount = discount_event_products.discount_id", "left")
-        ->get()
-        ->getResultArray();
+        ->findAll($limit, $offset);
     }
 
-    public function searchAllProductsIncludingDiscounts($searchQuery)
+    public function searchAllProductsIncludingDiscounts($searchQuery, $limit, $offset)
     {
         $productData;
 
@@ -66,9 +65,9 @@ class Product extends Model
             ->orLike('products.description', $searchQuery)
             ->orLike('products.category', $searchQuery)
             ->orLike('products.flavor', $searchQuery)
-            ->findAll();
+            ->findAll($limit, $offset);
         } else {
-            $productData = $this->getAllProductsIncludingDiscounts();
+            $productData = $this->getAllProductsIncludingDiscounts($limit, $offset);
         }
 
         // BESOK CEK BAGIAN LOGIKA DI JS KARENA TIDAK SESUAI DENGAN YANG DI PHP, KARENA HASILNYA BEDA BAHKAN JIDA SEMUA PRODUK DITAMPILKAN

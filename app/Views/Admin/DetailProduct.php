@@ -144,20 +144,21 @@
                                                                 <td class="text-bold-500">Harga</td>
                                                                 <td>
                                                                     <?php
-                                                                                if($productDetailData["discount_status"] == 1) {
-                                                                                    $discountAmount = $productDetailData["price"] * ($productDetailData["discount_amount"] / 100);
-                                                                                    $afterDiscount = $productDetailData["price"] - $discountAmount;
+                                                                                if($productDetailData["discount_status"] == 1 || $productDetailData["id_discount"] != null) {
+                                                                                    $discountPrecentage = $productDetailData["discount_status"] == 1 ? $productDetailData["discount_amount"] : $productDetailData["precentage"];
+                                                                                    $discount = $productDetailData["price"] * ($discountPrecentage / 100);
+                                                                                    $afterDiscount = $productDetailData["price"] - $discount;
                                                                             ?>
                                                                     <b><s
-                                                                            style="color: red"><?= $productDetailData["price"] ?></s></b>
+                                                                            style="color: red"><?= "Rp " . number_format($productDetailData["price"], 0, ',', '.')?></s></b>
                                                                     &nbsp;
                                                                     <?php } ?>
 
                                                                     <?php
-                                                                                if($productDetailData["discount_status"] == 1) {
-                                                                                    echo number_format($afterDiscount, 0, ',', '.');
+                                                                                if($productDetailData["discount_status"] == 1 || $productDetailData["id_discount"] != null) {
+                                                                                    echo "Rp " . number_format($afterDiscount, 0, ',', '.');
                                                                                 } else {
-                                                                                    echo number_format($productDetailData["price"], 0, ',', '.');
+                                                                                    echo "Rp " . number_format($productDetailData["price"], 0, ',', '.');
                                                                                 }
                                                                             ?>
                                                                 </td>

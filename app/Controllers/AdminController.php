@@ -65,12 +65,15 @@ class AdminController extends BaseController
 
     public function products(): string
     {
+        $offset = $this->request->getGet('offset') ?? 0;
+        $limit = $this->request->getGet('limit') ?? 10;
+
         session()->set('referer', current_url());
 
         $data = [
             "title" => "Produk",
             "sideMenuTitle" => $this->request->getUri()->getSegment(2),
-            "productData" => $this->productModel->getAllProductsIncludingDiscounts()
+            "productData" => $this->productModel->getAllProductsIncludingDiscounts($limit, $offset)
         ];
 
         return view('Admin/Products', $data);
@@ -83,7 +86,7 @@ class AdminController extends BaseController
         $data = [
             "title" => "Produk",
             "sideMenuTitle" => $this->request->getUri()->getSegment(2),
-            "productData" => $this->productModel->getAllProductsIncludingDiscounts()
+            "productData" => []
         ];
 
         return view('Admin/ProductLists', $data);
@@ -386,7 +389,10 @@ class AdminController extends BaseController
     public function search()
     {
         $searchQuery = $this->request->getVar('query');
-        $productModel = $this->productModel->searchAllProductsIncludingDiscounts($searchQuery);
+        $offset = $this->request->getVar('offset') ?? 0;
+        $limit = $this->request->getVar('limit') ?? 10;
+
+        $productModel = $this->productModel->searchAllProductsIncludingDiscounts($searchQuery, $limit, $offset);
 
         foreach ($productModel as &$product) {
             $encryptedId = encrypt($product['id_product']);
@@ -394,6 +400,20 @@ class AdminController extends BaseController
             $product['url'] = base_url("/admin/product/detail/$encryptedId?return_url=$currentUrl");
         }
 
+        // SAMPAI DI PENERAPAN LAZY LOAD BROO, COBA TARUH DULU DI PRODUK DETAIL LIST,.... OKEYY
+
         return $this->response->setJSON($productModel);
+    }
+
+    // Lazy Load
+    public function loadMoreProducts() {
+        $searchQuery = $this->request->getGet('query') ?? null;
+        $offset = $this->request->getGet('offset') ?? 0;
+        $limit = $this->request->getGet('limit') ?? 10;
+    
+        // Query database dengan limit dan offset
+        $productData = $this->productModel->searchAllProductsIncludingDiscounts($searchQuery, $limit, $offset);
+    
+        return $this->response->setJSON($productData);
     }
 }
