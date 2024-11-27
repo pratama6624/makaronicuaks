@@ -32,7 +32,11 @@
     <script src="/assets/js/main.js"></script>
     <script src="/js/flash_message.js"></script>
     <script src="/js/mycustomejs.js"></script>
-    <script src="/js/liveSearch.js"></script>
+    <!-- <script src="/js/liveSearch.js"></script> -->
+
+    <script type="module" src="/js/livesearch_lazyload/utils.js"></script>
+    <script type="module" src="/js/livesearch_lazyload/livesearch.js"></script>
+    <script type="module" src="/js/livesearch_lazyload/pages/productlist.js"></script>
 </body>
 
 </html>
