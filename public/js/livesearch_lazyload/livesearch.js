@@ -1,5 +1,7 @@
 import { saveSearchQuery, getSavedSearchQuery } from './utils.js';
 
+let debounceTimeout;
+
 export function initLiveSearch(config) {
     const {
         searchInputSelector,
@@ -76,10 +78,16 @@ export function initLiveSearch(config) {
     // Event listener untuk input pencarian
     searchInput.addEventListener('input', function () {
         const query = this.value.trim();
+
+        clearTimeout(debounceTimeout);
+
         sessionStorage.setItem('searchQuery', query);
-        offset = 0;
-        hasMoreData = true;
-        loadProducts(query);
+
+        debounceTimeout = setTimeout(() => {
+            offset = 0;
+            hasMoreData = true;
+            loadProducts(query);
+        }, 500)
     });
 
     // Event listener untuk lazy load
