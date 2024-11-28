@@ -49,6 +49,11 @@
                         <!-- Tombol di sisi kiri -->
                         <a href="/admin/products/add<?= "?return_url=" . urlencode(current_url()); ?>" class="btn btn-primary">Tambah Produk</a>
 
+                        <div class="dataProduct-search">
+                            <input class="dataProduct-input" name="query"
+                                placeholder="Nama & event diskon" type="text">
+                        </div>
+
                         <!-- Tombol di sisi kanan -->
                         <div>
                             <a href="/admin/products" class="btn btn-<?= $sideMenuTitle == "products" ? "primary" : "secondary" ?>">List Gambar</a>
@@ -57,7 +62,7 @@
                         </div>
                     </div>
                     <div class="card-body" style="margin-top:30px">
-                        <div class="row">
+                        <div class="row" id="liveSearchProduct">
                             <?php if(empty($productData)) { ?>
                             <div class="col-xl-4 col-md-6 col-sm-12">
                                 <div class="alert alert-danger">TIdak ada produk tersedia</div>
@@ -65,6 +70,7 @@
                             <?php } ?>
                             <?php foreach($productData as $product) { ?>
                             <div class="col-xl-2 col-md-6 col-sm-12">
+
                                 <a
                                     href="/admin/product/detail/<?= encrypt($product["id_product"]) . "?return_url=" . urlencode(current_url()); ?>">
 

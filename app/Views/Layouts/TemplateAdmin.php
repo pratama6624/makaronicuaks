@@ -36,6 +36,7 @@
 
     <script type="module" src="/js/livesearch_lazyload/utils.js"></script>
     <script type="module" src="/js/livesearch_lazyload/livesearch.js"></script>
+    <script type="module" src="/js/livesearch_lazyload/pages/product.js"></script>
     <script type="module" src="/js/livesearch_lazyload/pages/productlist.js"></script>
 </body>
 
