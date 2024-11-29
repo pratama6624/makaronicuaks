@@ -3,27 +3,6 @@ import { saveSearchQuery, highlightText } from '../utils.js';
 
 const initialState = JSON.parse(sessionStorage.getItem('liveSearchState'));
 
-// Pulihkan posisi scroll saat halaman dimuat
-window.addEventListener('load', () => {
-    const savedPosition = sessionStorage.getItem('scrollPosition');
-    if (savedPosition) {
-        window.scrollTo(0, parseInt(savedPosition, 10));
-    }
-});
-
-document.querySelector('#liveSearchProductDetailList').addEventListener('click', (event) => {
-    const row = event.target.closest('.clickable-row');
-    if (row) {
-        const query = row.getAttribute('data-query');
-        const url = row.getAttribute('data-url');
-
-        // Simpan posisi scroll
-        sessionStorage.setItem('scrollPosition', window.scrollY);
-
-        saveSearchQuery(query);
-        window.location.href = url;
-    }
-});
 initLiveSearch({
     searchInputSelector: '.dataTableProductList-input',
     tableBodySelector: '#liveSearchProductDetailList',

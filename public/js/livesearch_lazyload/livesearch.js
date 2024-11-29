@@ -140,8 +140,16 @@ window.addEventListener('beforeunload', () => {
     }
 });
 
+// Pulihkan posisi scroll saat halaman dimuat
+// window.addEventListener('load', () => {
+//     const savedPosition = sessionStorage.getItem('scrollPosition');
+//     if (savedPosition) {
+//         window.scrollTo(0, parseInt(savedPosition, 10));
+//     }
+// });
+
 // Event listener untuk navigasi ke halaman detail
-document.querySelector('#liveSearchProductDetailList').addEventListener('click', (event) => {
+document.querySelector('#liveSearchProductDetailList', '#liveSearchProduct').addEventListener('click', (event) => {
     const row = event.target.closest('.clickable-row');
     if (row) {
         const query = row.getAttribute('data-query');

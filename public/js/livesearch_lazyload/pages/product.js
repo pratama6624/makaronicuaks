@@ -1,6 +1,8 @@
 import { initLiveSearch } from '../livesearch.js';
 import { highlightText } from '../utils.js';
 
+const initialState = JSON.parse(sessionStorage.getItem('liveSearchState'));
+
 initLiveSearch({
     searchInputSelector: '.dataProduct-input',
     tableBodySelector: '#liveSearchProduct',
@@ -31,7 +33,7 @@ initLiveSearch({
         // Render HTML card
         return `
             <div class="col-xl-2 col-md-6 col-sm-12">
-                <a href="/admin/product/detail/${encodeURIComponent(product.id_product)}?return_url=${encodeURIComponent(window.location.href)}" onclick="saveSearchQuery('${query}')">
+                <a href="${product.url}" onclick="saveSearchQuery('${query}')" class="card clickable-rowonproduct">
                     <div class="card">
                         <div class="card-content">
                             <h6 style="padding: 10px; margin-bottom: 0px">${productName}</h6>
@@ -52,4 +54,5 @@ initLiveSearch({
         `;
     },
     limit: 10,
+    initialState: initialState, // Pastikan ini ada
 });
