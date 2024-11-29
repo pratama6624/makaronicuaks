@@ -71,7 +71,7 @@ Produk list<?= $this->extend('Layouts/TemplateAdmin') ?>
                                                 class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
                                                 <div class="dataTable-top">
                                                     <div class="dataTable-search">
-                                                        <input class="dataTable-input" name="query"
+                                                        <input class="dataTableProductList-input" name="query"
                                                             placeholder="Nama, deskripsi, kategori & rasa" type="text">
                                                     </div>
                                                 </div>
@@ -167,5 +167,9 @@ Produk list<?= $this->extend('Layouts/TemplateAdmin') ?>
         </div>
     </div>
 </div>
+
+<script type="module" src="/js/livesearch_lazyload/utils.js"></script>
+<script type="module" src="/js/livesearch_lazyload/livesearch.js"></script>
+<script type="module" src="/js/livesearch_lazyload/pages/productlist.js"></script>
 
 <?= $this->endSection() ?>

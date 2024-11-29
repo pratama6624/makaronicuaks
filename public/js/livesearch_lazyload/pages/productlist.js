@@ -1,18 +1,31 @@
 import { initLiveSearch } from '../livesearch.js';
 import { saveSearchQuery, highlightText } from '../utils.js';
 
+const initialState = JSON.parse(sessionStorage.getItem('liveSearchState'));
+
+// Pulihkan posisi scroll saat halaman dimuat
+window.addEventListener('load', () => {
+    const savedPosition = sessionStorage.getItem('scrollPosition');
+    if (savedPosition) {
+        window.scrollTo(0, parseInt(savedPosition, 10));
+    }
+});
+
 document.querySelector('#liveSearchProductDetailList').addEventListener('click', (event) => {
     const row = event.target.closest('.clickable-row');
     if (row) {
         const query = row.getAttribute('data-query');
         const url = row.getAttribute('data-url');
-        saveSearchQuery(query); // Fungsi sekarang bisa dipanggil langsung di sini
+
+        // Simpan posisi scroll
+        sessionStorage.setItem('scrollPosition', window.scrollY);
+
+        saveSearchQuery(query);
         window.location.href = url;
     }
 });
-
 initLiveSearch({
-    searchInputSelector: '.dataTable-input',
+    searchInputSelector: '.dataTableProductList-input',
     tableBodySelector: '#liveSearchProductDetailList',
     fetchUrl: '/admin/products/search',
     renderRowCallback: (product, index, query) => {
@@ -61,4 +74,5 @@ initLiveSearch({
                 `;
     },
     limit: 10,
+    initialState: initialState, // Pastikan ini ada
 });

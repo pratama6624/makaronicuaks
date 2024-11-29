@@ -1,4 +1,4 @@
-import { saveSearchQuery, getSavedSearchQuery } from './utils.js';
+import { getSavedSearchQuery } from './utils.js';
 
 let debounceTimeout;
 
@@ -9,7 +9,8 @@ export function initLiveSearch(config) {
         fetchUrl,
         renderRowCallback,
         limit = 10,
-        extraParams = {}
+        extraParams = {},
+        initialState = null,
     } = config;
 
     const searchInput = document.querySelector(searchInputSelector);
@@ -19,6 +20,35 @@ export function initLiveSearch(config) {
     let isLoading = false;
     let hasMoreData = true;
     let activeQuery = '';
+
+    // Fungsi untuk menyimpan state
+    function saveState() {
+        const state = {
+            query: activeQuery,
+            items: [...tableBody.children].map((child) => child.outerHTML),
+            offset,
+            scrollPosition: window.scrollY,
+        };
+        sessionStorage.setItem('liveSearchState', JSON.stringify(state));
+    }
+
+    // Fungsi untuk memulihkan state
+    function restoreState() {
+        const isReturning = sessionStorage.getItem('returningFromDetail') === 'true';
+        if (isReturning && initialState) {
+            const { query, items, offset: savedOffset, scrollPosition } = initialState;
+
+            searchInput.value = query || '';
+            activeQuery = query || '';
+            offset = savedOffset || 0;
+            hasMoreData = true;
+            tableBody.innerHTML = items.join('');
+            window.scrollTo(0, scrollPosition || 0);
+
+            // Hapus tanda "returningFromDetail" setelah memulihkan
+            sessionStorage.removeItem('returningFromDetail');
+        }
+    }
 
     const savedQuery = getSavedSearchQuery();
     if (savedQuery) {
@@ -72,6 +102,7 @@ export function initLiveSearch(config) {
             .finally(() => {
                 isLoading = false;
                 activeQuery = query;
+                saveState();
             });
     }
 
@@ -95,7 +126,45 @@ export function initLiveSearch(config) {
         if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 200) {
             loadProducts(activeQuery);
         }
+        saveState();
     });
 
-    loadProducts(activeQuery);
+    restoreState(); // Pulihkan state awal
+    loadProducts(activeQuery); // Load data pertama kali
 }
+
+// Reset scroll saat navigasi ke halaman lain
+window.addEventListener('beforeunload', () => {
+    if (!sessionStorage.getItem('returningFromDetail')) {
+        window.scrollTo(0, 0);
+    }
+});
+
+// Event listener untuk navigasi ke halaman detail
+document.querySelector('#liveSearchProductDetailList').addEventListener('click', (event) => {
+    const row = event.target.closest('.clickable-row');
+    if (row) {
+        const query = row.getAttribute('data-query');
+        const url = row.getAttribute('data-url');
+
+        // Simpan posisi scroll dan tanda asal halaman sebelum navigasi
+        sessionStorage.setItem('scrollPosition', window.scrollY);
+        sessionStorage.setItem('returningFromDetail', 'true');
+
+        // Navigasi ke halaman detail produk
+        window.location.href = url;
+    }
+});
+
+// Reset scroll untuk semua tautan navigasi lain
+document.querySelectorAll('.nav-link.some-class').forEach(link => {
+    link.addEventListener('click', (event) => {
+        event.preventDefault();
+
+        window.scrollTo(0, 0); // Hanya berlaku untuk class tertentu
+        const targetUrl = link.getAttribute('href');
+        if (targetUrl) {
+            window.location.href = targetUrl;
+        }
+    });
+});
