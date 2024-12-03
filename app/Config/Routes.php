@@ -37,6 +37,10 @@ $routes->get('/account', 'HomeController::account', ['filter' => 'roleFilter']);
 
 // Admin Controller
 $routes->get('/admin/home', 'AdminController::home', ['filter' => 'roleFilter']);
+$routes->get('/admin/flash_info/new_product', 'AdminController::newProductInfo', ['filter' => 'roleFilter']);
+$routes->get('/admin/flash_info/stock', 'AdminController::stockInfo', ['filter' => 'roleFilter']);
+$routes->get('/admin/flash_info/new_event', 'AdminController::newEventInfo', ['filter' => 'roleFilter']);
+$routes->get('/admin/flash_info/new_user', 'AdminController::newUser', ['filter' => 'roleFilter']);
 
 $routes->get('/admin/orders/list', 'AdminController::orders', ['filter' => 'roleFilter']);
 $routes->get('/admin/orders/complete', 'AdminController::orderComplete', ['filter' => 'roleFilter']);

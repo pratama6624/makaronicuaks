@@ -33,6 +33,46 @@ class AdminController extends BaseController
         return view('Admin/Dashboard', $data);
     }
 
+    public function newProductInfo(): string
+    {
+        $data = [
+            "title" => "Admin : Produk Baru",
+            "sideMenuTitle" => $this->request->getUri()->getSegment(2),
+        ];
+
+        return view('FlashInfo/FlashInfoNewProduct', $data);
+    }
+
+    public function stockInfo(): string
+    {
+        $data = [
+            "title" => "Admin : Stok Menipis",
+            "sideMenuTitle" => $this->request->getUri()->getSegment(2),
+        ];
+
+        return view('FlashInfo/FlashInfoStock', $data);
+    }
+
+    public function newEventInfo(): string
+    {
+        $data = [
+            "title" => "Admin : Produk Baru",
+            "sideMenuTitle" => $this->request->getUri()->getSegment(2),
+        ];
+
+        return view('FlashInfo/FlashInfoNewEvent', $data);
+    }
+
+    public function newUser(): string
+    {
+        $data = [
+            "title" => "Admin : Pengguna Baru",
+            "sideMenuTitle" => $this->request->getUri()->getSegment(2),
+        ];
+
+        return view('FlashInfo/FlashInfoNewUser', $data);
+    }
+
     public function orders(): string
     {
         $data = [
