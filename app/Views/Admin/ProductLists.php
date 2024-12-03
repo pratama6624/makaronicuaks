@@ -50,6 +50,11 @@ Produk list<?= $this->extend('Layouts/TemplateAdmin') ?>
                         <a href="/admin/products/add<?= "?return_url=" . urlencode(current_url()); ?>"
                             class="btn btn-primary">Tambah Produk</a>
 
+                        <div class="dataTable-search">
+                            <input class="dataTableProductList-input" name="query"
+                                placeholder="Nama, deskripsi, kategori & rasa" type="text" style="border: 1px solid gray; border-radius: 5px; width: 235px">
+                        </div>
+
                         <!-- Tombol di sisi kanan -->
                         <div>
                             <a href="/admin/products"
@@ -69,13 +74,6 @@ Produk list<?= $this->extend('Layouts/TemplateAdmin') ?>
                                         <div class="card-body">
                                             <div
                                                 class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
-                                                <div class="dataTable-top">
-                                                    <div class="dataTable-search">
-                                                        <input class="dataTableProductList-input" name="query"
-                                                            placeholder="Nama, deskripsi, kategori & rasa" type="text">
-                                                    </div>
-                                                </div>
-                                                <br>
                                                 <div class="dataTable-container">
                                                     <!-- Membungkus tabel dalam container dengan scroll -->
                                                     <div style="overflow-x: auto;">

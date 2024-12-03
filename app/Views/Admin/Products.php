@@ -51,7 +51,7 @@
 
                         <div class="dataProduct-search">
                             <input class="dataProduct-input" name="query"
-                                placeholder="Nama & event diskon" type="text">
+                                placeholder="Nama & event diskon" type="text" style="border: 1px solid gray; border-radius: 5px; width: 235px">
                         </div>
 
                         <!-- Tombol di sisi kanan -->
