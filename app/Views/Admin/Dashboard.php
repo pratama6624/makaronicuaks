@@ -43,14 +43,14 @@
                 </div>
             </div>
             <div class="page-content">
-                <section class="section" style="margin-bottom: 15px;>
+                <section class="section" style="margin-bottom: -20px;">
                     <div class="card">
-                        <div class="card-header">
-                            <h5>Simple Datatable</h5>
+                        <div class="card-header" style="padding-bottom: 5px; padding-top: 15px; border-radius: 10px">
+                            <h6>Aktivitas Terkini</h6>
                         </div>
                     </div>
                 </section>
-                <section class="row">
+                <section class="row" style="margin-bottom: -20px;">
                     <div class="col-12">
                         <div class="row">
                             <div class="col-6 col-lg-3 col-md-6">
@@ -63,7 +63,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-8">
-                                                <h6 class="text-muted font-semibold">Total Penjualan</h6>
+                                                <h6 class="text-muted font-semibold">Produk Baru</h6>
                                                 <h6 class="font-extrabold mb-0">23</h6>
                                             </div>
                                         </div>
@@ -80,7 +80,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-8">
-                                                <h6 class="text-muted font-semibold">Pesanan Baru</h6>
+                                                <h6 class="text-muted font-semibold">Stok Menipis</h6>
                                                 <h6 class="font-extrabold mb-0">10</h6>
                                             </div>
                                         </div>
@@ -97,7 +97,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-8">
-                                                <h6 class="text-muted font-semibold">Stok Menipis</h6>
+                                                <h6 class="text-muted font-semibold">Event Diskon</h6>
                                                 <h6 class="font-extrabold mb-0">19</h6>
                                             </div>
                                         </div>
@@ -115,6 +115,80 @@
                                             </div>
                                             <div class="col-md-8">
                                                 <h6 class="text-muted font-semibold">Pengguna Baru</h6>
+                                                <h6 class="font-extrabold mb-0">112</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="row">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-6 col-lg-3 col-md-6">
+                                <div class="card">
+                                    <div class="card-body px-3 py-4-5">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="stats-icon purple">
+                                                    <i class="iconly-boldShow"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <h6 class="text-muted font-semibold">Pesanan baru</h6>
+                                                <h6 class="font-extrabold mb-0">23</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-3 col-md-6">
+                                <div class="card">
+                                    <div class="card-body px-3 py-4-5">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="stats-icon blue">
+                                                    <i class="iconly-boldProfile"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <h6 class="text-muted font-semibold">Pesanan Batal</h6>
+                                                <h6 class="font-extrabold mb-0">10</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-3 col-md-6">
+                                <div class="card">
+                                    <div class="card-body px-3 py-4-5">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="stats-icon green">
+                                                    <i class="iconly-boldAdd-User"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <h6 class="text-muted font-semibold">Total Penjualan</h6>
+                                                <h6 class="font-extrabold mb-0">19</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-3 col-md-6">
+                                <div class="card">
+                                    <div class="card-body px-3 py-4-5">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="stats-icon red">
+                                                    <i class="iconly-boldBookmark"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <h6 class="text-muted font-semibold">Nilai Rupiah</h6>
                                                 <h6 class="font-extrabold mb-0">112</h6>
                                             </div>
                                         </div>

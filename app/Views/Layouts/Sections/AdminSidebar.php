@@ -4,14 +4,14 @@
 
                         <li class="sidebar-item <?= $sideMenuTitle == "home" ? 'active' : '' ?>">
                             <a href="<?= base_url("/admin/home") ?>" class='sidebar-link'>
-                                <i class="bi bi-grid-fill"></i>
+                                <i class="bi bi-house-fill"></i>
                                 <span>Beranda</span>
                             </a>
                         </li>
 
                         <li class="sidebar-item <?= $sideMenuTitle == "customers" ? 'active' : '' ?>">
                             <a href="<?= base_url("/admin/customers") ?>" class='sidebar-link'>
-                                <i class="bi bi-basket-fill"></i>
+                                <i class="bi bi-person-fill"></i>
                                 <span>Pelanggan</span>
                             </a>
                         </li>
@@ -66,6 +66,13 @@
                             <a href="<?= base_url("/admin/reports") ?>" class='sidebar-link'>
                                 <i class="bi bi-basket-fill"></i>
                                 <span>Laporan</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item <?= $sideMenuTitle == "setting" ? 'active' : '' ?>">
+                            <a href="<?= base_url("/admin/reports") ?>" class='sidebar-link'>
+                                <i class="bi bi-gear-fill"></i>
+                                <span>Pengaturan</span>
                             </a>
                         </li>
 
