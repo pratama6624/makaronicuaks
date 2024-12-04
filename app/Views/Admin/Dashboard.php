@@ -155,91 +155,99 @@
                     <div class="col-12">
                         <div class="row">
                             <div class="col-6 col-lg-3 col-md-6">
-                                <div class="card">
-                                    <div class="card-body px-3 py-4-5">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="stats-icon purple">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                        fill="white" class="bi bi-bag-check-fill" viewBox="0 0 16 16">
-                                                        <path fill-rule="evenodd"
-                                                            d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0m-.646 5.354a.5.5 0 0 0-.708-.708L7.5 10.793 6.354 9.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0z" />
-                                                    </svg>
+                                <a href="/admin/flash_info/new_order">
+                                    <div class="card">
+                                        <div class="card-body px-3 py-4-5">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="stats-icon purple">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                            fill="white" class="bi bi-bag-check-fill"
+                                                            viewBox="0 0 16 16">
+                                                            <path fill-rule="evenodd"
+                                                                d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0m-.646 5.354a.5.5 0 0 0-.708-.708L7.5 10.793 6.354 9.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0z" />
+                                                        </svg>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <h6 class="text-muted font-semibold">Pesanan baru</h6>
-                                                <h6 class="font-extrabold mb-0">23</h6>
+                                                <div class="col-md-8">
+                                                    <h6 class="text-muted font-semibold">Pesanan baru</h6>
+                                                    <h6 class="font-extrabold mb-0">23</h6>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                             <div class="col-6 col-lg-3 col-md-6">
-                                <div class="card">
-                                    <div class="card-body px-3 py-4-5">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="stats-icon blue">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                        fill="white" class="bi bi-bag-x-fill" viewBox="0 0 16 16">
-                                                        <path fill-rule="evenodd"
-                                                            d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0M6.854 8.146a.5.5 0 1 0-.708.708L7.293 10l-1.147 1.146a.5.5 0 0 0 .708.708L8 10.707l1.146 1.147a.5.5 0 0 0 .708-.708L8.707 10l1.147-1.146a.5.5 0 0 0-.708-.708L8 9.293z" />
-                                                    </svg>
+                                <a href="/admin/flash_info/new_cancel_order">
+                                    <div class="card">
+                                        <div class="card-body px-3 py-4-5">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="stats-icon blue">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                            fill="white" class="bi bi-bag-x-fill" viewBox="0 0 16 16">
+                                                            <path fill-rule="evenodd"
+                                                                d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0M6.854 8.146a.5.5 0 1 0-.708.708L7.293 10l-1.147 1.146a.5.5 0 0 0 .708.708L8 10.707l1.146 1.147a.5.5 0 0 0 .708-.708L8.707 10l1.147-1.146a.5.5 0 0 0-.708-.708L8 9.293z" />
+                                                        </svg>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <h6 class="text-muted font-semibold">Pesanan Batal</h6>
-                                                <h6 class="font-extrabold mb-0">10</h6>
+                                                <div class="col-md-8">
+                                                    <h6 class="text-muted font-semibold">Pesanan Batal</h6>
+                                                    <h6 class="font-extrabold mb-0">10</h6>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                             <div class="col-6 col-lg-3 col-md-6">
-                                <div class="card">
-                                    <div class="card-body px-3 py-4-5">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="stats-icon green">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                        fill="white" class="bi bi-bag-fill" viewBox="0 0 16 16">
-                                                        <path
-                                                            d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4z" />
-                                                    </svg>
+                                <a href="/admin/flash_info/total_sales">
+                                    <div class="card">
+                                        <div class="card-body px-3 py-4-5">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="stats-icon green">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                            fill="white" class="bi bi-bag-fill" viewBox="0 0 16 16">
+                                                            <path
+                                                                d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4z" />
+                                                        </svg>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <h6 class="text-muted font-semibold">Total Penjualan</h6>
-                                                <h6 class="font-extrabold mb-0">19</h6>
+                                                <div class="col-md-8">
+                                                    <h6 class="text-muted font-semibold">Total Penjualan</h6>
+                                                    <h6 class="font-extrabold mb-0">19</h6>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                             <div class="col-6 col-lg-3 col-md-6">
-                                <div class="card">
-                                    <div class="card-body px-3 py-4-5">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="stats-icon red">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                        fill="white" class="bi bi-wallet-fill"
-                                                        viewBox="0 0 16 16">
-                                                        <path
-                                                            d="M1.5 2A1.5 1.5 0 0 0 0 3.5v2h6a.5.5 0 0 1 .5.5c0 .253.08.644.306.958.207.288.557.542 1.194.542s.987-.254 1.194-.542C9.42 6.644 9.5 6.253 9.5 6a.5.5 0 0 1 .5-.5h6v-2A1.5 1.5 0 0 0 14.5 2z" />
-                                                        <path
-                                                            d="M16 6.5h-5.551a2.7 2.7 0 0 1-.443 1.042C9.613 8.088 8.963 8.5 8 8.5s-1.613-.412-2.006-.958A2.7 2.7 0 0 1 5.551 6.5H0v6A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5z" />
-                                                    </svg>
+                                <a href="/admin/flash_info/total_value">
+                                    <div class="card">
+                                        <div class="card-body px-3 py-4-5">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="stats-icon red">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                            fill="white" class="bi bi-wallet-fill" viewBox="0 0 16 16">
+                                                            <path
+                                                                d="M1.5 2A1.5 1.5 0 0 0 0 3.5v2h6a.5.5 0 0 1 .5.5c0 .253.08.644.306.958.207.288.557.542 1.194.542s.987-.254 1.194-.542C9.42 6.644 9.5 6.253 9.5 6a.5.5 0 0 1 .5-.5h6v-2A1.5 1.5 0 0 0 14.5 2z" />
+                                                            <path
+                                                                d="M16 6.5h-5.551a2.7 2.7 0 0 1-.443 1.042C9.613 8.088 8.963 8.5 8 8.5s-1.613-.412-2.006-.958A2.7 2.7 0 0 1 5.551 6.5H0v6A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5z" />
+                                                        </svg>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <h6 class="text-muted font-semibold">Nilai Rupiah</h6>
-                                                <h6 class="font-extrabold mb-0">112</h6>
+                                                <div class="col-md-8">
+                                                    <h6 class="text-muted font-semibold">Nilai Rupiah</h6>
+                                                    <h6 class="font-extrabold mb-0">112</h6>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                         </div>
                     </div>

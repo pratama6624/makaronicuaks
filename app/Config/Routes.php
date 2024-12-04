@@ -41,6 +41,10 @@ $routes->get('/admin/flash_info/new_product', 'AdminController::newProductInfo',
 $routes->get('/admin/flash_info/stock', 'AdminController::stockInfo', ['filter' => 'roleFilter']);
 $routes->get('/admin/flash_info/new_event', 'AdminController::newEventInfo', ['filter' => 'roleFilter']);
 $routes->get('/admin/flash_info/new_user', 'AdminController::newUser', ['filter' => 'roleFilter']);
+$routes->get('/admin/flash_info/new_order', 'AdminController::newOrder', ['filter' => 'roleFilter']);
+$routes->get('/admin/flash_info/new_cancel_order', 'AdminController::newCancelOrder', ['filter' => 'roleFilter']);
+$routes->get('/admin/flash_info/total_sales', 'AdminController::totalSales', ['filter' => 'roleFilter']);
+$routes->get('/admin/flash_info/total_value', 'AdminController::totalValue', ['filter' => 'roleFilter']);
 
 $routes->get('/admin/orders/list', 'AdminController::orders', ['filter' => 'roleFilter']);
 $routes->get('/admin/orders/complete', 'AdminController::orderComplete', ['filter' => 'roleFilter']);
