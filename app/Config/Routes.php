@@ -37,14 +37,6 @@ $routes->get('/account', 'HomeController::account', ['filter' => 'roleFilter']);
 
 // Admin Controller
 $routes->get('/admin/home', 'AdminController::home', ['filter' => 'roleFilter']);
-$routes->get('/admin/flash_info/new_product', 'AdminController::newProductInfo', ['filter' => 'roleFilter']);
-$routes->get('/admin/flash_info/stock', 'AdminController::stockInfo', ['filter' => 'roleFilter']);
-$routes->get('/admin/flash_info/new_event', 'AdminController::newEventInfo', ['filter' => 'roleFilter']);
-$routes->get('/admin/flash_info/new_user', 'AdminController::newUser', ['filter' => 'roleFilter']);
-$routes->get('/admin/flash_info/new_order', 'AdminController::newOrder', ['filter' => 'roleFilter']);
-$routes->get('/admin/flash_info/new_cancel_order', 'AdminController::newCancelOrder', ['filter' => 'roleFilter']);
-$routes->get('/admin/flash_info/total_sales', 'AdminController::totalSales', ['filter' => 'roleFilter']);
-$routes->get('/admin/flash_info/total_value', 'AdminController::totalValue', ['filter' => 'roleFilter']);
 
 $routes->get('/admin/orders/list', 'AdminController::orders', ['filter' => 'roleFilter']);
 $routes->get('/admin/orders/complete', 'AdminController::orderComplete', ['filter' => 'roleFilter']);
@@ -68,4 +60,14 @@ $routes->get('/admin/discount_event/detail/(:any)', 'AdminController::detailDisc
 $routes->get('/admin/discount', 'AdminController::discount', ['filter' => 'roleFilter']);
 $routes->get('/admin/review', 'AdminController::review', ['filter' => 'roleFilter']);
 $routes->post('/upload-image', 'ImageController::upload', ['filter' => 'roleFilter']);
+
+// Flash Info Controller
+$routes->get('/admin/flash_info/new_product', 'FlashInfoController::newProductInfo', ['filter' => 'roleFilter']);
+$routes->get('/admin/flash_info/stock', 'FlashInfoController::stockInfo', ['filter' => 'roleFilter']);
+$routes->get('/admin/flash_info/new_event', 'FlashInfoController::newEventInfo', ['filter' => 'roleFilter']);
+$routes->get('/admin/flash_info/new_user', 'FlashInfoController::newUser', ['filter' => 'roleFilter']);
+$routes->get('/admin/flash_info/new_order', 'FlashInfoController::newOrder', ['filter' => 'roleFilter']);
+$routes->get('/admin/flash_info/new_cancel_order', 'FlashInfoController::newCancelOrder', ['filter' => 'roleFilter']);
+$routes->get('/admin/flash_info/total_sales', 'FlashInfoController::totalSales', ['filter' => 'roleFilter']);
+$routes->get('/admin/flash_info/total_value', 'FlashInfoController::totalValue', ['filter' => 'roleFilter']);
 
