@@ -2,8 +2,15 @@
 
 namespace App\Controllers;
 
+use App\Models\Product as ProductModel;
+
 class HomeController extends BaseController
 {
+    public function __construct()
+    {
+        $this->productModel = new ProductModel;
+    }
+
     public function home(): string
     {
         $data = [
@@ -16,7 +23,8 @@ class HomeController extends BaseController
     public function products(): string
     {
         $data = [
-            "title" => "Produk"
+            "title" => "Produk",
+            "productData" => $this->productModel->getAllProductsIncludingDiscountsNoLazy()
         ];
 
         return view('Product/Products', $data);

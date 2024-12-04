@@ -75,13 +75,13 @@
                 <div class="col-lg-6 hero-right">
                     <div class="owl-carousel owl-theme hero-carousel">
                         <div class="item">
-                            <img class="img-fluid" src="/assets/images/samples/cuakspedas.png" alt="">
-                        </div>
-                        <div class="item">
-                            <img class="img-fluid" src="/assets/images/samples/1732635119_e8c79be5a1e9c2b631da.png" alt="">
-                        </div>
-                        <div class="item">
                             <img class="img-fluid" src="/assets/images/samples/cuaks.png" alt="">
+                        </div>
+                        <div class="item">
+                            <img class="img-fluid" src="/assets/images/samples/cuaks3.png" alt="">
+                        </div>
+                        <div class="item">
+                            <img class="img-fluid" src="/assets/images/samples/cuaks2.png" alt="">
                         </div>
                     </div>
                 </div>

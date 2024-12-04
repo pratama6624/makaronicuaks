@@ -53,6 +53,14 @@ class Product extends Model
         ->findAll($limit, $offset);
     }
 
+    public function getAllProductsIncludingDiscountsNoLazy()
+    {
+        return $this->select($this->selectFields)
+        ->join("discount_event_products", "discount_event_products.product_id = products.id_product", "left")
+        ->join("discount_events", "discount_events.id_discount = discount_event_products.discount_id", "left")
+        ->findAll();
+    }
+
     public function searchAllProductsIncludingDiscounts($searchQuery, $limit, $offset)
     {
         $productData;
