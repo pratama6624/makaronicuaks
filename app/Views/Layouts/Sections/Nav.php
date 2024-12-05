@@ -19,7 +19,7 @@
                                 <a class="nav-link" href="/"><b>Beranda</b> <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="<?= base_url("/products") ?>"><b>Menu</b></a>
+                                <a class="nav-link" href="<?= base_url("/products?filter=recomendation") ?>"><b>Menu</b></a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" style="margin-right: 15px" href="<?= base_url("/blog") ?>"><b>Blog</b></a>

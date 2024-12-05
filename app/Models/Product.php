@@ -53,11 +53,21 @@ class Product extends Model
         ->findAll($limit, $offset);
     }
 
-    public function getAllProductsIncludingDiscountsNoLazy()
+    public function getAllProductsIncludingDiscountsNoLazy($filter = "recomendation")
     {
+        $allowedSortColumns = [
+            'recomendation' => 'products.price ASC', // Misalnya kolom recommendation_score
+            'price_asc' => 'products.price ASC',
+            'price_desc' => 'products.price DESC',
+            // 'discount' => 'discount_events.discount_percentage DESC', // Urutkan berdasarkan diskon
+        ];
+    
+        $sortColumn = isset($allowedSortColumns[$filter]) ? $allowedSortColumns[$filter] : $allowedSortColumns['recomendation'];
+
         return $this->select($this->selectFields)
         ->join("discount_event_products", "discount_event_products.product_id = products.id_product", "left")
         ->join("discount_events", "discount_events.id_discount = discount_event_products.discount_id", "left")
+        ->orderBy($sortColumn)
         ->findAll();
     }
 

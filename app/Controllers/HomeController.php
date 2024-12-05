@@ -6,8 +6,11 @@ use App\Models\Product as ProductModel;
 
 class HomeController extends BaseController
 {
+    protected $request;
+
     public function __construct()
     {
+        $this->request = \Config\Services::request();
         $this->productModel = new ProductModel;
     }
 
@@ -22,10 +25,14 @@ class HomeController extends BaseController
 
     public function products(): string
     {
+        $filter = $this->request->getGet('filter');
+
         $data = [
             "title" => "Produk",
-            "productData" => $this->productModel->getAllProductsIncludingDiscountsNoLazy()
+            "productData" => $this->productModel->getAllProductsIncludingDiscountsNoLazy($filter)
         ];
+
+        // dd($data["productData"]);
 
         return view('Product/Products', $data);
     }
