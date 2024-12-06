@@ -33,86 +33,6 @@ class AdminController extends BaseController
         return view('Admin/Dashboard', $data);
     }
 
-    public function newProductInfo(): string
-    {
-        $data = [
-            "title" => "Admin : Produk Baru",
-            "sideMenuTitle" => $this->request->getUri()->getSegment(2),
-        ];
-
-        return view('FlashInfo/FlashInfoNewProduct', $data);
-    }
-
-    public function stockInfo(): string
-    {
-        $data = [
-            "title" => "Admin : Stok Menipis",
-            "sideMenuTitle" => $this->request->getUri()->getSegment(2),
-        ];
-
-        return view('FlashInfo/FlashInfoStock', $data);
-    }
-
-    public function newEventInfo(): string
-    {
-        $data = [
-            "title" => "Admin : Produk Baru",
-            "sideMenuTitle" => $this->request->getUri()->getSegment(2),
-        ];
-
-        return view('FlashInfo/FlashInfoNewEvent', $data);
-    }
-
-    public function newUser(): string
-    {
-        $data = [
-            "title" => "Admin : Pengguna Baru",
-            "sideMenuTitle" => $this->request->getUri()->getSegment(2),
-        ];
-
-        return view('FlashInfo/FlashInfoNewUser', $data);
-    }
-
-    public function newOrder(): string
-    {
-        $data = [
-            "title" => "Admin : Pengguna Baru",
-            "sideMenuTitle" => $this->request->getUri()->getSegment(2),
-        ];
-
-        return view('FlashInfo/FlashInfoNewOrder', $data);
-    }
-
-    public function newCancelOrder(): string
-    {
-        $data = [
-            "title" => "Admin : Pengguna Baru",
-            "sideMenuTitle" => $this->request->getUri()->getSegment(2),
-        ];
-
-        return view('FlashInfo/FlashInfoNewCancelOrder', $data);
-    }
-
-    public function totalSales(): string
-    {
-        $data = [
-            "title" => "Admin : Pengguna Baru",
-            "sideMenuTitle" => $this->request->getUri()->getSegment(2),
-        ];
-
-        return view('FlashInfo/FlashInfoTotalSales', $data);
-    }
-
-    public function totalValue(): string
-    {
-        $data = [
-            "title" => "Admin : Pengguna Baru",
-            "sideMenuTitle" => $this->request->getUri()->getSegment(2),
-        ];
-
-        return view('FlashInfo/FlashInfoTotalValue', $data);
-    }
-
     public function orders(): string
     {
         $data = [
@@ -320,20 +240,6 @@ class AdminController extends BaseController
         ];
 
         return view('Admin/Reports', $data);
-    }
-
-    public function customers(): string
-    {
-        $data = [
-            "title" => "Daftar Pelanggan",
-            "sideMenuTitle" => $this->request->getUri()->getSegment(2),
-            "activeCustomers" => $this->authModel->getAllCustomers(0, 1),
-            "inActiveCustomers" => $this->authModel->getAllCustomers(0, 0),
-            "deletedCustomers" => $this->authModel->getDeletedCustomers(1),
-            "requestRecoveryCustomers" => $this->recoveryModel->getUsers()
-        ];
-
-        return view('Admin/Customers', $data);
     }
 
     public function discountEvent(): string

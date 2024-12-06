@@ -9,9 +9,9 @@
                                 <span>Beranda</span>
                             </a>
                         </li>
-
-                        <li class="sidebar-item <?= $sideMenuTitle == "customers" ? 'active' : '' ?>">
-                            <a href="<?= base_url("/admin/customers") ?>" class='sidebar-link'>
+                        <li
+                            class="sidebar-item <?= $sideMenuTitle == "active_customer" || $sideMenuTitle == "inactive_customer" || $sideMenuTitle == "deleted_customer" || $sideMenuTitle == "recovery" ? "active" : "" ?> has-sub">
+                            <a href="#" class='sidebar-link'>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-people-fill" viewBox="0 0 16 16">
                                     <path
@@ -19,6 +19,20 @@
                                 </svg>
                                 <span>Pelanggan</span>
                             </a>
+                            <ul class="submenu" style="display: <?= $sideMenuTitle == "active_customer" || $sideMenuTitle == "inactive_customer" || $sideMenuTitle == "deleted_customer" || $sideMenuTitle == "recovery" ? 'block' : 'none' ?>">
+                                <li class="submenu-item <?= $sideMenuTitle == "active_customer" ? 'active' : '' ?>">
+                                    <a href="<?= base_url("/admin/customers/active_customer") ?>">Aktif</a>
+                                </li>
+                                <li class="submenu-item <?= $sideMenuTitle == "inactive_customer" ? 'active' : '' ?>">
+                                    <a href="<?= base_url("/admin/customers/inactive_customer") ?>">Belum Aktif</a>
+                                </li>
+                                <li class="submenu-item <?= $sideMenuTitle == "deleted_customer" ? 'active' : '' ?>">
+                                    <a href="<?= base_url("/admin/customers/deleted_customer") ?>">Dihapus</a>
+                                </li>
+                                <li class="submenu-item <?= $sideMenuTitle == "recovery" ? 'active' : '' ?>">
+                                    <a href="<?= base_url("/admin/customers/recovery") ?>">Pemulihan</a>
+                                </li>
+                            </ul>
                         </li>
                         <li
                             class="sidebar-item <?= $sideMenuTitle == "list" || $sideMenuTitle == "complete" || $sideMenuTitle == "cancel" ? 'active' : '' ?> has-sub">

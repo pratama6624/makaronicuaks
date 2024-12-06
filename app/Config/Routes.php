@@ -52,7 +52,6 @@ $routes->get('/admin/products/edit/(:any)', 'AdminController::editProduct/$1', [
 $routes->get('/admin/products/search', 'AdminController::search', ['filter' => 'roleFilter']);
 
 $routes->get('/admin/reports', 'AdminController::reports', ['filter' => 'roleFilter']);
-$routes->get('/admin/customers', 'AdminController::customers', ['filter' => 'roleFilter']);
 $routes->get('/admin/discount_event', 'AdminController::discountEvent', ['filter' => 'roleFilter']);
 $routes->get('/admin/add_discount_event', 'AdminController::addDiscountEvent', ['filter' => 'roleFilter']);
 $routes->post('/admin/add_discount_event/save', 'AdminController::saveDiscountEvent', ['filter' => 'roleFilter']);
@@ -70,4 +69,10 @@ $routes->get('/admin/flash_info/new_order', 'FlashInfoController::newOrder', ['f
 $routes->get('/admin/flash_info/new_cancel_order', 'FlashInfoController::newCancelOrder', ['filter' => 'roleFilter']);
 $routes->get('/admin/flash_info/total_sales', 'FlashInfoController::totalSales', ['filter' => 'roleFilter']);
 $routes->get('/admin/flash_info/total_value', 'FlashInfoController::totalValue', ['filter' => 'roleFilter']);
+
+// Customer Cotroller
+$routes->get('/admin/customers/active_customer', 'CustomerController::activeCustomers', ['filter' => 'roleFilter']);
+$routes->get('/admin/customers/inactive_customer', 'CustomerController::inActiveCustomers', ['filter' => 'roleFilter']);
+$routes->get('/admin/customers/deleted_customer', 'CustomerController::deletedCustomers', ['filter' => 'roleFilter']);
+$routes->get('/admin/customers/recovery', 'CustomerController::recovery', ['filter' => 'roleFilter']);
 
