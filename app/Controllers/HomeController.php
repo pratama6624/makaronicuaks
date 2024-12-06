@@ -29,7 +29,8 @@ class HomeController extends BaseController
 
         $data = [
             "title" => "Produk",
-            "productData" => $this->productModel->getAllProductsIncludingDiscountsNoLazy($filter)
+            "productData" => $this->productModel->getAllProductsIncludingDiscountsNoLazy($filter),
+            "filter" => $filter
         ];
 
         // dd($data["productData"]);

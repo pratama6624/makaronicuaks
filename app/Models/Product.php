@@ -59,7 +59,11 @@ class Product extends Model
             'recomendation' => 'products.price ASC', // Misalnya kolom recommendation_score
             'price_asc' => 'products.price ASC',
             'price_desc' => 'products.price DESC',
-            // 'discount' => 'discount_events.discount_percentage DESC', // Urutkan berdasarkan diskon
+            'discount' => "
+                    IF(discount_events.precentage IS NOT NULL, discount_events.precentage,
+                    IF(discount_events.id_discount IS NOT NULL, 0, -1)
+                ) DESC
+            "
         ];
     
         $sortColumn = isset($allowedSortColumns[$filter]) ? $allowedSortColumns[$filter] : $allowedSortColumns['recomendation'];
@@ -67,7 +71,7 @@ class Product extends Model
         return $this->select($this->selectFields)
         ->join("discount_event_products", "discount_event_products.product_id = products.id_product", "left")
         ->join("discount_events", "discount_events.id_discount = discount_event_products.discount_id", "left")
-        ->orderBy($sortColumn)
+        ->orderBy($sortColumn, '', false)
         ->findAll();
     }
 

@@ -13,21 +13,15 @@
                 <div class="row mb-5" style="margin-top: -70px">
                     <div class="col-md-12">
                         <div class="heading-section text-center">
-                            <button type="button" class="btn btn-secondary" style="margin-right: 10px"
-                                onclick="window.location.href='/products/recomendation';">Rekomendasi</button>
-                            <button type="button" class="btn btn-light" style="margin-right: 10px"
-                                onclick="window.location.href='/products/discount';">Lagi Diskon</button>
-                            <button type="button" class="btn btn-light" style="margin-right: 10px"
-                                onclick="window.location.href='/products/price_asc';">Termurah</button>
-                            <button type="button" class="btn btn-light"
-                                onclick="window.location.href='/products/price_desc';">Termahal</button>
+                            <button type="button" class="btn btn-<?= $filter == "recomendation" ? "secondary" : "light" ?>" style="margin-right: 10px"
+                                onclick="window.location.href='/products?filter=recomendation';">Rekomendasi</button>
+                            <button type="button" class="btn btn-<?= $filter == "discount" ? "secondary" : "light" ?>" style="margin-right: 10px"
+                                onclick="window.location.href='/products?filter=discount';">Lagi Diskon</button>
+                            <button type="button" class="btn btn-<?= $filter == "price_asc" ? "secondary" : "light" ?>" style="margin-right: 10px"
+                                onclick="window.location.href='/products?filter=price_asc';">Termurah</button>
+                            <button type="button" class="btn btn-<?= $filter == "price_desc" ? "secondary" : "light" ?>"
+                                onclick="window.location.href='/products?filter=price_desc';">Termahal</button>
                         </div>
-
-
-                        ENTAH KENAPA CSS TIDAK TERLOAD DI HALAMAN PRODUK INI, COBA CARI TAU AJA
-
-
-
                     </div>
                 </div>
                 <div class="row">
