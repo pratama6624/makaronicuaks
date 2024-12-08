@@ -30,7 +30,7 @@ $routes->get('/', 'HomeController::home');
 $routes->get('/products', 'HomeController::products');
 $routes->get('/about', 'HomeController::aboutus');
 $routes->get('/blog', 'HomeController::blog');
-$routes->get('/shoppingcart', 'HomeController::shoppingCart', ['filter' => 'roleFilter']);
+$routes->get('/shoppingcart', 'HomeController::shoppingCart');
 $routes->get('/account', 'HomeController::account', ['filter' => 'roleFilter']);
 
 ########################################################################

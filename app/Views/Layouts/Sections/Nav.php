@@ -16,13 +16,13 @@
                         </li>
                         <div class="d-flex flex-lg-row flex-column">
                             <li class="nav-item active">
-                                <a class="nav-link" href="/"><b>Beranda</b> <span class="sr-only">(current)</span></a>
+                                <a class="nav-link" style="color: <?= $sideMenuTitle == "" ? "red" : "black" ?>" href="/"><b>Beranda</b> <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="<?= base_url("/products?filter=recomendation") ?>"><b>Menu</b></a>
+                                <a class="nav-link" style="color: <?= $sideMenuTitle == "products" ? "red" : "black" ?>" href="<?= base_url("/products?filter=recomendation") ?>"><b>Menu</b></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" style="margin-right: 15px" href="<?= base_url("/blog") ?>"><b>Blog</b></a>
+                                <a class="nav-link" style="color: <?= $sideMenuTitle == "blog" ? "red" : "black" ?>" style="margin-right: 15px" href="<?= base_url("/blog") ?>"><b>Blog</b></a>
                             </li>
                         </div>
                     </ul>
@@ -33,14 +33,14 @@
                     <ul class="navbar-nav d-flex justify-content-between">
                         <div class="d-flex flex-lg-row flex-column">
                             <li class="nav-item active">
-                                <a class="nav-link" href="<?= base_url("/about") ?>"><b>Tentang</b></a>
+                                <a class="nav-link" style="color: <?= $sideMenuTitle == "about" ? "red" : "black" ?>" href="<?= base_url("/about") ?>"><b>Tentang</b></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="<?= base_url("/shoppingcart") ?>"><b>Keranjang</b></a>
+                                <a class="nav-link" style="color: <?= $sideMenuTitle == "shoppingcart" ? "red" : "black" ?>" href="<?= base_url("/shoppingcart") ?>"><b>Keranjang</b></a>
                             </li>
 
                             <li class="nav-item dropdown">
-                                <a class="nav-link" href="<?= base_url("/login") ?>"><b>Masuk</b></a>
+                                <a class="nav-link" style="color: <?= $sideMenuTitle == "login" ? "red" : "black" ?>" href="<?= base_url("/login") ?>"><b>Masuk</b></a>
                             </li>
                         </div>
                         <li class="nav-item">

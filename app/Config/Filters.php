@@ -111,7 +111,7 @@ class Filters extends BaseFilters
     public array $filters = [
         'roleFilter' => [
             'before' => [
-                'admin/*', 'shoppingcart', 'account'
+                'admin/*', 'account'
             ]
         ],
         'loggedInFilter' => [

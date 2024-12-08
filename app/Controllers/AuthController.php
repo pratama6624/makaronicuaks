@@ -25,7 +25,8 @@ class AuthController extends BaseController
     public function login(): string
     {
         $data = [
-            "title" => "Login"
+            "title" => "Login",
+            "sideMenuTitle" => $this->request->getUri()->getSegment(1),
         ];
 
         return view('Auth/Login', $data);
@@ -34,7 +35,8 @@ class AuthController extends BaseController
     public function register(): string
     {
         $data = [
-            "title" => "Daftar Akun"
+            "title" => "Daftar Akun",
+            "sideMenuTitle" => $this->request->getUri()->getSegment(1),
         ];
 
         return view('Auth/Register', $data);

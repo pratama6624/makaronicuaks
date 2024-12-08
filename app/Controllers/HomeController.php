@@ -17,7 +17,8 @@ class HomeController extends BaseController
     public function home(): string
     {
         $data = [
-            "title" => "Beranda"
+            "title" => "Beranda",
+            "sideMenuTitle" => $this->request->getUri()->getSegment(1),
         ];
 
         return view('Pages/Home', $data);
@@ -29,11 +30,10 @@ class HomeController extends BaseController
 
         $data = [
             "title" => "Produk",
+            "sideMenuTitle" => $this->request->getUri()->getSegment(1),
             "productData" => $this->productModel->getAllProductsIncludingDiscountsNoLazy($filter),
             "filter" => $filter
         ];
-
-        // dd($data["productData"]);
 
         return view('Product/Products', $data);
     }
@@ -41,7 +41,8 @@ class HomeController extends BaseController
     public function aboutUs(): string
     {
         $data = [
-            "title" => "Tentang Kami"
+            "title" => "Tentang Kami",
+            "sideMenuTitle" => $this->request->getUri()->getSegment(1),
         ];
 
         return view('Pages/AboutUs', $data);
@@ -50,7 +51,8 @@ class HomeController extends BaseController
     public function blog(): string
     {
         $data = [
-            "title" => "Blog"
+            "title" => "Blog",
+            "sideMenuTitle" => $this->request->getUri()->getSegment(1),
         ];
 
         return view('Pages/Blog', $data);
@@ -59,7 +61,8 @@ class HomeController extends BaseController
     public function shoppingCart(): string
     {
         $data = [
-            "title" => "Keranjang Belanja"
+            "title" => "Keranjang Belanja",
+            "sideMenuTitle" => $this->request->getUri()->getSegment(1),
         ];
 
         return view('Product/ShoppingCart', $data);
@@ -68,7 +71,8 @@ class HomeController extends BaseController
     public function account(): string
     {
         $data = [
-            "title" => "Profil"
+            "title" => "Profil",
+            "sideMenuTitle" => $this->request->getUri()->getSegment(1),
         ];
 
         return view('Product/Account', $data);
