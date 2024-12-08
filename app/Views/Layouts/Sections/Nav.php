@@ -36,7 +36,14 @@
                                 <a class="nav-link" style="color: <?= $sideMenuTitle == "about" ? "red" : "black" ?>" href="<?= base_url("/about") ?>"><b>Tentang</b></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" style="color: <?= $sideMenuTitle == "shoppingcart" ? "red" : "black" ?>" href="<?= base_url("/shoppingcart") ?>"><b>Keranjang</b></a>
+                                <a class="nav-link" style="color: <?= $sideMenuTitle == "shoppingcart" ? "red" : "black" ?>" href="<?= base_url("/shoppingcart") ?>">
+                                    <b>Keranjang</b>
+                                    <?php if(session()->has('cart') != null && count(session()->get('cart')) > 0) { ?>
+                                        <span class="cart-badge"><?= array_sum(session()->get('cart')) ?></span>
+                                    <?php } else { ?>
+                                        <span class="cart-badge">0</span>
+                                    <?php } ?>
+                                </a>
                             </li>
 
                             <li class="nav-item dropdown">

@@ -24,7 +24,7 @@ class HomeController extends BaseController
         return view('Pages/Home', $data);
     }
 
-    public function products(): string
+    public function products(): string 
     {
         $filter = $this->request->getGet('filter');
 
@@ -65,7 +65,47 @@ class HomeController extends BaseController
             "sideMenuTitle" => $this->request->getUri()->getSegment(1),
         ];
 
+        // JIKA SUDAH LOGIN MAKA SIMPAN ATAU PERBARUI DATA KE DATABASE DARI SESSION "CART"
+        // JIKA BELUM LOGIN MAKAN SIMPAN DAN AMBIL DATA DARI SESSION "CART" SAJA
+
         return view('Product/ShoppingCart', $data);
+    }
+
+    public function addToCart()
+    {
+        $productId = $this->request->getPost('id_product');
+        $quantity = $this->request->getPost("quantity", FILTER_VALIDATE_INT);
+
+        $cart = session()->get('cart') ?? [];
+
+        if(!$productId || !$quantity || $quantity <= 0) {
+            return $this->response->setJSON([
+                'status' => "error",
+                'message' => "Invalid data"
+            ])->setStatusCode(400);
+        }
+
+        $isLoggedIn = session()->get('user');
+
+        if($isLoggedIn) {
+            // $cartModel = new 
+        } else {        
+            // Tambahkan produk ke keranjang
+            if (isset($cart[$productId])) {
+                $cart[$productId] += $quantity;
+            } else {
+                $cart[$productId] = $quantity;
+            }
+
+            // Simpan kembali ke session
+            session()->set('cart', $cart);
+        }
+
+        return $this->response->setJSON([
+            'status' => "success",
+            'message' => "Produk ditambahkan ke keranjang belanja (session)",
+            'cart' => $cart // Kirim data keranjang sebagai respons
+        ]);
     }
 
     public function account(): string

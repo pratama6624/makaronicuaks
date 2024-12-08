@@ -33,6 +33,9 @@ $routes->get('/blog', 'HomeController::blog');
 $routes->get('/shoppingcart', 'HomeController::shoppingCart');
 $routes->get('/account', 'HomeController::account', ['filter' => 'roleFilter']);
 
+// Cart Controller
+$routes->post('/product/addtocart', 'HomeController::addToCart');
+
 ########################################################################
 
 // Admin Controller

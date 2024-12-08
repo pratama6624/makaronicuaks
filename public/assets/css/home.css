@@ -1,14 +1,18 @@
 
-
 .cart-badge {
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    font-size: 12px;
+    padding: 2px 6px;
     position: absolute;
-    top: -8px; /* Posisi vertikal badge */
-    right: -12px; /* Posisi horizontal badge */
-    background-color: red; /* Warna latar badge */
-    color: white; /* Warna teks badge */
-    border-radius: 100%; /* Membuat lingkaran */
-    padding: 2px 8px; /* Ukuran badge */
-    font-size: 12px; /* Ukuran teks badge */
-    font-weight: bold; /* Tebal teks */
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Efek bayangan */
+    top: 10px;
+    right: 10px;
+    transform: translate(50%, -50%);
+    display: inline-block;
+    z-index: 1;
+}
+
+.nav-item {
+    position: relative;
 }
