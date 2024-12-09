@@ -97,6 +97,15 @@ class Product extends Model
         return $productData;
     }
 
+    public function getAllProductCarts($productIds)
+    {
+        return $this->select($this->selectFields)
+        ->join("discount_event_products", "discount_event_products.product_id = products.id_product", "left")
+        ->join("discount_events", "discount_events.id_discount = discount_event_products.discount_id", "left")
+        ->whereIn('id_product', $productIds)
+        ->findAll();
+    }
+
     public function getProductDiscount()
     {
         return $this->where('discount_status', 1)->findAll();

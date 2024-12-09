@@ -60,9 +60,22 @@ class HomeController extends BaseController
 
     public function shoppingCart(): string
     {
+        $cartData;
+        if(session()->has('cart')) {
+            $cartSession = session()->get('cart');
+            $cartData = $this->productModel->getAllProductCarts(array_keys($cartSession));
+            
+            foreach ($cartData as &$product) {
+                $product['quantity'] = $cartSession[$product['id_product']] ?? 0;
+            }
+        } else {
+            $cartData = [];
+        }
+
         $data = [
             "title" => "Keranjang Belanja",
             "sideMenuTitle" => $this->request->getUri()->getSegment(1),
+            "cartData" => $cartData
         ];
 
         // JIKA SUDAH LOGIN MAKA SIMPAN ATAU PERBARUI DATA KE DATABASE DARI SESSION "CART"
