@@ -43,11 +43,6 @@
                     <h1 class="display-4 mb-5">Kami Cinta <br>Camilan Lezat!</h1>
                     <div class="mb-2">
                         <a style="border-radius: 10px" class="btn btn-primary btn-shadow btn-lg" href="/products?filter=recomendation" role="button">Jelajahi Menu</a>
-                        <a class="btn btn-icon btn-lg" href="https://player.vimeo.com/video/33110953"
-                            data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true">
-                            <span class="lnr lnr-film-play"></span>
-                            Putar Vidio
-                        </a>
                     </div>
 
                     <ul class="hero-info list-unstyled d-flex text-center mb-0">

@@ -22,7 +22,7 @@
                                 <a class="nav-link" style="color: <?= $sideMenuTitle == "products" ? "red" : "black" ?>" href="<?= base_url("/products?filter=recomendation") ?>"><b>Menu</b></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" style="color: <?= $sideMenuTitle == "blog" ? "red" : "black" ?>" style="margin-right: 15px" href="<?= base_url("/blog") ?>"><b>Blog</b></a>
+                                <a class="nav-link" style="color: <?= $sideMenuTitle == "blog" ? "red" : "black" ?>" style="margin-right: 15px" href="<?= base_url("/blog") ?>"><b>Event</b></a>
                             </li>
                         </div>
                     </ul>
@@ -38,7 +38,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" style="color: <?= $sideMenuTitle == "shoppingcart" ? "red" : "black" ?>" href="<?= base_url("/shoppingcart") ?>">
                                     <b>Keranjang</b>
-                                    <?php if(session()->has('cart') != null && count(session()->get('cart')) > 0) { ?>
+                                    <?php if(session()->has('user') && isset($cartItemCount)) { ?>
+                                        <span class="cart-badge"><?= $cartItemCount ?></span>
+                                    <?php } else if(session()->has('cart') != null && count(session()->get('cart')) > 0) { ?>
                                         <span class="cart-badge"><?= array_sum(session()->get('cart')) ?></span>
                                     <?php } else { ?>
                                         <span class="cart-badge">0</span>
@@ -47,7 +49,7 @@
                             </li>
 
                             <li class="nav-item dropdown">
-                                <a class="nav-link" style="color: <?= $sideMenuTitle == "login" ? "red" : "black" ?>" href="<?= base_url("/login") ?>"><b>Masuk</b></a>
+                                <a class="nav-link" style="color: <?= $sideMenuTitle == "login" ? "red" : "black" ?>" href="<?= base_url(!session()->has('user') ? "/login" : "/logout") ?>"><b><?= !session()->has('user') ? "Masuk" : "Keluar" ?></b></a>
                             </li>
                         </div>
                         <li class="nav-item">

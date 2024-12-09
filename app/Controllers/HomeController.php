@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\Product as ProductModel;
+use App\Models\ShoppingCart as CartModel;
 
 class HomeController extends BaseController
 {
@@ -12,6 +13,7 @@ class HomeController extends BaseController
     {
         $this->request = \Config\Services::request();
         $this->productModel = new ProductModel;
+        $this->cartModel = new CartModel;
     }
 
     public function home(): string
@@ -19,6 +21,7 @@ class HomeController extends BaseController
         $data = [
             "title" => "Beranda",
             "sideMenuTitle" => $this->request->getUri()->getSegment(1),
+            "cartItemCount" => session()->has('user') ? $this->cartModel->countAllProductsByUserId(session()->get("user")["id"])["total_quantity"] : []
         ];
 
         return view('Pages/Home', $data);
@@ -32,7 +35,8 @@ class HomeController extends BaseController
             "title" => "Produk",
             "sideMenuTitle" => $this->request->getUri()->getSegment(1),
             "productData" => $this->productModel->getAllProductsIncludingDiscountsNoLazy($filter),
-            "filter" => $filter
+            "filter" => $filter,
+            "cartItemCount" => session()->has('user') ? $this->cartModel->countAllProductsByUserId(session()->get("user")["id"])["total_quantity"] : []
         ];
 
         return view('Product/Products', $data);
@@ -43,6 +47,7 @@ class HomeController extends BaseController
         $data = [
             "title" => "Tentang Kami",
             "sideMenuTitle" => $this->request->getUri()->getSegment(1),
+            "cartItemCount" => session()->has('user') ? $this->cartModel->countAllProductsByUserId(session()->get("user")["id"])["total_quantity"] : []
         ];
 
         return view('Pages/AboutUs', $data);
@@ -53,6 +58,7 @@ class HomeController extends BaseController
         $data = [
             "title" => "Blog",
             "sideMenuTitle" => $this->request->getUri()->getSegment(1),
+            "cartItemCount" => session()->has('user') ? $this->cartModel->countAllProductsByUserId(session()->get("user")["id"])["total_quantity"] : []
         ];
 
         return view('Pages/Blog', $data);
@@ -61,10 +67,11 @@ class HomeController extends BaseController
     public function shoppingCart(): string
     {
         $cartData;
+
         if(session()->has('cart')) {
             $cartSession = session()->get('cart');
             $cartData = $this->productModel->getAllProductCarts(array_keys($cartSession));
-            
+
             foreach ($cartData as &$product) {
                 $product['quantity'] = $cartSession[$product['id_product']] ?? 0;
             }
@@ -72,17 +79,68 @@ class HomeController extends BaseController
             $cartData = [];
         }
 
+        if(session()->has('user')) {
+            $data = $this->cartModel->getAllProductsIncludingDiscountByCart(session()->get("user")["id"]);
+            $cartData = $data;
+            $shoppingSummary = $this->getFinalPriceProductListAfterDiscount($data);
+            $totalAmount = $this->calculateTotalPrice($shoppingSummary);
+        }
+
+        // TOTAL AMOUNT DAN RINGKASAN BELANJA BARU BERJALAN JIKA USER SUDAH LOGIN
+        // UNTUK PENANGANAN MELALUI SESSION CART SEBELUM LOGIN BELUM SELESAI / BELUM DIKERJAKAN
+
         $data = [
             "title" => "Keranjang Belanja",
             "sideMenuTitle" => $this->request->getUri()->getSegment(1),
-            "cartData" => $cartData
+            "cartData" => $cartData,
+            "cartItemCount" => session()->has('user') ? $this->cartModel->countAllProductsByUserId(session()->get("user")["id"])["total_quantity"] : [],
+            "shoppingSummary" => $shoppingSummary,
+            "totalAmount" => $totalAmount
         ];
-
-        // JIKA SUDAH LOGIN MAKA SIMPAN ATAU PERBARUI DATA KE DATABASE DARI SESSION "CART"
-        // JIKA BELUM LOGIN MAKAN SIMPAN DAN AMBIL DATA DARI SESSION "CART" SAJA
 
         return view('Product/ShoppingCart', $data);
     }
+
+    public function getFinalPriceProductListAfterDiscount($data)
+    {
+        $finalPrices = [];
+
+        foreach ($data as $product) {
+            $price = (float)$product["price"];
+            
+            if (!is_null($product["id_discount"])) {
+                // Jika id_discount tidak null, gunakan precentage
+                $discountPercentage = (float)$product["precentage"];
+                $price -= ($price * $discountPercentage / 100);
+            } elseif ($product["discount_status"] == "1") {
+                // Jika discount_status = 1, gunakan discount_amount
+                $discountPercentage = (float)$product["discount_amount"];
+                $price -= ($price * $discountPercentage / 100);
+            }
+            
+            // Tambahkan harga final ke array
+            $finalPrices[] = [
+                "product_id" => $product["product_id"],
+                "product_name" => $product["product_name"],
+                "final_price" => round($price, 2),
+                "quantity" => $product["quantity"],
+                "total_price" => round($price * $product["quantity"], 2) // Harga total per produk
+            ];
+        }
+
+        return $finalPrices;
+    }
+
+    function calculateTotalPrice($cartData) {
+        $grandTotal = 0;
+
+        foreach ($cartData as $product) {
+            // Tambahkan total_price dari setiap produk ke grandTotal
+            $grandTotal += (float)$product["total_price"];
+        }
+
+        return round($grandTotal, 2);
+    }    
 
     public function addToCart()
     {
@@ -101,7 +159,28 @@ class HomeController extends BaseController
         $isLoggedIn = session()->get('user');
 
         if($isLoggedIn) {
-            // $cartModel = new 
+            $exist = $this->cartModel->getCartByProductId($productId);
+
+            if($exist != null) {
+                $this->cartModel->save([
+                    'id_cart' => $exist["id_cart"],
+                    'user_id' => $exist["user_id"],
+                    'product_id' => $exist["product_id"],
+                    'quantity' => $exist["quantity"] + $quantity
+                ]);
+            } else {
+                $this->cartModel->save([
+                    'user_id' => session()->get("user")["id"],
+                    'product_id' => $productId,
+                    'quantity' => $quantity
+                ]);
+            }
+
+            return $this->response->setJSON([
+                'status' => "success",
+                'message' => "Produk ditambahkan ke keranjang belanja (session)",
+                'cart' => $cart // Kirim data keranjang sebagai respons
+            ]);
         } else {        
             // Tambahkan produk ke keranjang
             if (isset($cart[$productId])) {
@@ -121,11 +200,17 @@ class HomeController extends BaseController
         ]);
     }
 
+    public function afterLoginSyncCart($userId)
+    {
+
+    }
+
     public function account(): string
     {
         $data = [
             "title" => "Profil",
             "sideMenuTitle" => $this->request->getUri()->getSegment(1),
+            "cartItemCount" => session()->has('user') ? $this->cartModel->countAllProductsByUserId(session()->get("user")["id"])["total_quantity"] : []
         ];
 
         return view('Product/Account', $data);
