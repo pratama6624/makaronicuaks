@@ -241,7 +241,7 @@ class AuthController extends BaseController
 
                         if($user["role"] == 0) {
                             // 0 == user biasa
-                            return redirect()->to("");
+                            return redirect()->to("/login/loginsync/". $user["id"]);
                         } else {
                             // 1 == admin
                             return redirect()->to("admin/home");

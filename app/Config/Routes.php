@@ -10,6 +10,7 @@ use CodeIgniter\Router\RouteCollection;
 // Login
 $routes->get('/login', 'AuthController::login', ['filter' => 'loggedInFilter']);
 $routes->post('/login/checkLogin', 'AuthController::checkLogin', ['filter' => 'loggedInFilter']);
+$routes->get('/login/loginsync/(:any)', 'HomeController::afterLoginSyncCart/$1', ['filter' => 'roleFilter']);
 // Register
 $routes->get('/register', 'AuthController::register', ['filter' => 'loggedInFilter']);
 $routes->post('/register/save', 'AuthController::save', ['filter' => 'loggedInFilter']);

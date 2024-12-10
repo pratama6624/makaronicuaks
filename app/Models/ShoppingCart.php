@@ -39,6 +39,11 @@ class ShoppingCart extends Model
         return $this->where('product_id', $productId)->first();
     }
 
+    public function getAllCartByProductId($userId)
+    {
+        return $this->where('user_id', $userId)->findAll();
+    }
+
     public function getAllProductsIncludingDiscountByCart($userId)
     {
         return $this->select($this->selectFields)

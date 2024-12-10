@@ -203,9 +203,101 @@ class HomeController extends BaseController
         ]);
     }
 
-    public function afterLoginSyncCart($userId)
+    public function mergeCartData($sessionCart, $dbCart)
     {
 
+    }
+
+    public function afterLoginSyncCart($userId)
+    {
+        // SKENARIO LOGIN UNTUK PENGGABUNGAN SESSION CART DENGAN DATABASE CART
+
+        /* 
+            1. JIKA PADA SAAT AKAN LOGIN, SESSION CART DAN DATABASE CART SAMA" KOSONG
+               MAKA JANGAN LAKUKAN APAPUN
+            2. JIKA PADA SAAT AKAN LOGIN, SESSION CART KOSONG DAN DATABASE CART TERISI
+               MAKA JANGAN LAKUKAN APAPUN
+            3. JIKA PADA SAAT AKAN LOGIN, SESSION CART TERISI DAN DATABASE CART KOSONG
+               MAKA LANGSUNG MASUKAN SESSION KE DATABASE DAN HAPUS SESSION
+            4. JIKA PADA SAAT AKAN LOGIN, SESSION CART DAN DATABASE CART SAMA" TERISI
+               AKAN TETAPI MEMILIKI LIST DATA YANG BERBEDA
+               MAKA AMBIL KEDUA SUMBER LALU GABUNGKAN DAN UPDATE DATABASE CART
+        */
+        $userId = session()->get('user')['id'];
+        $sessionCart = session()->get('cart');
+        $dbCart = $this->cartModel->getAllCartByProductId($userId);
+
+        if($sessionCart == null && $dbCart == null || $sessionCart == null && $dbCart != null) {
+            // SKENARIO 1 + SKENARIO 2
+            return redirect()->to("");
+        } else if($sessionCart != null && $dbCart == null) {
+            // SKENARIO 3
+            $data = $this->sessionCartToDbCartFormat($sessionCart, $userId);
+            $this->cartModel->insertBatch($data);
+
+            return redirect()->to("");
+        } else if($sessionCart != null && $dbCart != null) {
+            //SKENARIO 4
+            $data = $this->sessionCartToDbCartFormat($sessionCart, $userId);
+            $this->mergeAndSaveCarts($data, $dbCart, $userId);
+
+            return redirect()->to("");
+        }
+    }
+
+    public function mergeAndSaveCarts($sessionCart, $dbCart, $userId)
+    {
+        // SKENARI MERGE DATA JIKA SESSION CART DAN DATABASE CART SAMA" BERISI TETAPI DENGAN LIST DATA BERBEDA
+        /*
+            1. JIKA ID CART SUDAH ADA MAKA UPDATE
+            2. JIKA ID CART TIDAK ADA MAKA INSERT
+        */
+
+        $mergedData = [];
+
+        foreach ($dbCart as $item) {
+            $mergedData[$item['product_id']] = $item;
+        }
+
+        foreach ($sessionCart as $item) {
+            $productId = $item['product_id'];
+
+            if (isset($mergedData[$productId])) {
+                // Jika product_id sudah ada di database, tambahkan quantity
+                $mergedData[$productId]['quantity'] += $item['quantity'];
+            } else {
+                // Jika product_id belum ada di database, tambahkan sebagai item baru
+                $item['id_cart'] = null; // Tandai sebagai item baru (tidak ada id_cart)
+                $mergedData[$productId] = $item;
+            }
+        }
+
+        foreach ($mergedData as $item) {
+            // Tentukan apakah ini update atau insert berdasarkan id_cart
+            if (isset($item['id_cart']) && $item['id_cart'] !== null) {
+                // Update jika id_cart sudah ada
+                $this->cartModel->update($item['id_cart'], $item);
+            } else {
+                // Insert jika id_cart tidak ada
+                unset($item['id_cart']); // Pastikan id_cart tidak dikirim saat insert
+                $this->cartModel->insert($item);
+            }
+        }
+    }
+
+    public function sessionCartToDbCartFormat($sessionCart, $userId)
+    {
+        $result = [];
+        
+        foreach($sessionCart as $productId => $quantity) {
+            $result[] = [
+                'user_id' => $userId,
+                'product_id' => $productId,
+                'quantity' => $quantity
+            ];
+        }
+
+        return $result;
     }
 
     public function account(): string
