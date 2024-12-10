@@ -84,10 +84,13 @@ class HomeController extends BaseController
             $cartData = $data;
             $shoppingSummary = $this->getFinalPriceProductListAfterDiscount($data);
             $totalAmount = $this->calculateTotalPrice($shoppingSummary);
+        } else {
+            $shoppingSummary = $this->getFinalPriceProductListAfterDiscount($cartData);
+            $totalAmount = $this->calculateTotalPrice($shoppingSummary);
         }
 
-        // TOTAL AMOUNT DAN RINGKASAN BELANJA BARU BERJALAN JIKA USER SUDAH LOGIN
-        // UNTUK PENANGANAN MELALUI SESSION CART SEBELUM LOGIN BELUM SELESAI / BELUM DIKERJAKAN
+        // LINK CHECKOUT BELUM DIPERBARUI
+        // SINKRONISASI ANTARA SESSION CART DENGAN DATABASE SETELAH LOGIN BELUM DIBUAT
 
         $data = [
             "title" => "Keranjang Belanja",
@@ -120,7 +123,7 @@ class HomeController extends BaseController
             
             // Tambahkan harga final ke array
             $finalPrices[] = [
-                "product_id" => $product["product_id"],
+                "product_id" => session()->has('user') ? $product["product_id"] : 0,
                 "product_name" => $product["product_name"],
                 "final_price" => round($price, 2),
                 "quantity" => $product["quantity"],

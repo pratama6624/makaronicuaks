@@ -14,7 +14,7 @@
                 <div class="row mb-5" style="margin-top: -70px">
                     <div class="col-md-12">
                         <div class="heading-section text-center">
-                            <a style="border-radius: 10px" class="btn btn-primary btn-shadow btn-lg"
+                            <a style="border-radius: 10px" class="btn btn-light btn-lg"
                                 href="/products?filter=recomendation" role="button">Belanja lagi</a>
                         </div>
                     </div>
@@ -87,18 +87,20 @@
                 </div>
             </div>
 
-            <div class="d-flex justify-content-end align-items-center vh-100 mt-5" style="margin-bottom: -80px">
-                <div class="col-lg-5 text-center"
-                    style="background-color: lightgrey; padding-top: 40px; padding-bottom: 30px; border-radius: 20px">
+            <div class="d-flex justify-content-end align-items-center vh-100 mt-5" style="margin-bottom: -50px">
+                <div class="col-lg-5 text-right"
+                    style="background-color: light; border: 2px solid black; padding-top: 40px; padding-bottom: 30px; border-radius: 20px">
                     <div class="footer-widget px-lg-5 px-0">
-                        <h4>Jam Operasional</h4>
-                        <ul class="list-unstyled open-hours">
+                        <h4 style="margin-bottom: 30px">Total Belanja</h4>
+                        <ul class="list-unstyled open-hours" style="margin-bottom: 30px;">
                             <?php foreach($shoppingSummary as $ss) { ?>
-                                <li class="d-flex justify-content-between"><span><?= $ss["product_name"] ?> (x<?= $ss["quantity"] ?>)</span><span><?= "Rp " . number_format($ss["total_price"], 0, ',', '.') ?></span></li>
+                                <li class="d-flex justify-content-between" style="margin-bottom: 10px"><span><?= $ss["product_name"] ?> (x<?= $ss["quantity"] ?>)</span><span><?= "Rp " . number_format($ss["total_price"], 0, ',', '.') ?></span></li>
                             <?php } ?>
                             <br>
                             <li class="d-flex justify-content-between"><span>Total</span><span style="color: red"><b><?= "Rp " . number_format($totalAmount, 0, ',', '.') ?></b></span></li>
                         </ul>
+                        <a style="border-radius: 10px" class="btn btn-primary btn-lg"
+                                href="/products?filter=recomendation" role="button">Pesan Sekarang</a>
                     </div>
                 </div>
             </div>
