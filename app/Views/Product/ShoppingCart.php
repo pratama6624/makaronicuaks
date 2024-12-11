@@ -100,7 +100,7 @@
                             <li class="d-flex justify-content-between"><span>Total</span><span style="color: red"><b><?= "Rp " . number_format($totalAmount, 0, ',', '.') ?></b></span></li>
                         </ul>
                         <a style="border-radius: 10px" class="btn btn-primary btn-lg"
-                                href="/products?filter=recomendation" role="button">Pesan Sekarang</a>
+                                href="" role="button">Pesan Sekarang</a>
                     </div>
                 </div>
             </div>

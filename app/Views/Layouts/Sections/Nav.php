@@ -28,13 +28,10 @@
                     </ul>
                     
                     <a class="navbar-brand navbar-brand-center d-flex align-items-center only-desktop" href="#">
-                        <img src="img/logo.png" alt="">
+                        <img src="img/logo.png" onclick="window.location.href='<?= base_url('/about') ?>'" alt="">
                     </a>
                     <ul class="navbar-nav d-flex justify-content-between">
                         <div class="d-flex flex-lg-row flex-column">
-                            <li class="nav-item active">
-                                <a class="nav-link" style="color: <?= $sideMenuTitle == "about" ? "red" : "black" ?>" href="<?= base_url("/about") ?>"><b>Tentang</b></a>
-                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" style="color: <?= $sideMenuTitle == "shoppingcart" ? "red" : "black" ?>" href="<?= base_url("/shoppingcart") ?>">
                                     <b>Keranjang</b>
@@ -47,7 +44,9 @@
                                     <?php } ?>
                                 </a>
                             </li>
-
+                            <li class="nav-item active">
+                                <a class="nav-link" style="color: <?= $sideMenuTitle == "about" ? "red" : "black" ?>" href="<?= base_url("/about") ?>"><b>Pesanan</b></a>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link" style="color: <?= $sideMenuTitle == "login" ? "red" : "black" ?>" href="<?= base_url(!session()->has('user') ? "/login" : "/logout") ?>"><b><?= !session()->has('user') ? "Masuk" : "Keluar" ?></b></a>
                             </li>

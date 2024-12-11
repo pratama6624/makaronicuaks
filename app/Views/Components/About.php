@@ -3,7 +3,7 @@
     <div class="container">
         <div class="section-content">
             <div class="row">
-                <div class="col-sm-5 img-bg d-flex shadow align-items-center justify-content-center justify-content-md-end img-2" style="background-image: url(img/hero-2.jpg);">
+                <div class="col-sm-5 img-bg d-flex shadow align-items-center justify-content-center justify-content-md-end img-2" style="background-image: url(assets/images/samples/cuaks2.png);">
                     
                 </div>
                 <div class="col-sm-7 py-5 pl-md-0 pl-4">
@@ -19,7 +19,7 @@
                                 <div class="team-card mb-5">
                                     <img class="img-fluid" src="img/chef-1.jpg" alt="">
                                     <div class="team-desc" style="height: 50px">
-                                        <h6 class="mb-0">Aaron Patel</h6>
+                                        <h6 class="mb-0">Pratama</h6>
                                     </div>
                                 </div>
                             </div>
@@ -27,7 +27,7 @@
                                 <div class="team-card mb-5">
                                     <img class="img-fluid" src="img/chef-2.jpg" alt="">
                                     <div class="team-desc" style="height: 50px">
-                                        <h6 class="mb-0">Aaron Patel</h6>
+                                        <h6 class="mb-0">Mercy</h6>
                                     </div>
                                 </div>
                             </div>
@@ -35,7 +35,7 @@
                                 <div class="team-card mb-5">
                                     <img class="img-fluid" src="img/chef-3.jpg" alt="">
                                     <div class="team-desc" style="height: 50px">
-                                        <h6 class="mb-0">Aaron Patel</h6>
+                                        <h6 class="mb-0">Jiky</h6>
                                     </div>
                                 </div>
                             </div>
