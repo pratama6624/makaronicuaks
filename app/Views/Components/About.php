@@ -3,7 +3,7 @@
     <div class="container">
         <div class="section-content">
             <div class="row">
-                <div class="col-sm-5 img-bg d-flex shadow align-items-center justify-content-center justify-content-md-end img-2" style="background-image: url(assets/images/samples/cuaks2.png);">
+                <div class="col-sm-5 img-bg d-flex shadow align-items-center justify-content-center justify-content-md-end img-2" style="background-image: url(assets/images/samples/cuaks.jpg);">
                     
                 </div>
                 <div class="col-sm-7 py-5 pl-md-0 pl-4">

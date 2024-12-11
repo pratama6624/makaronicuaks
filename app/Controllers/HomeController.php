@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\Product as ProductModel;
 use App\Models\ShoppingCart as CartModel;
+use App\Models\DiscountEvent as DiscountEventModel;
 
 class HomeController extends BaseController
 {
@@ -14,6 +15,7 @@ class HomeController extends BaseController
         $this->request = \Config\Services::request();
         $this->productModel = new ProductModel;
         $this->cartModel = new CartModel;
+        $this->discountEvent = new DiscountEventModel;
     }
 
     public function home(): string
@@ -53,15 +55,32 @@ class HomeController extends BaseController
         return view('Pages/AboutUs', $data);
     }
 
-    public function blog(): string
+    public function event(): string
     {
         $data = [
-            "title" => "Blog",
+            "title" => "Event",
             "sideMenuTitle" => $this->request->getUri()->getSegment(1),
-            "cartItemCount" => session()->has('user') ? $this->cartModel->countAllProductsByUserId(session()->get("user")["id"])["total_quantity"] : []
+            "cartItemCount" => session()->has('user') ? $this->cartModel->countAllProductsByUserId(session()->get("user")["id"])["total_quantity"] : [],
+            "eventData" => $this->discountEvent->getAllDiscountEvent()
         ];
 
-        return view('Pages/Blog', $data);
+        return view('Pages/Event', $data);
+    }
+
+    public function eventProduct(): string
+    {
+        $id = $this->request->getGet('id');
+
+        $data = [
+            "title" => "Event Product",
+            "sideMenuTitle" => $this->request->getUri()->getSegment(1),
+            "cartItemCount" => session()->has('user') ? $this->cartModel->countAllProductsByUserId(session()->get("user")["id"])["total_quantity"] : [],
+            "eventProductData" => $this->discountEvent->getProductDiscountEvent($id)
+        ];
+
+        // dd($data["eventProductData"]);
+
+        return view('Pages/EventProduct', $data);
     }
 
     public function shoppingCart(): string
