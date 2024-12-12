@@ -57,11 +57,14 @@ class HomeController extends BaseController
 
     public function event(): string
     {
+        $filter = $this->request->getGet('filter');
+
         $data = [
             "title" => "Event",
             "sideMenuTitle" => $this->request->getUri()->getSegment(1),
             "cartItemCount" => session()->has('user') ? $this->cartModel->countAllProductsByUserId(session()->get("user")["id"])["total_quantity"] : [],
-            "eventData" => $this->discountEvent->getAllDiscountEvent()
+            "eventData" => $this->discountEvent->getAllDiscountEventWithFilter($filter),
+            "filter" => $filter
         ];
 
         return view('Pages/Event', $data);

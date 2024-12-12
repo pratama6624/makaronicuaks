@@ -13,7 +13,13 @@
                 <div class="row" style="margin-bottom: 50px; margin-top: -70px">
                     <div class="col-md-12">
                         <div class="heading-section text-center">
-                            <h4>Event</h4>
+                            <button type="button"
+                                class="btn btn-<?= $filter == "terbesar" ? "secondary" : "light" ?>"
+                                style="margin-right: 10px"
+                                onclick="window.location.href='/event?filter=terbesar'">Terbesar</button>
+                            <button type="button" class="btn btn-<?= $filter == "terkecil" ? "secondary" : "light" ?>"
+                                style="margin-right: 10px"
+                                onclick="window.location.href='/event?filter=terkecil'">Terkecil</button>
                         </div>
                     </div>
                 </div>

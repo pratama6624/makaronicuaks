@@ -20,6 +20,18 @@ class DiscountEvent extends Model
         return $this->findAll();
     }
 
+    public function getAllDiscountEventWithFilter($filter = "terbesar")
+    {
+        $allowedSortColumns = [
+            'terbesar' => 'discount_events.precentage DESC', // Misalnya kolom terbesar
+            'terkecil' => 'discount_events.precentage ASC',
+        ];
+    
+        $sortColumn = isset($allowedSortColumns[$filter]) ? $allowedSortColumns[$filter] : $allowedSortColumns['terbesar'];
+
+        return $this->orderBy($sortColumn, '', false)->findAll();
+    }
+
     public function getDiscountEventByID($id_discount_event)
     {
         return $this->where("id_discount", $id_discount_event)->first();
