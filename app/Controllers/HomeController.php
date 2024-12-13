@@ -88,6 +88,7 @@ class HomeController extends BaseController
 
     public function shoppingCart(): string
     {
+        // dd($this->cartModel->getProductIncludingDiscountByID(3));
         $cartData;
 
         if(session()->has('cart')) {
@@ -225,11 +226,6 @@ class HomeController extends BaseController
         ]);
     }
 
-    public function mergeCartData($sessionCart, $dbCart)
-    {
-
-    }
-
     public function afterLoginSyncCart($userId)
     {
         // SKENARIO LOGIN UNTUK PENGGABUNGAN SESSION CART DENGAN DATABASE CART
@@ -247,7 +243,7 @@ class HomeController extends BaseController
         */
         $userId = session()->get('user')['id'];
         $sessionCart = session()->get('cart');
-        $dbCart = $this->cartModel->getAllCartByProductId($userId);
+        $dbCart = $this->cartModel->getAllCartByUserId($userId);
 
         if($sessionCart == null && $dbCart == null || $sessionCart == null && $dbCart != null) {
             // SKENARIO 1 + SKENARIO 2
@@ -321,6 +317,108 @@ class HomeController extends BaseController
 
         return $result;
     }
+
+    public function updateQuantity()
+    {
+        // if ($this->request->getMethod() === 'POST') {
+        //     $productId = $this->request->getJSON()->product_id;
+        //     $action = $this->request->getJSON()->action;
+    
+        //     // Ambil data produk dari database
+        //     $product = $this->cartModel->getProductByProductIdCart($productId);
+    
+        //     if (!$product) {
+        //         return $this->response->setJSON(['success' => false, 'message' => $productId . " " . $product["quantity"]]);
+        //     }
+    
+        //     // Perbarui kuantitas berdasarkan aksi
+        //     if ($action === 'increment') {
+        //         $product['quantity'] += 1;
+        //     } elseif ($action === 'decrement' && $product['quantity'] > 1) {
+        //         $product['quantity'] -= 1;
+        //     } else {
+        //         return $this->response->setJSON(['success' => false, 'message' => "Kuantitas tidak valid"]);
+        //     }
+    
+        //     // Simpan pembaruan
+        //     // $this->cartModel->update($productId, ['quantity' => $product['quantity']]);
+        //     $this->cartModel->save([
+        //         'id_cart' => $product["id_cart"],
+        //         'quantity' => $product["quantity"]
+        //     ]);
+    
+        //     // Hitung total belanja
+        //     $totalPrice = $this->calculateTotal();
+    
+        //     return $this->response->setJSON([
+        //         'success' => true,
+        //         'new_quantity' => $product['quantity'],
+        //         'total_price' => $totalPrice,
+        //     ]);
+        // }else {
+        //     return $this->response->setJSON(['status' => 'error', 'message' => 'Invalid request method']);
+        // }
+    
+        // throw new \CodeIgniter\Exceptions\PageNotFoundException();
+
+        if ($this->request->getMethod() === 'POST') {
+            $productId = $this->request->getPost('product_id');
+            $quantity = $this->request->getPost('quantity');
+
+            if ($quantity <= 0) {
+                return $this->response->setJSON(['status' => 'error', 'message' => 'Quantity must be greater than 0']);
+            }
+
+            // Update quantity di database
+            $this->cartModel->where('product_id', $productId)
+                ->set(['quantity' => $quantity])
+                ->update();
+
+            // Ambil data produk yang diperbarui termasuk total harga dan diskon
+            $product = $this->cartModel->getProductIncludingDiscountByID($this->session->get('user_id'));
+
+            // Hitung total belanja keseluruhan
+            $totalAmount = 0;
+            foreach ($product as $item) {
+                $price = ($item['discount_status'] || $item['id_discount']) ?
+                    $item['price'] - ($item['price'] * ($item['discount_amount'] ?? $item['precentage']) / 100) :
+                    $item['price'];
+                $totalAmount += $price * $item['quantity'];
+            }
+
+            return $this->response->setJSON([
+                'status' => 'success',
+                'product' => [
+                    'id_product' => $productId,
+                    'total_price' => $price * $quantity,
+                    'quantity' => $quantity,
+                ],
+                'total_amount' => $totalAmount,
+            ]);
+        } else {
+            return $this->response->setJSON(['status' => 'error', 'message' => 'Invalid request method']);
+        }
+    
+        throw new \CodeIgniter\Exceptions\PageNotFoundException();
+    }
+
+    public function calculateTotal() {
+        $cart = $this->cartModel->getProductIncludingDiscountByID(3);
+        $total = 0;
+    
+        foreach ($cart as $item) {
+            // PRICE DISINI GA ADA KARNA GA ADA RELASI ANTARA CART X PRODUCT
+            /* 
+                dan kalopun sudah di relasikan
+                akan muncul masalah baru
+                dimana disini akan ada percabangan untuk cek
+                jika ada discount by personal / event
+            */
+            $total += $item['price'] * $item['quantity'];
+        }
+    
+        return $total;
+    }    
 
     public function account(): string
     {

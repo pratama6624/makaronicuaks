@@ -12,7 +12,7 @@ export function initLiveSearch(config) {
         extraParams = {},
         initialState = null,
     } = config;
-
+ 
     const searchInput = document.querySelector(searchInputSelector);
     const tableBody = document.querySelector(tableBodySelector);
 

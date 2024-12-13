@@ -22,7 +22,7 @@
                                 <a class="nav-link" style="color: <?= $sideMenuTitle == "products" ? "red" : "black" ?>" href="<?= base_url("/products?filter=recomendation") ?>"><b>Menu</b></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" style="color: <?= $sideMenuTitle == "event" || $sideMenuTitle == "eventproduct" ? "red" : "black" ?>" style="margin-right: 15px" href="<?= base_url("/event") ?>"><b>Event</b></a>
+                                <a class="nav-link" style="color: <?= $sideMenuTitle == "event" || $sideMenuTitle == "eventproduct" ? "red" : "black" ?>" style="margin-right: 15px" href="<?= base_url("/event?filter=terbesar") ?>"><b>Event</b></a>
                             </li>
                         </div>
                     </ul>

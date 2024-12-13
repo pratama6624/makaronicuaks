@@ -11,6 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title><?= $title ?></title>
     <meta name="description" content="Resto">
+    <meta name="csrf-token" content="<?= csrf_hash() ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- External CSS -->
@@ -54,5 +55,6 @@
         <script src="js/flash_message.js"></script>
         <script src="js/mycustomejs.js"></script>
         <script src="js/cart.js"></script>
+        <script src="js/cartquantity.js"></script>
     </body>
 </html>

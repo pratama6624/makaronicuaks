@@ -34,12 +34,30 @@ class ShoppingCart extends Model
         'shopping_cart.quantity',
     ];
 
+    public function getProductByProductIdCart($productId)
+    {
+        return $this->join('products', 'products.id_product = shopping_cart.product_id')
+            ->where('shopping_cart.product_id', $productId)
+            ->get()
+            ->getRowArray();
+    }
+
     public function getCartByProductId($productId)
     {
         return $this->where('product_id', $productId)->first();
     }
 
-    public function getAllCartByProductId($userId)
+    public function getProductIncludingDiscountByID($idProduct)
+    {
+        return $this
+        ->join("products", "products.id_product = shopping_cart.product_id")
+        ->join("discount_event_products", "discount_event_products.product_id = products.id_product", "left")
+        ->join("discount_events", "discount_events.id_discount = discount_event_products.discount_id", "left")
+        ->where("shopping_cart.product_id", $idProduct)
+        ->findAll();
+    }
+
+    public function getAllCartByUserId($userId)
     {
         return $this->where('user_id', $userId)->findAll();
     }
