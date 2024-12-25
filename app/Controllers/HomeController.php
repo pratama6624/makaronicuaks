@@ -88,7 +88,7 @@ class HomeController extends BaseController
 
     public function shoppingCart(): string
     {
-        // dd($this->cartModel->getProductIncludingDiscountByID(3));
+        // dd($this->cartModel->getAllProductsIncludingDiscountByCart(3));
         $cartData;
 
         if(session()->has('cart')) {
@@ -320,50 +320,9 @@ class HomeController extends BaseController
 
     public function updateQuantity()
     {
-        // if ($this->request->getMethod() === 'POST') {
-        //     $productId = $this->request->getJSON()->product_id;
-        //     $action = $this->request->getJSON()->action;
-    
-        //     // Ambil data produk dari database
-        //     $product = $this->cartModel->getProductByProductIdCart($productId);
-    
-        //     if (!$product) {
-        //         return $this->response->setJSON(['success' => false, 'message' => $productId . " " . $product["quantity"]]);
-        //     }
-    
-        //     // Perbarui kuantitas berdasarkan aksi
-        //     if ($action === 'increment') {
-        //         $product['quantity'] += 1;
-        //     } elseif ($action === 'decrement' && $product['quantity'] > 1) {
-        //         $product['quantity'] -= 1;
-        //     } else {
-        //         return $this->response->setJSON(['success' => false, 'message' => "Kuantitas tidak valid"]);
-        //     }
-    
-        //     // Simpan pembaruan
-        //     // $this->cartModel->update($productId, ['quantity' => $product['quantity']]);
-        //     $this->cartModel->save([
-        //         'id_cart' => $product["id_cart"],
-        //         'quantity' => $product["quantity"]
-        //     ]);
-    
-        //     // Hitung total belanja
-        //     $totalPrice = $this->calculateTotal();
-    
-        //     return $this->response->setJSON([
-        //         'success' => true,
-        //         'new_quantity' => $product['quantity'],
-        //         'total_price' => $totalPrice,
-        //     ]);
-        // }else {
-        //     return $this->response->setJSON(['status' => 'error', 'message' => 'Invalid request method']);
-        // }
-    
-        // throw new \CodeIgniter\Exceptions\PageNotFoundException();
-
         if ($this->request->getMethod() === 'POST') {
-            $productId = $this->request->getPost('product_id');
-            $quantity = $this->request->getPost('quantity');
+            $productId = $this->request->getJSON()->product_id;
+            $quantity = $this->request->getJSON()->quantity;
 
             if ($quantity <= 0) {
                 return $this->response->setJSON(['status' => 'error', 'message' => 'Quantity must be greater than 0']);
@@ -375,14 +334,19 @@ class HomeController extends BaseController
                 ->update();
 
             // Ambil data produk yang diperbarui termasuk total harga dan diskon
-            $product = $this->cartModel->getProductIncludingDiscountByID($this->session->get('user_id'));
+            $product = $this->cartModel->getAllProductsIncludingDiscountByCart(3);
 
             // Hitung total belanja keseluruhan
+            $price = 0;
+            $priceOfThisProduct = 0;
             $totalAmount = 0;
             foreach ($product as $item) {
-                $price = ($item['discount_status'] || $item['id_discount']) ?
-                    $item['price'] - ($item['price'] * ($item['discount_amount'] ?? $item['precentage']) / 100) :
-                    $item['price'];
+                $price = $this->calculatePrice($item);
+
+                if($item["id_product"] == $productId) {
+                    $priceOfThisProduct = $price;
+                }
+
                 $totalAmount += $price * $item['quantity'];
             }
 
@@ -390,7 +354,7 @@ class HomeController extends BaseController
                 'status' => 'success',
                 'product' => [
                     'id_product' => $productId,
-                    'total_price' => $price * $quantity,
+                    'total_price' => $priceOfThisProduct * $quantity,
                     'quantity' => $quantity,
                 ],
                 'total_amount' => $totalAmount,
@@ -400,6 +364,17 @@ class HomeController extends BaseController
         }
     
         throw new \CodeIgniter\Exceptions\PageNotFoundException();
+    }
+
+    // Fungsi untuk menghitung harga berdasarkan diskon
+    private function calculatePrice($item) {
+        if ($item["discount_status"] != 0) {
+            return $item['price'] - ($item['price'] * ($item['discount_amount']) / 100);
+        } elseif ($item["id_discount"] != null) {
+            return $item['price'] - ($item['price'] * ($item['precentage']) / 100);
+        } else {
+            return $item["price"];
+        }
     }
 
     public function calculateTotal() {

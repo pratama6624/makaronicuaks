@@ -21,6 +21,7 @@ document.querySelectorAll('.btn-increment, .btn-decrement').forEach(button => {
         .then(response => response.json())
         .then(data => {
             if (data.status === 'success') {
+                console.log(data);
                 // Update UI dengan data baru
                 quantityElement.textContent = data.product.quantity;
 
