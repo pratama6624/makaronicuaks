@@ -79,4 +79,9 @@ class ShoppingCart extends Model
         ->get()
         ->getRowArray();
     }
+
+    public function deleteByProductId(int $product_id)
+    {
+        return $this->where('product_id', $product_id)->delete();
+    }
 }

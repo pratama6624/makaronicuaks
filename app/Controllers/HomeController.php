@@ -393,7 +393,22 @@ class HomeController extends BaseController
         }
     
         return $total;
-    }    
+    }
+
+    public function deleteCartItem()
+    {
+        if ($this->request->getMethod() === 'POST') {
+            $productId = $this->request->getJSON()->product_id;
+
+            // Validasi jika product_id ada di cart user
+            $this->cartModel->deleteByProductId($productId);
+
+            return $this->response->setJSON(['status' => 'success', 'message' => 'Item deleted successfully']);
+        }
+        return $this->response->setJSON(['status' => 'error', 'message' => 'Failed to delete item']); 
+
+        throw new \CodeIgniter\Exceptions\PageNotFoundException();
+    }
 
     public function account(): string
     {

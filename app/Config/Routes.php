@@ -34,6 +34,7 @@ $routes->get('/event', 'HomeController::event');
 $routes->get('/eventproduct', 'HomeController::eventProduct');
 $routes->get('/shoppingcart', 'HomeController::shoppingCart');
 $routes->post('/updateCartQuantity', 'HomeController::updateQuantity');
+$routes->post('/deleteCartItem', 'HomeController::deleteCartItem');
 $routes->get('/account', 'HomeController::account', ['filter' => 'roleFilter']);
 
 // Cart Controller

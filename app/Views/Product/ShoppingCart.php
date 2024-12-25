@@ -101,7 +101,7 @@
                                             <?= $ss["quantity"] ?>
                                         </span> )
                                     </span>
-                                    <span><?= "Rp " . number_format($ss["total_price"], 0, ',', '.') ?></span>
+                                    <span class="total-price" data-product-id="<?= $ss['product_id'] ?>"><?= "Rp " . number_format($ss["total_price"], 0, ',', '.') ?></span>
                                 </li>
                             <?php } ?>
                             <br>
