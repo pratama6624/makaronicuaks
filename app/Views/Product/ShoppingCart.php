@@ -94,10 +94,18 @@
                         <h4 style="margin-bottom: 30px">Total Belanja</h4>
                         <ul class="list-unstyled open-hours" style="margin-bottom: 30px;">
                             <?php foreach($shoppingSummary as $ss) { ?>
-                                <li class="d-flex justify-content-between" style="margin-bottom: 10px"><span><?= $ss["product_name"] ?> (x<?= $ss["quantity"] ?>)</span><span><?= "Rp " . number_format($ss["total_price"], 0, ',', '.') ?></span></li>
+                                <li class="d-flex justify-content-between" style="margin-bottom: 10px">
+                                    <span>
+                                        <?= $ss["product_name"] ?> ( x
+                                        <span class="product-quantity" data-product-id="<?= $ss['product_id'] ?>">
+                                            <?= $ss["quantity"] ?>
+                                        </span> )
+                                    </span>
+                                    <span><?= "Rp " . number_format($ss["total_price"], 0, ',', '.') ?></span>
+                                </li>
                             <?php } ?>
                             <br>
-                            <li class="d-flex justify-content-between"><span>Total</span><span style="color: red"><b><?= "Rp " . number_format($totalAmount, 0, ',', '.') ?></b></span></li>
+                            <li class="d-flex justify-content-between"><span>Total</span><span style="color: red" class="total-amount"><b><?= "Rp " . number_format($totalAmount, 0, ',', '.') ?></b></span></li>
                         </ul>
                         <a style="border-radius: 10px" class="btn btn-primary btn-lg"
                                 href="" role="button">Pesan Sekarang</a>

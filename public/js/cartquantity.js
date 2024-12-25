@@ -36,6 +36,12 @@ document.querySelectorAll('.btn-increment, .btn-decrement').forEach(button => {
                 if (totalAmountElement) {
                     totalAmountElement.textContent = `Rp ${new Intl.NumberFormat('id-ID').format(data.total_amount)}`;
                 }
+                const quantity = document.querySelector(`.product-quantity[data-product-id="${productId}"]`);
+                if (quantity) {
+                    quantity.textContent = data.product.quantity;
+                } else {
+                    console.error(`Quantity element for product ID ${productId} not found!`);
+                }
             } else {
                 alert(data.message);
             }
