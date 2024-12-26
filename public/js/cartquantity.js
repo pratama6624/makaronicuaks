@@ -6,6 +6,8 @@ document.querySelectorAll('.btn-increment, .btn-decrement').forEach(button => {
         const productElement = this.closest('.menus');
 
         let quantity = parseInt(quantityElement.textContent);
+
+        // TINGGAL BAGIAN LIST TOTAL BELANJA, HILANGKAN BAGIAN UI PRDUCT / ITEM JIKA SUDAH = 0
         
         // Update kuantitas berdasarkan aksi
         quantity = isIncrement ? quantity + 1 : Math.max(quantity - 1, 0);
