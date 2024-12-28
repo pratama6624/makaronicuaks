@@ -4,6 +4,9 @@ document.querySelectorAll('.btn-increment, .btn-decrement').forEach(button => {
         const isIncrement = this.classList.contains('btn-increment');
         const quantityElement = this.parentNode.querySelector('.quantity');
         const productElement = this.closest('.menus');
+        const subTotalElement = document.querySelector(`.submenus[data-product-id="${productId}"]`);
+
+        console.log(subTotalElement);
 
         let quantity = parseInt(quantityElement.textContent);
 
@@ -27,6 +30,7 @@ document.querySelectorAll('.btn-increment, .btn-decrement').forEach(button => {
                 console.log(deleteData);
                 if (deleteData.status === 'success') {
                     productElement.remove(); // Hapus elemen produk dari UI
+                    if (subTotalElement) subTotalElement.remove();
                 } else {
                     alert(deleteData.message);
                 }

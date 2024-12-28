@@ -94,7 +94,7 @@
                         <h4 style="margin-bottom: 30px">Total Belanja</h4>
                         <ul class="list-unstyled open-hours" style="margin-bottom: 30px;">
                             <?php foreach($shoppingSummary as $ss) { ?>
-                                <li class="d-flex justify-content-between" style="margin-bottom: 10px">
+                                <li class="submenus d-flex justify-content-between" data-product-id="<?= $ss['product_id'] ?>" style="margin-bottom: 10px">
                                     <span>
                                         <?= $ss["product_name"] ?> ( x
                                         <span class="product-quantity" data-product-id="<?= $ss['product_id'] ?>">
