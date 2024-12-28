@@ -87,7 +87,7 @@
                 </div>
             </div>
 
-            <div class="d-flex justify-content-end align-items-center vh-100 mt-5" style="margin-bottom: -50px">
+            <div class="submenustotalamount d-flex justify-content-end align-items-center vh-100 mt-5" style="margin-bottom: -50px">
                 <div class="col-lg-5 text-right"
                     style="background-color: light; border: 2px solid black; padding-top: 40px; padding-bottom: 30px; border-radius: 20px">
                     <div class="footer-widget px-lg-5 px-0">

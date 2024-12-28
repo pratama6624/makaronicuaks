@@ -5,8 +5,7 @@ document.querySelectorAll('.btn-increment, .btn-decrement').forEach(button => {
         const quantityElement = this.parentNode.querySelector('.quantity');
         const productElement = this.closest('.menus');
         const subTotalElement = document.querySelector(`.submenus[data-product-id="${productId}"]`);
-
-        console.log(subTotalElement);
+        const subMenuTotalAmountElement = document.querySelector('.submenustotalamount');
 
         let quantity = parseInt(quantityElement.textContent);
 
@@ -30,7 +29,13 @@ document.querySelectorAll('.btn-increment, .btn-decrement').forEach(button => {
                 console.log(deleteData);
                 if (deleteData.status === 'success') {
                     productElement.remove(); // Hapus elemen produk dari UI
-                    if (subTotalElement) subTotalElement.remove();
+                    if (subTotalElement) subTotalElement.remove();  
+                    
+                    // Periksa apakah masih ada elemen produk
+                    const remainingProducts = document.querySelectorAll('.menus');
+                    if (remainingProducts.length === 0 && subMenuTotalAmountElement) {
+                        subMenuTotalAmountElement.remove(); // Hapus elemen total belanja
+                    }
                 } else {
                     alert(deleteData.message);
                 }
