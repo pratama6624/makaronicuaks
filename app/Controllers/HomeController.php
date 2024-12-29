@@ -324,7 +324,7 @@ class HomeController extends BaseController
             $productId = $this->request->getJSON()->product_id;
             $quantity = $this->request->getJSON()->quantity;
 
-            if ($quantity <= 0) {
+            if ($quantity < 0) {
                 return $this->response->setJSON(['status' => 'error', 'message' => 'Quantity must be greater than 0']);
             }
 

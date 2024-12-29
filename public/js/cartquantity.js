@@ -12,7 +12,7 @@ document.querySelectorAll('.btn-increment, .btn-decrement').forEach(button => {
         if (realTimeQuantityCart) {
             const realTimeQuantityCartUpdate = parseInt(realTimeQuantityCart.textContent.trim());
             realTimeQuantityCart.innerHTML = isIncrement ? realTimeQuantityCartUpdate + 1 : realTimeQuantityCartUpdate - 1;
-        } 
+        }
 
         let quantity = parseInt(quantityElement.textContent);
 
@@ -50,7 +50,8 @@ document.querySelectorAll('.btn-increment, .btn-decrement').forEach(button => {
                 }
             })
             .catch(error => console.error('Error deleting product:', error));
-        } else {
+        }
+
             // Kirim request AJAX
             fetch('/updateCartQuantity', {
                 method: 'POST',
@@ -78,17 +79,19 @@ document.querySelectorAll('.btn-increment, .btn-decrement').forEach(button => {
                     if (totalAmountElement) {
                         totalAmountElement.textContent = `Rp ${new Intl.NumberFormat('id-ID').format(data.total_amount)}`;
                     }
-                    const quantity = document.querySelector(`.product-quantity[data-product-id="${productId}"]`);
-                    if (quantity) {
-                        quantity.textContent = data.product.quantity;
-                    } else {
-                        console.error(`Quantity element for product ID ${productId} not found!`);
+
+                    if(quantityElement == 0) {
+                        const quantity = document.querySelector(`.product-quantity[data-product-id="${productId}"]`);
+                        if (quantity) {
+                            quantity.textContent = data.product.quantity;
+                        } else {
+                            console.error(`Quantity element for product ID ${productId} not found!`);
+                        }
                     }
                 } else {
                     alert(data.message);
                 }
             })
             .catch(error => console.error('Error:', error));
-        }
     });
 });
