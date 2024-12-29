@@ -30,17 +30,18 @@
                     <a class="navbar-brand navbar-brand-center d-flex align-items-center only-desktop" href="#">
                         <img src="img/logo.png" onclick="window.location.href='<?= base_url('/about') ?>'" alt="">
                     </a>
+
                     <ul class="navbar-nav d-flex justify-content-between">
                         <div class="d-flex flex-lg-row flex-column">
                             <li class="nav-item">
                                 <a class="nav-link" style="color: <?= $sideMenuTitle == "shoppingcart" ? "red" : "black" ?>" href="<?= base_url("/shoppingcart") ?>">
                                     <b>Keranjang</b>
                                     <?php if(session()->has('user') && isset($cartItemCount)) { ?>
-                                        <span class="cart-badge"><?= $cartItemCount ?></span>
+                                        <span class="realtime-quantity-cart cart-badge"><?= $cartItemCount ?></span>
                                     <?php } else if(session()->has('cart') != null && count(session()->get('cart')) > 0) { ?>
-                                        <span class="cart-badge"><?= array_sum(session()->get('cart')) ?></span>
+                                        <span class="realtime-quantity-cart cart-badge"><?= array_sum(session()->get('cart')) ?></span>
                                     <?php } else { ?>
-                                        <span class="cart-badge">0</span>
+                                        <span class="realtime-quantity-cart cart-badge">0</span>
                                     <?php } ?>
                                 </a>
                             </li>

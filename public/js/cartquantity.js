@@ -6,6 +6,13 @@ document.querySelectorAll('.btn-increment, .btn-decrement').forEach(button => {
         const productElement = this.closest('.menus');
         const subTotalElement = document.querySelector(`.submenus[data-product-id="${productId}"]`);
         const subMenuTotalAmountElement = document.querySelector('.submenustotalamount');
+        const realTimeQuantityCart = document.querySelector('.realtime-quantity-cart');
+
+        // Update bagian navigasi
+        if (realTimeQuantityCart) {
+            const realTimeQuantityCartUpdate = parseInt(realTimeQuantityCart.textContent.trim());
+            realTimeQuantityCart.innerHTML = isIncrement ? realTimeQuantityCartUpdate + 1 : realTimeQuantityCartUpdate - 1;
+        } 
 
         let quantity = parseInt(quantityElement.textContent);
 
