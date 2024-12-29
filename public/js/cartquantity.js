@@ -33,8 +33,10 @@ document.querySelectorAll('.btn-increment, .btn-decrement').forEach(button => {
                     
                     // Periksa apakah masih ada elemen produk
                     const remainingProducts = document.querySelectorAll('.menus');
+
                     if (remainingProducts.length === 0 && subMenuTotalAmountElement) {
                         subMenuTotalAmountElement.remove(); // Hapus elemen total belanja
+                        window.location.reload();
                     }
                 } else {
                     alert(deleteData.message);
